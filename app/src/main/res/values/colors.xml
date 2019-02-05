@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#232428</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="red">#ed2b2e</color>
+    <color name="grey">#505050</color>
+
+    <color name="product_menu_bg">#191a20</color>
+    <color name="basket_menu_bg">#1d1e24</color>
+    <color name="sale_menu_bg">#22232a</color>
+    <color name="orders_menu_bg">#262830</color>
+    <color name="account_menu_bg">#292b34</color>
+    <color name="info_menu_bg">#2d2f39</color>
+
+    <color name="product_bg">#1a1b1f</color>
+    <color name="product_bg1">#202126</color>
+    <color name="product_category_color">#868585</color>
+    <color name="list_indicate_color">#383838</color>
+
+    <color name="basket_list_bg">#303038</color>
+    <color name="basket_list_bg1">#26262C</color>
+    <color name="basket_quantity">#c5c5c5</color>
+    <color name="basket_count_bg">#32323b</color>
+    <color name="basket_bg">#1f2023</color>
+
+    <color name="track_order_color">#c5c5c5</color>
+    <color name="referral_color">#292930</color>
+    <color name="comment_bg">#262628</color>
+    <color name="weight_color">#555454</color>
+
+    <color name="dialog_bg_color">#17171a</color>
+    <color name="dialog_bg_color1">#3f3f47</color>
+
+    <color name="email_hint_color">#80ffffff</color>
+    <color name="grey_disabled_bg">#808080</color>
+</resources>

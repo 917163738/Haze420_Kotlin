@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    dataBinding {
+        enabled = false
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.haze420.android"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.xappcompat_version"
+    implementation "androidx.core:core-ktx:$rootProject.ktx_version"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.xconstraintlayout_version"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.xlifecyle_extension"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.xviewmodel_version"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.xlegacysupport_version"
+    implementation "android.arch.navigation:navigation-fragment:$rootProject.navigationfragment_version"
+
+    implementation "com.intuit.sdp:sdp-android:$rootProject.sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$rootProject.sdp_version"
+
+    // Testing dependencies
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+}
+
+//afterEvaluate {
+//    android.applicationVariants.all {
+//        def name = it.name.capitalize()
+//        tasks["kapt${name}Kotlin"].dependsOn("transformDataBindingWithDataBindingMergeArtifactsFor${name}")
+//    }
+//}
+

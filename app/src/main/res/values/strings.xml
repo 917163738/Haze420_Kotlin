@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">Haze420</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="s_product">Products</string>
+    <string name="s_basket">Basket</string>
+    <string name="s_sale">SALE</string>
+    <string name="s_orders">Orders</string>
+    <string name="s_account">Account</string>
+    <string name="s_info">Info</string>
+    <string name="s_follow">Follow us</string>
+
+    <string name="str_strain">Strain Type:</string>
+    <string name="str_popular">Popular products:</string>
+    <string name="str_view_all">VIEW ALL</string>
+    <string name="str_sativa">Sativa</string>
+    <string name="str_hybrid">Hybrid</string>
+    <string name="str_indica">Indica</string>
+
+    <string name="str_product">Product:</string>
+    <string name="str_quantity">Quantity</string>
+    <string name="str_price">Price</string>
+    <string name="str_delete">Delete</string>
+    <string name="str_share">Share</string>
+    <string name="str_total">Total:</string>
+    <string name="str_pay">PAY</string>
+
+    <string name="str_most_popular">Most Popular</string>
+    <string name="str_low_to_high">Low to high (prices)</string>
+    <string name="str_high_to_low">high to low (prices)</string>
+    <string name="str_eight">Eight</string>
+
+    <string name="str_orders_place">Orders Placed:</string>
+    <string name="str_show_all">Show All</string>
+    <string name="str_track_order">Track Order</string>
+    <string name="str_write_review">Write Review</string>
+    <string name="str_buy_again">Buy Again</string>
+
+    <string name="str_billing_address">Billing address</string>
+    <string name="str_user_info">User info</string>
+    <string name="str_referral_link">Referral link</string>
+    <string name="str_save">SAVE</string>
+    <string name="str_first_name">First Name</string>
+    <string name="str_last_name">Last Name</string>
+    <string name="str_email">Email</string>
+    <string name="str_password">Password</string>
+    <string name="str_phone">Phone Number</string>
+    <string name="str_location">Address</string>
+
+    <string name="str_infor_product">HAZE420 Products</string>
+    <string name="str_infor1">Questions or compliments?</string>
+    <string name="str_infor2">Want to see Haze 420 in your local shop? Or connect with our distributor?</string>
+    <string name="str_infor3">Drop us a line. Haze 420 team will be in touch with you soon.</string>
+    <string name="str_infor4">The Haze420 Edge</string>
+    <string name="str_infor5">Haze420 Labs</string>
+    <string name="str_infor6">Haze420 Flower</string>
+    <string name="str_infor7">Haze Up</string>
+    <string name="str_infor8">Contact Us</string>
+    <string name="str_infor9">Blog</string>
+    <string name="str_notifications">Notifications</string>
+    <string name="str_enable_notifications">Enable promotional notifications</string>
+    <string name="str_store">HAZE420 STORE</string>
+
+    <string name="str_feedback">FEEDBACK</string>
+    <string name="str_subscribe">Subscribe to our Newsletter</string>
+    <string name="str_promotion">I agree to receive news about new promotions and sales</string>
+    <string name="str_review">Leave a review...</string>
+    <string name="str_comments">Add new comments...</string>
+    <string name="str_send">SEND</string>
+
+    <string name="str_discreet">Discreet Packaging on all orders!</string>
+    <string name="str_express">Free express delivery on orders over £50! </string>
+    <string name="str_earn">Earn Rewards on every purchase!</string>
+    <string name="str_weight">Weight:</string>
+    <string name="str_1g">1G</string>
+    <string name="str_3g">3G</string>
+    <string name="str_5g">5G</string>
+    <string name="str_7g">7G</string>
+    <string name="str_14g">14G</string>
+    <string name="str_28g">28G</string>
+    <string name="str_add_to_basket">Add to basket</string>
+    <string name="str_product_description">Product Description:</string>
+    <string name="str_desc">This pure sativa orginates from the South African port city of Durban. It has gained ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion is the perfect strain to help you stay productive through a busy day, This pure sativa orginates from the South African port city of Durban. It has gained ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion is the perfect strain to help you stay productive through a busy day,</string>
+
+    <string name="str_review_test">Great guys! bought a lot !!  Everyone liked it!  But ended quickly</string>
+    <string name="str_post">POST</string>
+
+    <string name="str_country_region">Country/Region</string>
+    <string name="str_postal_code">Postcode/Zipcode</string>
+    <string name="str_street_address">Street Address</string>
+    <string name="str_town_city">Town/City</string>
+    <string name="str_country">Country</string>
+    <string name="str_save_address">SAVE ADDRESS</string>
+
+    <string name="str_delivery_address">Delivery address</string>
+    <string name="str_additional_address">Additional Delivery Instructions</string>
+    <string name="str_add_text">Add text...</string>
+    <string name="str_country_district">County/District</string>
+
+    <string name="str_password_recovery_dlg">Message sent to e-mail address</string>
+    <string name="str_password_recovery_confirm_text">Check your emails / follow link to change password</string>
+    <string name="str_promotional_code_dlg">You activated the promotional code</string>
+    <string name="str_remove_dlg">Remove this product?</string>
+    <string name="str_cancel">CANCEL</string>
+    <string name="str_delete1">DELETE</string>
+    <string name="str_promotional_code_discount">Enter your promotional code and get a discount</string>
+    <string name="str_agree">AGREE</string>
+    <string name="str_disagree">DISAGREE</string>
+    <string name="str_track_number">Track Number</string>
+    <string name="str_copy_clipboard">Link copied to clipboard</string>
+
+    <string name="str_empty">Can not be left empty</string>
+    <string name="blank"></string>
+    <string name="str_password_length">At least 8 digits</string>
+    <string name="str_invalid_email">Invalid Email</string>
+
+    <string name="login_text">Log In</string>
+    <string name="let_s_do_this">Let\'s do this</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="button_log_in">LOG IN</string>
+    <string name="button_register">REGISTER</string>
+    <string name="follow_us_text">Follow Us</string>
+    <string name="forgot_password_text">Forgot Password</string>
+    <string name="agreement_privacy_policy_text">By Registering, you agree to the User Agreement.\nPrivacy Policy.</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="register_to_continue_text">Register to continue</string>
+
+</resources>
