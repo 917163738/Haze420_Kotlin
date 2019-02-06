@@ -13,6 +13,7 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
 import com.haze420.android.view.onboarding.EmailForm
 import com.haze420.android.view.onboarding.PasswordForm
 
@@ -36,6 +37,8 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val mainAct = activity as MainActivity
+        mainAct.hideActionBarView()
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         view?.findViewById<Button>(R.id.btnForgot)?.setOnClickListener {
@@ -45,6 +48,10 @@ class LoginFragment : Fragment() {
         view?.findViewById<Button>(R.id.btnRegister)?.setOnClickListener {
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_RegisterFragment) }
 
+        }
+
+        view?.findViewById<Button>(R.id.btnLogin)?.setOnClickListener {
+            view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
         }
 
         val pwdForm = view?.findViewById<PasswordForm>(R.id.pwdForm)

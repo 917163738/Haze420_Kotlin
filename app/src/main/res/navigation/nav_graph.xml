@@ -32,6 +32,7 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_loginFragment_to_productsFragment" app:destination="@id/productsFragment"/>
     </fragment>
     <fragment android:id="@+id/forgotFragment"
               android:name="com.haze420.android.ui.onboarding.ForgotFragment"
@@ -60,4 +61,6 @@
             <argument android:defaultValue="false" android:name="isFromLogin"/>
         </action>
     </fragment>
+    <fragment android:id="@+id/productsFragment" android:name="com.haze420.android.ui.main.ProductsFragment"
+              android:label="fragment_products" tools:layout="@layout/fragment_products"/>
 </navigation>

@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="MenuItemView">
+        <attr name="typestr" format="string"/>
+    </declare-styleable>
+</resources>

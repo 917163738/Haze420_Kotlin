@@ -28,7 +28,7 @@ class LaunchFragment : Fragment() {
             context?.let {
                 findNavController(this).navigate(R.id.action_launchFragment_to_loginFragment)
             }
-        }, 2500)
+        }, 1500)
     }
 
 }

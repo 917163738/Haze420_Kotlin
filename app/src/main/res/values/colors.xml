@@ -14,6 +14,7 @@
     <color name="orders_menu_bg">#262830</color>
     <color name="account_menu_bg">#292b34</color>
     <color name="info_menu_bg">#2d2f39</color>
+    <color name="followus_menu_bg">#343643</color>
 
     <color name="product_bg">#1a1b1f</color>
     <color name="product_bg1">#202126</color>
@@ -22,6 +23,7 @@
 
     <color name="basket_list_bg">#303038</color>
     <color name="basket_list_bg1">#26262C</color>
+    <color name="nav_bg">#26262C</color>
     <color name="basket_quantity">#c5c5c5</color>
     <color name="basket_count_bg">#32323b</color>
     <color name="basket_bg">#1f2023</color>
@@ -36,4 +38,6 @@
 
     <color name="email_hint_color">#80ffffff</color>
     <color name="grey_disabled_bg">#808080</color>
+    <color name="alpha_black">#80000000</color>
+    <color name="menu_inactive">#858585</color>
 </resources>

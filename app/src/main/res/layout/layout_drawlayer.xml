@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/alpha_black"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/products"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_product"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/basket"
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/basket"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_basket"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/products"
+            app:layout_constraintBottom_toTopOf="@+id/sales"
+
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/sales"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_sale"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/basket"
+            app:layout_constraintBottom_toTopOf="@+id/orders"
+
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/orders"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_orders"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sales"
+            app:layout_constraintBottom_toTopOf="@+id/account"
+
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/account"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_account"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orders"
+            app:layout_constraintBottom_toTopOf="@+id/info"
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/info"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account"
+            app:layout_constraintBottom_toTopOf="@+id/followus"
+    />
+    <com.haze420.android.view.main.MenuItemView
+            android:id="@+id/followus"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="0dp"
+            app:typestr="@string/s_follow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info"
+            app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

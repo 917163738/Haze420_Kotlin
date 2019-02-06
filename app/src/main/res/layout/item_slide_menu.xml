@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/itemview"
+        android:minHeight="@dimen/_40sdp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+            android:id="@+id/salemark"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="@dimen/_6sdp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/red_circle"
+            android:visibility="invisible"
+    />
+    <ImageView
+            android:id="@+id/imgMenuIcon"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            app:srcCompat="@drawable/mail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_above="@+id/center"
+
+            />
+
+    <View
+            android:id="@+id/center"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+    />
+
+
+
+    <TextView
+            android:id="@+id/txtMenuTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/menu_inactive"
+            android:textSize="@dimen/_14sdp"
+            android:text="MENU ITEM"
+            android:fontFamily="@font/avenir_medium"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/center"
+            android:layout_marginTop="@dimen/_3sdp"
+            />
+
+
+</RelativeLayout>
