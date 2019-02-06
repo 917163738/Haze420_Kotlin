@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/avenir_medium"
-            android:text="@string/login_text"
+            android:text="@string/forgot_password_text"
             android:textColor="@color/white"
             android:textSize="@dimen/_19ssp"
             app:layout_constraintTop_toBottomOf="@+id/imgLogo"
@@ -37,65 +37,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/avenir_light"
-            android:text="@string/let_s_do_this"
+            android:text="@string/forgot_password_subtitle"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
-    <include
+    <com.haze420.android.view.EmailForm
             android:id="@+id/emailForm"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            layout="@layout/form_email"
             app:layout_constraintTop_toBottomOf="@+id/txtLetsdo"
             android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_36sdp"
-            android:layout_marginRight="@dimen/_36sdp"/>
-    <include
-            android:id="@+id/pwdForm"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_45sdp"
-            layout="@layout/form_password"
-            app:layout_constraintTop_toBottomOf="@+id/emailForm"
-            android:layout_marginTop="@dimen/_18sdp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_36sdp"
-            android:layout_marginRight="@dimen/_36sdp"/>
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"/>
+
     <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_32sdp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/avenir_heavy"
-            android:text="@string/button_log_in"
+            android:text="@string/send"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toBottomOf="@+id/pwdForm"
-            app:layout_constraintRight_toRightOf="@+id/pwdForm"
+            app:layout_constraintTop_toBottomOf="@+id/emailForm"
+            app:layout_constraintRight_toRightOf="@+id/emailForm"
+            app:layout_constraintLeft_toLeftOf="@+id/emailForm"
             android:layout_marginTop="@dimen/_14sdp"
     />
+
     <Button
             android:id="@+id/btnRegister"
-            android:layout_width="@dimen/_85sdp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/avenir_heavy"
+            android:padding="@dimen/_3sdp"
             android:text="@string/button_register"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
-            app:layout_constraintTop_toTopOf="@+id/btnLogin"
-            app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
-            app:layout_constraintLeft_toLeftOf="@+id/pwdForm"/>
+            app:layout_constraintTop_toBottomOf="@+id/btnSend"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
             android:id="@+id/btnForgot"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_28sdp"
+            android:visibility="invisible"
             android:background="@android:color/transparent"
             android:textAllCaps="false"
             android:fontFamily="@font/avenir_lightoblique"
@@ -111,6 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="@android:color/white"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/txtPrivacy"
             android:layout_marginBottom="@dimen/_3sdp"
             app:layout_constraintLeft_toLeftOf="@+id/btnForgot"
@@ -182,7 +177,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
             app:layout_constraintLeft_toRightOf="@+id/txtFollowus"
             android:layout_marginLeft="@dimen/_12sdp"
-            app:layout_constraintRight_toRightOf="@+id/btnLogin"/>
+            app:layout_constraintRight_toRightOf="@+id/btnSend"/>
     <View
             android:layout_width="0dp"
             android:layout_height="1dp"
@@ -191,7 +186,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
             app:layout_constraintRight_toLeftOf="@+id/txtFollowus"
             android:layout_marginRight="@dimen/_12sdp"
-            app:layout_constraintLeft_toLeftOf="@+id/btnRegister"/>
+            app:layout_constraintLeft_toLeftOf="@+id/btnSend"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

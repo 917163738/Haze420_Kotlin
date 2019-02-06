@@ -44,22 +44,20 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
-    <include
+    <com.haze420.android.view.EmailForm
         android:id="@+id/emailForm"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
-        layout="@layout/form_email"
         app:layout_constraintTop_toBottomOf="@+id/txtLetsdo"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="@dimen/_36sdp"
         android:layout_marginRight="@dimen/_36sdp"/>
-    <include
+    <com.haze420.android.view.PasswordForm
             android:id="@+id/pwdForm"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            layout="@layout/form_password"
             app:layout_constraintTop_toBottomOf="@+id/emailForm"
             android:layout_marginTop="@dimen/_18sdp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -69,7 +67,7 @@
     <Button
             android:id="@+id/btnLogin"
             android:layout_width="@dimen/_85sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_height="@dimen/_32sdp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/avenir_heavy"
             android:text="@string/button_log_in"
@@ -83,6 +81,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:gravity="left|center_vertical"
             android:background="@android:color/transparent"
             android:fontFamily="@font/avenir_heavy"
             android:text="@string/button_register"

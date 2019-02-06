@@ -15,5 +15,49 @@
     <fragment android:id="@+id/loginFragment"
               android:name="com.haze420.android.ui.onboarding.login.LoginFragment"
               android:label="fragment_login"
-              tools:layout="@layout/fragment_login"/>
+              tools:layout="@layout/fragment_login">
+        <action
+                android:id="@+id/action_loginFragment_to_ForgotFragment"
+                app:destination="@id/forgotFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right">
+            <argument android:defaultValue="true" android:name="isFromLogin"/>
+        </action>
+        <action
+                android:id="@+id/action_loginFragment_to_RegisterFragment"
+                app:destination="@id/registerFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment android:id="@+id/forgotFragment"
+              android:name="com.haze420.android.ui.onboarding.ForgotFragment"
+              android:label="fragment_forgot"
+              tools:layout="@layout/fragment_forgot">
+        <argument android:name="isFromLogin" app:argType="boolean" android:defaultValue="true"/>
+        <action
+                android:id="@+id/action_forgotFragment_to_registerFragment"
+                app:destination="@id/registerFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment android:id="@+id/registerFragment"
+              android:name="com.haze420.android.ui.onboarding.register.RegisterFragment"
+              android:label="fragment_register"
+              tools:layout="@layout/fragment_register">
+        <action
+                android:id="@+id/action_registerFragment_to_forgotFragment"
+                app:destination="@id/forgotFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right">
+            <argument android:defaultValue="false" android:name="isFromLogin"/>
+        </action>
+    </fragment>
 </navigation>

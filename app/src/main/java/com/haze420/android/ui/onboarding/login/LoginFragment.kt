@@ -16,7 +16,10 @@ import androidx.core.widget.addTextChangedListener
 
 
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.haze420.android.R
+import com.haze420.android.view.EmailForm
+import com.haze420.android.view.PasswordForm
 import java.util.regex.Pattern
 
 //import com.haze420.android.model.LoginModel
@@ -34,83 +37,42 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val rootView = inflater.inflate(R.layout.fragment_login, container, false)
-        rootView.findViewById<ImageView>(R.id.imgEmailClear).setOnClickListener({
-            rootView.findViewById<EditText>(R.id.edtEmail).setText(R.string.blank)
-        })
-        rootView.findViewById<Button>(R.id.btnLogin).isEnabled = false
         return rootView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        view?.findViewById<EditText>(R.id.edtEmail)?.addTextChangedListener {
-            loginViewModel.emailAddress.value = it.toString()
-            loginViewModel.updateValid()
+
+        view?.findViewById<Button>(R.id.btnForgot)?.setOnClickListener {
+            view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_ForgotFragment) }
+
+        }
+        view?.findViewById<Button>(R.id.btnRegister)?.setOnClickListener {
+            view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_RegisterFragment) }
+
         }
 
-        view?.findViewById<ImageView>(R.id.imgEye)?.setOnClickListener({
-            loginViewModel.showPassword.value = !loginViewModel.showPassword.value!!
+        val pwdForm = view?.findViewById<PasswordForm>(R.id.pwdForm)
+        pwdForm?.password?.observe(this, Observer {
+            loginViewModel.password.value = it
         })
 
-        view?.findViewById<EditText>(R.id.edtPassword)?.addTextChangedListener {
-            loginViewModel.password.value = it.toString()
-            loginViewModel.updateValid()
-        }
-
-        loginViewModel.emailAddress.observe(this, Observer{
-            if (it.length > 0){
-                view?.findViewById<ImageView>(R.id.imgEmailClear)?.visibility = View.VISIBLE
-                if (it.isValidEmail()){
-                    view?.findViewById<TextView>(R.id.txtEmailError)?.visibility = View.GONE
-                    view?.findViewById<ImageView>(R.id.imgEmailError)?.visibility = View.GONE
-                }else{
-                    view?.findViewById<TextView>(R.id.txtEmailError)?.text = getString(R.string.str_invalid_email)
-                    view?.findViewById<TextView>(R.id.txtEmailError)?.visibility = View.VISIBLE
-                    view?.findViewById<ImageView>(R.id.imgEmailError)?.visibility = View.VISIBLE
-                }
-            }else{
-                view?.findViewById<ImageView>(R.id.imgEmailClear)?.visibility =  View.GONE
-                view?.findViewById<TextView>(R.id.txtEmailError)?.text = getString(R.string.str_empty)
-                view?.findViewById<TextView>(R.id.txtEmailError)?.visibility = View.VISIBLE
-                view?.findViewById<ImageView>(R.id.imgEmailError)?.visibility = View.VISIBLE
-            }
+        pwdForm?.isValid?.observe(this, Observer {
+            loginViewModel.updateValidPwd(it)
         })
 
-        loginViewModel.password.observe(this, Observer {
-            if (it.length > 0){
-                view?.findViewById<ImageView>(R.id.imgEye)?.visibility = View.VISIBLE
-                if (it.length > 8){
-                    view?.findViewById<TextView>(R.id.txtPwdError)?.visibility = View.GONE
-                    view?.findViewById<ImageView>(R.id.imgPwdError)?.visibility = View.GONE
-                }else{
-                    view?.findViewById<TextView>(R.id.txtPwdError)?.text = getString(R.string.str_password_length)
-                    view?.findViewById<TextView>(R.id.txtPwdError)?.visibility = View.VISIBLE
-                    view?.findViewById<ImageView>(R.id.imgPwdError)?.visibility = View.VISIBLE
-                }
-            }else{
-                view?.findViewById<ImageView>(R.id.imgEye)?.visibility = View.GONE
-                view?.findViewById<TextView>(R.id.txtPwdError)?.text = getString(R.string.str_password_length)
-                view?.findViewById<TextView>(R.id.txtPwdError)?.visibility = View.VISIBLE
-                view?.findViewById<ImageView>(R.id.imgPwdError)?.visibility = View.VISIBLE
-            }
+        val emailForm = view?.findViewById<EmailForm>(R.id.emailForm)
+        emailForm?.emailAdd?.observe(this, Observer {
+            loginViewModel.emailAddress.value = it
         })
-        loginViewModel.showPassword.observe(this, Observer {
-            if (!it){
-                view?.findViewById<EditText>(R.id.edtPassword)?.transformationMethod = PasswordTransformationMethod()
-                view?.findViewById<ImageView>(R.id.imgEye)?.setImageResource(R.drawable.eye)
-            }else{
-                view?.findViewById<EditText>(R.id.edtPassword)?.transformationMethod = null
-                view?.findViewById<ImageView>(R.id.imgEye)?.setImageResource(R.drawable.eye_blocked)
-            }
+
+        emailForm?.isValid?.observe(this, Observer {
+            loginViewModel.updateValidEmail(it)
         })
 
         loginViewModel.isAllValid.observe(this, Observer {
-            if (it){
-                view?.findViewById<Button>(R.id.btnLogin)?.isEnabled = true
-            }else{
-                view?.findViewById<Button>(R.id.btnLogin)?.isEnabled = false
-            }
+            view?.findViewById<Button>(R.id.btnLogin)?.isEnabled = it
         })
 
     }

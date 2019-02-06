@@ -69,7 +69,7 @@
     <string name="str_send">SEND</string>
 
     <string name="str_discreet">Discreet Packaging on all orders!</string>
-    <string name="str_express">Free express delivery on orders over £50! </string>
+    <string name="str_express">Free express delivery on orders over £50!</string>
     <string name="str_earn">Earn Rewards on every purchase!</string>
     <string name="str_weight">Weight:</string>
     <string name="str_1g">1G</string>
@@ -80,9 +80,14 @@
     <string name="str_28g">28G</string>
     <string name="str_add_to_basket">Add to basket</string>
     <string name="str_product_description">Product Description:</string>
-    <string name="str_desc">This pure sativa orginates from the South African port city of Durban. It has gained ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion is the perfect strain to help you stay productive through a busy day, This pure sativa orginates from the South African port city of Durban. It has gained ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion is the perfect strain to help you stay productive through a busy day,</string>
+    <string name="str_desc">This pure sativa orginates from the South African port city of Durban. It has gained
+        ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion is the perfect strain
+        to help you stay productive through a busy day, This pure sativa orginates from the South African port city of
+        Durban. It has gained ppopularity worldwide for its sweet smelland energetic, uplifting effects. Durban Posion
+        is the perfect strain to help you stay productive through a busy day,
+    </string>
 
-    <string name="str_review_test">Great guys! bought a lot !!  Everyone liked it!  But ended quickly</string>
+    <string name="str_review_test">Great guys! bought a lot !! Everyone liked it! But ended quickly</string>
     <string name="str_post">POST</string>
 
     <string name="str_country_region">Country/Region</string>
@@ -122,8 +127,13 @@
     <string name="button_register">REGISTER</string>
     <string name="follow_us_text">Follow Us</string>
     <string name="forgot_password_text">Forgot Password</string>
-    <string name="agreement_privacy_policy_text">By Registering, you agree to the User Agreement.\nPrivacy Policy.</string>
+    <string name="send">SEND</string>
+    <string name="forgot_password_subtitle">Enter your account email</string>
+    <string name="agreement_privacy_policy_text">By Registering, you agree to the User Agreement.\nPrivacy Policy.
+    </string>
     <string name="sign_up_text">Sign Up</string>
     <string name="register_to_continue_text">Register to continue</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>

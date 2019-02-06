@@ -1,29 +1,31 @@
 package com.haze420.android.ui.onboarding.login
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
     // TODO: Implement the ViewModel
-    val emailAddress = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val showPassword = MutableLiveData<Boolean>()
+    var emailAddress = MutableLiveData<String>()
+    var password = MutableLiveData<String>()
+    private var _isValidEmail = MutableLiveData<Boolean>()
+    private var _isValidPassword = MutableLiveData<Boolean>()
     val isAllValid = MutableLiveData<Boolean>()
+
     init {
         emailAddress.value = ""
         password.value = ""
-        showPassword.value = false
-        isAllValid.value = false
+        _isValidEmail.value = false
+        _isValidPassword.value = false
     }
 
-    fun updateValid(){
-        if (emailAddress.value != null && password.value != null){
-            if (emailAddress.value!!.isValidEmail() && password.value!!.length >= 8){
-                isAllValid.value = true
-            }
-        }else{
-            isAllValid.value = false
-        }
-    }
+    public fun updateValidEmail(isValidEmail: Boolean){
+        _isValidEmail.value = isValidEmail
+        isAllValid.value = isValidEmail && _isValidPassword.value!!
 
+    }
+    public fun updateValidPwd(isValid: Boolean){
+        _isValidPassword.value = isValid
+        isAllValid.value = _isValidEmail.value!! && isValid
+    }
 }
