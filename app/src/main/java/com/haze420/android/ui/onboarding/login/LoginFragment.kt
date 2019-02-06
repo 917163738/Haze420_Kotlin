@@ -2,25 +2,19 @@ package com.haze420.android.ui.onboarding.login
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 
 
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.R
-import com.haze420.android.view.EmailForm
-import com.haze420.android.view.PasswordForm
-import java.util.regex.Pattern
+import com.haze420.android.view.onboarding.EmailForm
+import com.haze420.android.view.onboarding.PasswordForm
 
 //import com.haze420.android.model.LoginModel
 
@@ -81,11 +75,13 @@ class LoginFragment : Fragment() {
 
 fun String.isValidEmail() : Boolean{
     if (this != null && this != ""){
-        val EMAIL_STRING =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
-
-        val p = Pattern.compile(EMAIL_STRING)
         return Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+    return false;
+}
+fun String.isValidPhone() : Boolean{
+    if (this != null && this != ""){
+        return Patterns.PHONE.matcher(this).matches()
     }
     return false;
 }

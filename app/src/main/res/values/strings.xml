@@ -128,6 +128,8 @@
     <string name="follow_us_text">Follow Us</string>
     <string name="forgot_password_text">Forgot Password</string>
     <string name="send">SEND</string>
+    <string name="hint_birth">Day/Month/Year</string>
+    <string name="birth_error">You must be 18+</string>
     <string name="forgot_password_subtitle">Enter your account email</string>
     <string name="agreement_privacy_policy_text">By Registering, you agree to the User Agreement.\nPrivacy Policy.
     </string>

@@ -9,14 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.ui.onboarding.login.isValidEmail
-import com.haze420.android.view.EmailForm
+import com.haze420.android.view.onboarding.EmailForm
 
 class ForgotFragment : Fragment() {
 

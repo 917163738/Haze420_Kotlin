@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_75sdp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            app:srcCompat="@drawable/user"
+            app:layout_constraintTop_toTopOf="@+id/txtBirth"
+            app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+            android:id="@+id/txtBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft = "@dimen/_15sdp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/avenir_lightoblique"
+            android:textSize="@dimen/_12ssp"
+            android:background="@android:color/transparent"
+            android:text="@string/hint_birth"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/imgUser"
+            android:layout_marginLeft="@dimen/_10sdp"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/txtBirth"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+            android:id="@+id/txtError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_11sdp"
+            android:visibility="gone"
+            android:text="Invaild email address"
+            android:paddingLeft="@dimen/_6sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:fontFamily="@font/avenir_light"
+            app:layout_constraintTop_toBottomOf="@+id/txtBirth"
+            app:layout_constraintRight_toRightOf="parent"/>
+    <ImageView
+            android:id="@+id/imgError"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/info"
+            app:layout_constraintTop_toTopOf="@+id/txtError"
+            app:layout_constraintBottom_toBottomOf="@+id/txtError"
+            app:layout_constraintRight_toLeftOf="@+id/txtError"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
