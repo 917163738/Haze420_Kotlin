@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.products.ProductsFragment"
-        android:background="@color/product_bg1">
+        android:background="@color/global_bg">
 
     <TextView
             android:layout_width="match_parent"

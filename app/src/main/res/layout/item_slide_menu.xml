@@ -22,7 +22,7 @@
             android:id="@+id/imgMenuIcon"
             android:layout_width="@dimen/_16sdp"
             android:layout_height="@dimen/_16sdp"
-            app:srcCompat="@drawable/mail"
+            android:src="@drawable/mail"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/_3sdp"
             android:layout_above="@+id/center"

@@ -2,16 +2,18 @@
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/product_bg1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="@color/global_bg"
         tools:context=".ui.main.account.AccountFragment">
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_18sdp"
+        >
             <View
                     android:id="@+id/viewNote"
                     android:layout_width="match_parent"
@@ -29,7 +31,7 @@
                     app:layout_constraintTop_toTopOf="@+id/viewNote"
                     app:layout_constraintBottom_toBottomOf="@+id/viewNote"
                     app:layout_constraintLeft_toLeftOf="@+id/viewNote"
-                    android:layout_marginLeft="@dimen/_13sdp"
+                    android:layout_marginLeft="@dimen/_12sdp"
             />
 
             <Button
@@ -52,19 +54,177 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_115sdp"
                     app:layout_constraintTop_toBottomOf="@+id/viewNote"
-                    android:background="@color/red"
-            />
 
-            <ImageView
+            />
+            <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgAvatar"
                     android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_70sdp"
+                    android:src="@drawable/avatar"
                     app:layout_constraintTop_toTopOf="@+id/viewAvatar"
                     app:layout_constraintBottom_toBottomOf="@+id/viewAvatar"
                     app:layout_constraintLeft_toLeftOf="@+id/viewAvatar"
-
+                    android:layout_marginLeft="@dimen/_14sdp"
+            />
+            <EditText
+                    android:id="@+id/edtFirstName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/str_first_name"
+                    app:layout_constraintTop_toTopOf="@+id/imgAvatar"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/imgAvatar"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+            <View android:layout_width="0dp" android:layout_height="1dp"
+                  android:background="@android:color/white"
+                  app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
+                  app:layout_constraintRight_toRightOf="@+id/edtFirstName"
+                  app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
             />
 
+            <EditText
+                    android:id="@+id/edtLastName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/str_last_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgAvatar"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:layout_constraintRight_toRightOf="@id/edtFirstName"
+                    app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
+            />
+            <View android:layout_width="0dp" android:layout_height="1dp"
+                  android:background="@android:color/white"
+                  app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
+                  app:layout_constraintRight_toRightOf="@+id/edtFirstName"
+                  app:layout_constraintTop_toBottomOf="@+id/edtLastName"
+            />
+
+            <TextView
+                    android:id="@+id/txtUserInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@color/account_note_bg"
+                    app:layout_constraintTop_toBottomOf="@+id/viewAvatar"
+                    android:text="@string/str_user_info"
+                    android:textSize="@dimen/_13ssp"
+                    android:fontFamily="@font/avenir_medium"
+                    android:textColor="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/_12sdp"
+            />
+            <com.haze420.android.view.onboarding.EmailForm
+                    android:id="@+id/emailForm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    app:layout_constraintRight_toRightOf="@+id/edtFirstName"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginLeft="@dimen/_35sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUserInfo"
+                    android:layout_marginTop="@dimen/_10sdp"
+            />
+            <com.haze420.android.view.onboarding.PasswordForm
+                    android:id="@+id/pwdForm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    app:layout_constraintRight_toRightOf="@+id/emailForm"
+                    app:layout_constraintLeft_toLeftOf="@+id/emailForm"
+                    app:layout_constraintTop_toBottomOf="@+id/emailForm"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+            <com.haze420.android.view.onboarding.PhonenumForm
+                    android:id="@+id/phoneForm"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    app:layout_constraintRight_toRightOf="@+id/pwdForm"
+                    app:layout_constraintLeft_toLeftOf="@+id/pwdForm"
+                    app:layout_constraintTop_toBottomOf="@+id/pwdForm"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+
+            <include
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    layout="@layout/form_location"
+                    app:layout_constraintRight_toRightOf="@+id/phoneForm"
+                    app:layout_constraintLeft_toLeftOf="@+id/phoneForm"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneForm"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+
+            <TextView
+                    android:id="@+id/txtReferralLinkNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_referral_link"
+                    android:textSize="@dimen/_13ssp"
+                    android:fontFamily="@font/avenir_medium"
+                    android:textColor="@android:color/white"
+                    android:paddingLeft="@dimen/_12sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+            />
+
+            <View
+                    android:id="@+id/viewReferralLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_26sdp"
+                    android:background="@color/referral_color"
+                    app:layout_constraintTop_toBottomOf="@+id/txtReferralLinkNote"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+            />
+
+            <TextView
+                    android:id="@+id/txtReferralLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/referral_color"
+                    android:text="https://www.haze420.co.uk/f4982qw"
+                    android:textSize="@dimen/_13ssp"
+                    android:fontFamily="@font/avenir_medium"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintTop_toTopOf="@+id/viewReferralLink"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewReferralLink"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/imgCopy"
+            />
+            <ImageView
+                    android:id="@+id/imgCopy"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@mipmap/copy"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintTop_toTopOf="@+id/viewReferralLink"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewReferralLink"
+                    app:layout_constraintLeft_toRightOf="@+id/txtReferralLink"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    app:layout_constraintRight_toRightOf="parent"
+            />
+
+            <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/avenir_heavy"
+                    android:text="@string/str_save"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintTop_toBottomOf="@+id/viewReferralLink"
+                    app:layout_constraintRight_toRightOf="@+id/viewReferralLink"
+                    app:layout_constraintLeft_toLeftOf="@+id/viewReferralLink"
+                    android:layout_marginTop="@dimen/_20sdp"
+            />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

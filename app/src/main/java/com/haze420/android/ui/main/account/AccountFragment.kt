@@ -1,10 +1,13 @@
 package com.haze420.android.ui.main.account
 
+import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
@@ -29,7 +32,14 @@ class AccountFragment : BaseMenuLevelFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AccountViewModel::class.java)
-        // TODO: Use the ViewModel
+        view?.findViewById<View>(R.id.imgCopy)?.setOnClickListener {
+            val dialog = Dialog(context)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(true)
+            dialog.setContentView(R.layout.dialog_link_copied)
+            dialog.show()
+            Handler().postDelayed({dialog.dismiss()}, 1000)
+        }
     }
 
     override fun handleTransaction(goto: MenuItemType){

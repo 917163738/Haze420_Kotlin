@@ -9,7 +9,7 @@
             android:id="@+id/imgMail"
             android:layout_width="@dimen/_12sdp"
             android:layout_height="@dimen/_12sdp"
-            app:srcCompat="@drawable/mail"
+            android:src="@drawable/mail"
             app:layout_constraintTop_toTopOf="@+id/edtEmail"
             app:layout_constraintBottom_toBottomOf="@+id/edtEmail"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -32,7 +32,7 @@
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
             android:padding="@dimen/_3sdp"
-            app:srcCompat="@drawable/clear"
+            android:src="@drawable/clear"
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="@+id/imgMail"
             app:layout_constraintBottom_toBottomOf="@+id/imgMail"
@@ -64,7 +64,7 @@
             android:layout_width="@dimen/_13sdp"
             android:layout_height="@dimen/_13sdp"
             android:visibility="gone"
-            app:srcCompat="@drawable/info"
+            android:src="@drawable/info"
             app:layout_constraintTop_toTopOf="@+id/txtEmailError"
             app:layout_constraintBottom_toBottomOf="@+id/txtEmailError"
             app:layout_constraintRight_toLeftOf="@+id/txtEmailError"/>

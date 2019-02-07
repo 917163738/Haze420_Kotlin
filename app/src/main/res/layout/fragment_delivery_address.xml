@@ -5,12 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/global_bg"
-        tools:context=".ui.main.basket.BasketFragment">
+        tools:context=".ui.main.account.DeliveryAddressFragment">
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/white"
-            android:text="Basket"/>
+
 
 </FrameLayout>

@@ -6,10 +6,10 @@
         android:minHeight="@dimen/_75sdp"
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
-            android:id="@+id/imgUser"
+            android:id="@+id/imgLocation"
             android:layout_width="@dimen/_12sdp"
             android:layout_height="@dimen/_12sdp"
-            android:src="@drawable/user"
+            android:src="@mipmap/map_pin"
             app:layout_constraintTop_toTopOf="@+id/txtBirth"
             app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -23,9 +23,9 @@
             android:fontFamily="@font/avenir_lightoblique"
             android:textSize="@dimen/_12ssp"
             android:background="@android:color/transparent"
-            android:text="@string/hint_birth"
+            android:text="@string/str_location"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/imgUser"
+            app:layout_constraintLeft_toLeftOf="@+id/imgLocation"
             android:layout_marginLeft="@dimen/_10sdp"
             app:layout_constraintRight_toRightOf="parent"/>
 

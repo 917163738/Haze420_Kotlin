@@ -32,6 +32,7 @@ class MainActivity : BaseActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout)
         findViewById<Button>(R.id.btnMenu).setOnClickListener {
+            hideKeyboard()
             if (drawerLayout.isMenuOpened.value!!){
                 drawerLayout.closeMenu()
             }else{
