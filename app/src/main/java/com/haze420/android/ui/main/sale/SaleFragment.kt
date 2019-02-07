@@ -1,4 +1,4 @@
-package com.haze420.android.ui.main
+package com.haze420.android.ui.main.sale
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,29 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.haze420.android.R
-import com.haze420.android.ui.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
-class ProductsFragment : Fragment() {
+class SaleFragment : Fragment() {
 
     companion object {
-        fun newInstance() = ProductsFragment()
+        fun newInstance() = SaleFragment()
     }
 
-    private lateinit var viewModel: ProductsViewModel
+    private lateinit var viewModel: SaleViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_products, container, false)
+        return inflater.inflate(R.layout.fragment_sale, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val mainActivity = activity as MainActivity
-        mainActivity.showActionBarView()
-        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(SaleViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

@@ -10,7 +10,8 @@
                 android:id="@+id/action_launchFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
                 app:popUpTo="@id/launchFragment"
-                app:popUpToInclusive="true"/>
+                app:popUpToInclusive="true"
+        />
     </fragment>
     <fragment android:id="@+id/loginFragment"
               android:name="com.haze420.android.ui.onboarding.login.LoginFragment"
@@ -32,7 +33,12 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right"/>
-        <action android:id="@+id/action_loginFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action
+                android:id="@+id/action_loginFragment_to_productsFragment"
+                app:destination="@id/productsFragment"
+                app:popUpTo="@id/loginFragment"
+                app:popUpToInclusive="true"
+        />
     </fragment>
     <fragment android:id="@+id/forgotFragment"
               android:name="com.haze420.android.ui.onboarding.ForgotFragment"
@@ -61,6 +67,68 @@
             <argument android:defaultValue="false" android:name="isFromLogin"/>
         </action>
     </fragment>
-    <fragment android:id="@+id/productsFragment" android:name="com.haze420.android.ui.main.ProductsFragment"
-              android:label="fragment_products" tools:layout="@layout/fragment_products"/>
+    <fragment android:id="@+id/productsFragment" android:name="com.haze420.android.ui.main.products.ProductsFragment"
+              android:label="fragment_products" tools:layout="@layout/fragment_products">
+        <action android:id="@+id/action_productsFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_productsFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_productsFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_productsFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+        <action android:id="@+id/action_productsFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_productsFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/ordersFragment" android:name="com.haze420.android.ui.main.orders.OrdersFragment"
+              android:label="fragment_orders" tools:layout="@layout/fragment_orders">
+        <action android:id="@+id/action_ordersFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_ordersFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_ordersFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_ordersFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+        <action android:id="@+id/action_ordersFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_ordersFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/followusFragment" android:name="com.haze420.android.ui.main.followus.FollowusFragment"
+              android:label="followus_fragment" tools:layout="@layout/followus_fragment">
+        <action android:id="@+id/action_followusFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_followusFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_followusFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_followusFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_followusFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_followusFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+
+    </fragment>
+    <fragment android:id="@+id/accountFragment" android:name="com.haze420.android.ui.main.account.AccountFragment"
+              android:label="fragment_account" tools:layout="@layout/fragment_account">
+        <action android:id="@+id/action_accountFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_accountFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_accountFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_accountFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_accountFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+        <action android:id="@+id/action_accountFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/basketFragment" android:name="com.haze420.android.ui.main.basket.BasketFragment"
+              android:label="fragment_basket" tools:layout="@layout/fragment_basket">
+        <action android:id="@+id/action_basketFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_basketFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_basketFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_basketFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_basketFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+        <action android:id="@+id/action_basketFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/saleFragment" android:name="com.haze420.android.ui.main.sale.SaleFragment"
+              android:label="fragment_sale" tools:layout="@layout/fragment_sale">
+        <action android:id="@+id/action_saleFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_saleFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_saleFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_saleFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+        <action android:id="@+id/action_saleFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_saleFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+    </fragment>
+    <fragment android:id="@+id/infoFragment" android:name="com.haze420.android.ui.main.info.InfoFragment"
+              android:label="fragment_info" tools:layout="@layout/fragment_info">
+        <action android:id="@+id/action_infoFragment_to_productsFragment" app:destination="@id/productsFragment"/>
+        <action android:id="@+id/action_infoFragment_to_basketFragment" app:destination="@id/basketFragment"/>
+        <action android:id="@+id/action_infoFragment_to_saleFragment" app:destination="@id/saleFragment"/>
+        <action android:id="@+id/action_infoFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
+        <action android:id="@+id/action_infoFragment_to_accountFragment" app:destination="@id/accountFragment"/>
+        <action android:id="@+id/action_infoFragment_to_followusFragment" app:destination="@id/followusFragment"/>
+    </fragment>
 </navigation>

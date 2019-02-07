@@ -27,8 +27,8 @@
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
                 android:src="@drawable/logo"
                 android:scaleType="fitCenter"
         />

@@ -67,8 +67,6 @@ class BirthForm : ConstraintLayout{
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context, attrs, 0)
-        _isValid.value = false
-        birthStrData.value = context.getString(R.string.hint_birth)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
@@ -77,6 +75,8 @@ class BirthForm : ConstraintLayout{
 
     private fun init(context: Context, attrs: AttributeSet?, defStyle: Int) {
         // Load attributes
+        _isValid.value = false
+        birthStrData.value = context.getString(R.string.hint_birth)
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.form_birthday, this)
 
 //            birthStrData.value = it.toString()

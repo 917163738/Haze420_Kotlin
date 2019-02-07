@@ -12,6 +12,7 @@ import android.widget.DatePicker
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
 import com.haze420.android.view.onboarding.BirthForm
 import com.haze420.android.view.onboarding.EmailForm
 import com.haze420.android.view.onboarding.PasswordForm
@@ -20,6 +21,7 @@ import java.util.*
 
 
 class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
+    private lateinit var mainAct : MainActivity
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         val birth = String.format("%02d/%02d/%04d", dayOfMonth, month, year)
@@ -44,6 +46,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
+        mainAct = activity as MainActivity
         // TODO: Use the ViewModel
         view?.findViewById<Button>(R.id.btnForgot)?.setOnClickListener {
             view?.let {
@@ -62,6 +65,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         })
 
         viewModel.birthday.observe(this, Observer {
+            mainAct.hideKeyboard()
             view?.findViewById<BirthForm>(R.id.birthForm)?.updateBirthday(it)
         })
 
@@ -106,7 +110,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         if (datePickerDialog == null) {
             viewModel.birthday.value = getString(R.string.hint_birth)
             datePickerDialog = DatePickerDialog(
-                context, this, now.get(Calendar.YEAR) - 18, now.get(Calendar.MONTH), now.get(
+                context!!, this, now.get(Calendar.YEAR) - 18, now.get(Calendar.MONTH), now.get(
                     Calendar.DAY_OF_MONTH
                 )
             )

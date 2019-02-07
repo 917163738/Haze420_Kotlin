@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 
 
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import com.haze420.android.BuildConfig
 import com.haze420.android.R
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.view.onboarding.EmailForm
@@ -46,11 +48,13 @@ class LoginFragment : Fragment() {
 
         }
         view?.findViewById<Button>(R.id.btnRegister)?.setOnClickListener {
+            mainAct.hideKeyboard()
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_RegisterFragment) }
 
         }
 
         view?.findViewById<Button>(R.id.btnLogin)?.setOnClickListener {
+            mainAct.hideKeyboard()
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
         }
 
@@ -75,7 +79,10 @@ class LoginFragment : Fragment() {
         loginViewModel.isAllValid.observe(this, Observer {
             view?.findViewById<Button>(R.id.btnLogin)?.isEnabled = it
         })
-
+        if (BuildConfig.DEBUG){
+            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("aaa@gmail.com")
+            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("aaa@gmail.com")
+        }
     }
 
 }

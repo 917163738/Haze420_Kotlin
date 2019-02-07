@@ -29,12 +29,10 @@ class PasswordForm : ConstraintLayout {
     private fun updateValid(){
         if (password.value != null && password.value!!.length >= 8){
             _isValid.value = true
-            this.findViewById<ImageView>(R.id.imgEye)?.visibility = View.VISIBLE
             this.findViewById<TextView>(R.id.txtPwdError)?.visibility = View.GONE
             this.findViewById<ImageView>(R.id.imgPwdError)?.visibility = View.GONE
         }else{
             _isValid.value = false
-            this.findViewById<ImageView>(R.id.imgEye)?.visibility = View.GONE
             this.findViewById<TextView>(R.id.txtPwdError)?.text = context.getString(R.string.str_password_length)
             this.findViewById<TextView>(R.id.txtPwdError)?.visibility = View.VISIBLE
             this.findViewById<ImageView>(R.id.imgPwdError)?.visibility = View.VISIBLE
@@ -48,8 +46,6 @@ class PasswordForm : ConstraintLayout {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context, attrs, 0)
-        _isValid.value = false
-        password.value = ""
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
@@ -58,6 +54,8 @@ class PasswordForm : ConstraintLayout {
 
     private fun init(context: Context, attrs: AttributeSet?, defStyle: Int) {
         // Load attributes
+        _isValid.value = false
+        password.value = ""
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.form_password, this)
         rootView?.findViewById<EditText>(R.id.edtPassword)?.addTextChangedListener {
             password.value = it.toString()

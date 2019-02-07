@@ -52,8 +52,6 @@ class EmailForm : ConstraintLayout {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context, attrs, 0)
-        _isValid.value = false
-        emailAdd.value = ""
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
@@ -62,6 +60,8 @@ class EmailForm : ConstraintLayout {
 
     private fun init(context: Context, attrs: AttributeSet?, defStyle: Int) {
         // Load attributes
+        _isValid.value = false
+        emailAdd.value = ""
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.form_email, this)
         rootView?.findViewById<EditText>(R.id.edtEmail)?.addTextChangedListener {
             emailAdd.value = it.toString()

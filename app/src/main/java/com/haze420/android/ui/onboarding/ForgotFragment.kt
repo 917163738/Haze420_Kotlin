@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
 import com.haze420.android.view.onboarding.EmailForm
 
 class ForgotFragment : Fragment() {
@@ -38,7 +39,7 @@ class ForgotFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ForgotViewModel::class.java)
         view?.findViewById<Button>(R.id.btnSend)?.setOnClickListener({
-
+            (activity as MainActivity).hideKeyboard()
         })
         view?.findViewById<Button>(R.id.btnRegister)?.setOnClickListener({
             if (this@ForgotFragment.arguments!!.getBoolean("isFromLogin")){
