@@ -9,18 +9,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
+import com.haze420.android.model.MenuItemType
 import kotlinx.android.synthetic.main.layout_drawlayer.view.*
 
 /**
  * TODO: document your custom view class.
  */
-class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
+class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
 
-    private lateinit var selectedMenuView: MenuItemView
-    override fun onItemSelected(menuItemView: MenuItemView) {
-        selectedMenuView.setActive(false)
-        selectedMenuView = menuItemView;
-    }
 
     private lateinit var productsMenuView : MenuItemView
     private lateinit var basketMenuView : MenuItemView
@@ -29,8 +25,11 @@ class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
     private lateinit var accountMenuView : MenuItemView
     private lateinit var infoMenuView : MenuItemView
     private lateinit var followusMenuView : MenuItemView
+    private lateinit var shadowView: View
 
     var isMenuOpened = MutableLiveData<Boolean>()
+    var selectedMenuType = MutableLiveData<MenuItemType>()
+
     constructor(context: Context) : super(context) {
         init(context,null, 0)
     }
@@ -47,43 +46,29 @@ class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
         // Load attributes
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.layout_drawlayer, this)
         isMenuOpened.value = false
+        selectedMenuType.value = MenuItemType.Products
         productsMenuView = rootView?.findViewById(R.id.products)!!
-        productsMenuView.setActive()
+        productsMenuView.listener = this
 
-        basketMenuView = rootView?.findViewById(R.id.basket)!!
-        salesMenuView = rootView?.findViewById(R.id.sales)!!
-        ordersMenuView = rootView?.findViewById(R.id.orders)!!
-        accountMenuView = rootView?.findViewById(R.id.account)!!
-        infoMenuView = rootView?.findViewById(R.id.info)!!
-        followusMenuView = rootView?.findViewById(R.id.followus)!!
+        basketMenuView = rootView.findViewById(R.id.basket)!!
+        basketMenuView.listener = this
 
-        productsMenuView.setOnClickListener {
-            closeMenu()
-        }
-        basketMenuView.setOnClickListener {
+        salesMenuView = rootView.findViewById(R.id.sales)!!
+        salesMenuView.listener = this
 
-            closeMenu()
-        }
-        salesMenuView.setOnClickListener {
-            closeMenu()
-        }
+        ordersMenuView = rootView.findViewById(R.id.orders)!!
+        ordersMenuView.listener = this
 
-        ordersMenuView.setOnClickListener {
-            closeMenu()
-        }
+        accountMenuView = rootView.findViewById(R.id.account)!!
+        accountMenuView.listener = this
 
-        accountMenuView.setOnClickListener {
-            closeMenu()
-        }
+        infoMenuView = rootView.findViewById(R.id.info)!!
+        infoMenuView.listener = this
 
-        infoMenuView.setOnClickListener {
-            closeMenu()
-        }
+        followusMenuView = rootView.findViewById(R.id.followus)!!
+        followusMenuView.listener = this
 
-        followusMenuView.setOnClickListener {
-            closeMenu()
-        }
-
+        shadowView = rootView.findViewById(R.id.viewShadow)
 
         rootView.setOnClickListener{
             closeMenu()
@@ -91,23 +76,27 @@ class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
     }
 
     public fun openMenu(){
+        activeMenuItem()
         hideMenuViews()
         this.visibility = View.VISIBLE
         animateOpening()
         android.os.Handler().postDelayed({
             isMenuOpened.value = true
-        }, 370)
+            shadowView.visibility = View.VISIBLE
+        }, 230)
+    }
+
+    public fun closeMenu(){
+        shadowView.visibility = View.INVISIBLE
+        animateClosing()
+        android.os.Handler().postDelayed({
+            this.visibility = View.GONE
+            isMenuOpened.value = false
+        }, 230)
+
     }
 
     private fun hideMenuViews(){
-//        productsMenuView.visibility = View.INVISIBLE
-//        basketMenuView.visibility = View.INVISIBLE
-//        salesMenuView.visibility = View.INVISIBLE
-//        ordersMenuView.visibility = View.INVISIBLE
-//        accountMenuView.visibility = View.INVISIBLE
-//        infoMenuView.visibility = View.INVISIBLE
-//        followusMenuView.visibility = View.INVISIBLE
-
         productsMenuView.alpha = 0f
         basketMenuView.alpha = 0f
         salesMenuView.alpha = 0f
@@ -132,42 +121,33 @@ class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
         android.os.Handler().postDelayed({
             basketMenuView.startAnimation(anim2)
             basketMenuView.alpha = 1.0f
-        }, 50)
+        }, 30)
 
         android.os.Handler().postDelayed({
             salesMenuView.startAnimation(anim3)
             salesMenuView.alpha = 1.0f
-        }, 100)
+        }, 60)
 
         android.os.Handler().postDelayed({
             ordersMenuView.startAnimation(anim4)
             ordersMenuView.alpha = 1.0f
-        }, 150)
+        }, 90)
 
 
         android.os.Handler().postDelayed({
             accountMenuView.startAnimation(anim5)
             accountMenuView.alpha = 1.0f
-        }, 200)
+        }, 120)
 
         android.os.Handler().postDelayed({
             infoMenuView.startAnimation(anim6)
             infoMenuView.alpha = 1.0f
-        }, 250)
+        }, 150)
 
         android.os.Handler().postDelayed({
             followusMenuView.startAnimation(anim7)
             followusMenuView.alpha = 1.0f
-        }, 300)
-    }
-
-    public fun closeMenu(){
-        animateClosing()
-        android.os.Handler().postDelayed({
-            this.visibility = View.GONE
-            isMenuOpened.value = false
-        }, 370)
-
+        }, 180)
     }
 
     private fun animateClosing(){
@@ -182,23 +162,60 @@ class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner {
         productsMenuView.startAnimation(anim1)
         android.os.Handler().postDelayed({
             basketMenuView.startAnimation(anim2)
-        }, 50)
+        }, 30)
         android.os.Handler().postDelayed({
             salesMenuView.startAnimation(anim3)
-        }, 100)
+        }, 60)
         android.os.Handler().postDelayed({
             ordersMenuView.startAnimation(anim4)
-        }, 150)
+        }, 90)
         android.os.Handler().postDelayed({
             accountMenuView.startAnimation(anim5)
-        }, 200)
+        }, 120)
         android.os.Handler().postDelayed({
             infoMenuView.startAnimation(anim6)
-        }, 250)
+        }, 150)
         android.os.Handler().postDelayed({
             followusMenuView.startAnimation(anim7)
-        }, 300)
+        }, 180)
+    }
 
+    private fun getItemByType(type: MenuItemType) : MenuItemView{
+        if (type == MenuItemType.Products)
+            return productsMenuView
+        if (type == MenuItemType.Basket)
+            return basketMenuView
+        if (type == MenuItemType.SALE)
+            return salesMenuView
+        if (type == MenuItemType.Orders)
+            return ordersMenuView
+        if (type == MenuItemType.Account)
+            return accountMenuView
+        if (type == MenuItemType.Info)
+            return infoMenuView
+        if (type == MenuItemType.Followus)
+            return followusMenuView
+        return productsMenuView
+    }
 
+    private fun activeMenuItem(){
+        productsMenuView.setActive(selectedMenuType.value!! == MenuItemType.Products)
+        basketMenuView.setActive(selectedMenuType.value!! == MenuItemType.Basket)
+        salesMenuView.setActive(selectedMenuType.value!! == MenuItemType.SALE)
+        ordersMenuView.setActive(selectedMenuType.value!! == MenuItemType.Orders)
+        accountMenuView.setActive(selectedMenuType.value!! == MenuItemType.Account)
+        infoMenuView.setActive(selectedMenuType.value!! == MenuItemType.Info)
+        followusMenuView.setActive(selectedMenuType.value!! == MenuItemType.Followus)
+
+    }
+    // MenuItemView listner implement
+    override fun onItemSelected(type: MenuItemType) {
+        if (selectedMenuType.value!! != type){
+            getItemByType(selectedMenuType.value!!).setActive(false)
+            selectedMenuType.value = type
+            getItemByType(selectedMenuType.value!!).setActive(true)
+            // Post event menut item changed
+        }
+        closeMenu()
     }
 }

@@ -1,12 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/global_bg"
         tools:context=".ui.main.account.DeliveryAddressFragment">
 
+    <TextView
+            android:id="@+id/txtDeliveryAddress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/str_delivery_address"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toTopOf="parent"
+    />
 
 
-</FrameLayout>
+    <EditText
+            android:id="@+id/edtCountry"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:hint="@string/str_country_region"
+            style="@style/AddressInputEditTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/txtDeliveryAddress"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+
+    />
+
+    <EditText
+            android:id="@+id/edtPostcode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:hint="@string/str_postal_code"
+            style="@style/AddressInputEditTextStyle"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtCountry"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+    />
+    <EditText
+            android:id="@+id/edtStreet"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:hint="@string/str_street_address"
+            style="@style/AddressInputEditTextStyle"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtPostcode"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+    />
+
+    <EditText
+            android:id="@+id/edtCity"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:hint="@string/str_town_city"
+            style="@style/AddressInputEditTextStyle"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtStreet"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+    />
+
+    <EditText
+            android:id="@+id/edtCounty"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:hint="@string/str_county"
+            style="@style/AddressInputEditTextStyle"
+            android:inputType="textNoSuggestions"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtCity"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+    />
+    <TextView
+            android:id="@+id/txtAdditional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_additional_address"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            android:textColor="@android:color/white"
+            android:paddingLeft="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@+id/edtCounty"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/_26sdp"
+    />
+    <EditText
+            android:id="@+id/edtComments"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="@string/str_comments"
+            style="@style/AddressInputEditTextStyle"
+            android:inputType="textNoSuggestions"
+            android:gravity="top|left"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAdditional"
+            app:layout_constraintBottom_toTopOf="@+id/btnSaveAddress"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+    />
+
+    <Button
+            android:id="@+id/btnSaveAddress"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/avenir_heavy"
+            android:text="@string/str_save_address"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/edtCountry"
+            app:layout_constraintLeft_toLeftOf="@+id/edtCountry"
+            android:layout_marginBottom="@dimen/_20sdp"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

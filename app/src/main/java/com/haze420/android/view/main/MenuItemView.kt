@@ -22,6 +22,7 @@ class MenuItemView : RelativeLayout {
     private var _typeString: String? = null // TODO: use a default from R.string...
 
     var listener: MenuItemViewListner? = null
+    var type : MenuItemType = MenuItemType.Products
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -45,44 +46,49 @@ class MenuItemView : RelativeLayout {
 
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.item_slide_menu, this)
 
-//        rootView?.findViewById<RelativeLayout>(R.id.itemview)?.setOnClickListener {
-//            if (listener != null){
-//                listener!!.onItemSelected(this)
-//            }
-//            setActive()
-//        }
+        rootView?.findViewById<RelativeLayout>(R.id.itemview)?.setOnClickListener {
+            if (listener != null){
+                listener!!.onItemSelected(type)
+            }
+        }
 
         if (_typeString == context.getString(R.string.s_product)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.product_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.product)
+            type = MenuItemType.Products
         }else if (_typeString == context.getString(R.string.s_basket)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.basket_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.shopping_basket_1)
+            type = MenuItemType.Basket
         }else if (_typeString == context.getString(R.string.s_sale)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.sale_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.percent)
             rootView?.findViewById<View>(R.id.salemark)?.visibility = View.VISIBLE
+            type = MenuItemType.SALE
         }else if (_typeString == context.getString(R.string.s_orders)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.orders_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.box_add)
+            type = MenuItemType.Orders
         }else if (_typeString == context.getString(R.string.s_account)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.account_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.gas_mask)
+            type = MenuItemType.Account
         }else if (_typeString == context.getString(R.string.s_info)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.info_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.interface_information)
+            type = MenuItemType.Info
         }else if (_typeString == context.getString(R.string.s_follow)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.followus_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.drawable.facebook1)
+            type = MenuItemType.Followus
         }
-
     }
 
     fun setActive(isActive: Boolean = true){
@@ -90,11 +96,11 @@ class MenuItemView : RelativeLayout {
         if (!isActive){
             colorSelected = ContextCompat.getColor(context, R.color.menu_inactive)
         }
-        rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setTextColor(colorSelected)
-        ImageViewCompat.setImageTintList(rootView?.findViewById<ImageView>(R.id.imgMenuIcon)!!, ColorStateList.valueOf(colorSelected))
+        this.findViewById<TextView>(R.id.txtMenuTitle)?.setTextColor(colorSelected)
+        ImageViewCompat.setImageTintList(this.findViewById<ImageView>(R.id.imgMenuIcon)!!, ColorStateList.valueOf(colorSelected))
     }
 
     interface MenuItemViewListner{
-        fun onItemSelected(self: MenuItemView)
+        fun onItemSelected(type: MenuItemType)
     }
 }

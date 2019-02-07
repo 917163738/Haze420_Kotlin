@@ -94,7 +94,7 @@
     <string name="str_postal_code">Postcode/Zipcode</string>
     <string name="str_street_address">Street Address</string>
     <string name="str_town_city">Town/City</string>
-    <string name="str_country">Country</string>
+    <string name="str_county">County</string>
     <string name="str_save_address">SAVE ADDRESS</string>
 
     <string name="str_delivery_address">Delivery address</string>

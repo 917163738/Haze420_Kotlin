@@ -29,7 +29,10 @@
     <color name="basket_bg">#1f2023</color>
 
     <color name="track_order_color">#c5c5c5</color>
+
     <color name="referral_color">#292930</color>
+    <!--// And also Address Inpute field bacgkround color-->
+
     <color name="comment_bg">#262628</color>
     <color name="weight_color">#555454</color>
 

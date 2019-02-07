@@ -86,7 +86,7 @@
         <action android:id="@+id/action_ordersFragment_to_infoFragment" app:destination="@id/infoFragment"/>
     </fragment>
     <fragment android:id="@+id/followusFragment" android:name="com.haze420.android.ui.main.followus.FollowusFragment"
-              android:label="followus_fragment" tools:layout="@layout/followus_fragment">
+              android:label="followus_fragment" tools:layout="@layout/fragment_followus">
         <action android:id="@+id/action_followusFragment_to_productsFragment" app:destination="@id/productsFragment"/>
         <action android:id="@+id/action_followusFragment_to_basketFragment" app:destination="@id/basketFragment"/>
         <action android:id="@+id/action_followusFragment_to_saleFragment" app:destination="@id/saleFragment"/>
