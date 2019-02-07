@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.RelativeLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.haze420.android.R
-import com.haze420.android.ui.main.ProductsFragment
 import com.haze420.android.view.main.DrawerLayout
 
-class MainActivity : AppCompatActivity(), LifecycleOwner {
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
+import com.haze420.android.model.MenuItemType
 
-    private lateinit var mLifecycleRegistry: LifecycleRegistry
 
+class MainActivity : BaseActivity() {
+
+    private var menuChangedListners : ArrayList<ChangedMenuListener> = ArrayList()
 
     lateinit var drawerLayout : DrawerLayout
     lateinit var actionBarView : RelativeLayout
@@ -24,8 +26,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         setContentView(R.layout.activity_main)
 
 //        var fragment = supportFragmentManager.findFragmentById(R.id.productsFragment) as ProductsFragment
-        mLifecycleRegistry = LifecycleRegistry(this) // Lifecycle register
-        mLifecycleRegistry.markState(Lifecycle.State.CREATED) // Lifecycle register
+
 
         actionBarView = findViewById(R.id.actionBarView)
 
@@ -44,8 +45,32 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             }else{
                 findViewById<Button>(R.id.btnMenu).background = ContextCompat.getDrawable(applicationContext, R.drawable.ic_menu)
             }
-
         })
+
+        drawerLayout.selectedMenuType.observe(this, Observer {
+            val selectedType = it
+            if (menuChangedListners.count() > 0){
+                menuChangedListners.forEach {
+                    it.onMenuChanged(selectedType)
+                }
+            }
+        })
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isMenuOpened.value!!){
+            drawerLayout.closeMenu()
+        }else{
+            super.onBackPressed()
+        }
+    }
+
+    fun addMenuChangedListner(listner: ChangedMenuListener){
+        menuChangedListners.add(listner)
+    }
+
+    fun removeMenuChangedListner(listner: ChangedMenuListener){
+        menuChangedListners.remove(listner)
     }
 
     fun hideActionBarView(){
@@ -55,12 +80,9 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         actionBarView.visibility = View.VISIBLE
     }
 
-    public override fun onStart() {
-        super.onStart()
-        mLifecycleRegistry.markState(Lifecycle.State.STARTED)
-    }
-
-    override fun getLifecycle(): Lifecycle {
-        return mLifecycleRegistry
+    interface ChangedMenuListener{
+        fun onMenuChanged(type: MenuItemType)
     }
 }
+
+

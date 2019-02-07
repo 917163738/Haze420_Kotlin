@@ -7,6 +7,10 @@
         tools:context=".ui.main.products.ProductsFragment"
         android:background="@color/product_bg1">
 
-
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:text="@string/s_product"/>
 
 </FrameLayout>

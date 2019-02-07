@@ -2,6 +2,7 @@ package com.haze420.android.ui.main.info
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,10 @@ import androidx.navigation.Navigation
 
 import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
+import com.haze420.android.ui.MainActivity
+import com.haze420.android.ui.main.BaseMenuLevelFragment
 
-class InfoFragment : Fragment() {
-
-    private val menuItemTypeFor = MenuItemType.Info
+class InfoFragment : BaseMenuLevelFragment(){
 
     companion object {
         fun newInstance() = InfoFragment()
@@ -25,6 +26,7 @@ class InfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        menuItemTypeFor = MenuItemType.Info
         return inflater.inflate(R.layout.fragment_info, container, false)
     }
 
@@ -34,7 +36,7 @@ class InfoFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-    private fun handleTransaction(goto: MenuItemType){
+    override fun handleTransaction(goto: MenuItemType){
         if (goto == menuItemTypeFor) return
         view?.let {
             if (goto == MenuItemType.Products){

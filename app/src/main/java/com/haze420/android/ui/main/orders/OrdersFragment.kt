@@ -2,6 +2,7 @@ package com.haze420.android.ui.main.orders
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,10 @@ import androidx.navigation.Navigation
 
 import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
+import com.haze420.android.ui.MainActivity
+import com.haze420.android.ui.main.BaseMenuLevelFragment
 
-class OrdersFragment : Fragment() {
-
-    private val menuItemTypeFor = MenuItemType.Orders
+class OrdersFragment : BaseMenuLevelFragment(){
 
     companion object {
         fun newInstance() = OrdersFragment()
@@ -25,6 +26,7 @@ class OrdersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        menuItemTypeFor = MenuItemType.Orders
         return inflater.inflate(R.layout.fragment_orders, container, false)
     }
 
@@ -34,7 +36,7 @@ class OrdersFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-    private fun handleTransaction(goto: MenuItemType){
+    override fun handleTransaction(goto: MenuItemType){
         if (goto == menuItemTypeFor) return
         view?.let {
             if (goto == MenuItemType.Products){

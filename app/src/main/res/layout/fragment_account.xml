@@ -4,11 +4,14 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/product_bg1"
         tools:context=".ui.main.account.AccountFragment">
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
             android:text="Account "/>
 
 </FrameLayout>

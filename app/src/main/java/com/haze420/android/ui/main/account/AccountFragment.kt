@@ -2,7 +2,6 @@ package com.haze420.android.ui.main.account
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,9 @@ import androidx.navigation.Navigation
 
 import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
+import com.haze420.android.ui.main.BaseMenuLevelFragment
 
-class AccountFragment : Fragment() {
-
-    private val menuItemTypeFor = MenuItemType.Account
-
+class AccountFragment : BaseMenuLevelFragment(){
     companion object {
         fun newInstance() = AccountFragment()
     }
@@ -25,6 +22,7 @@ class AccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        menuItemTypeFor = MenuItemType.Account
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
@@ -34,7 +32,7 @@ class AccountFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-    private fun handleTransaction(goto: MenuItemType){
+    override fun handleTransaction(goto: MenuItemType){
         if (goto == menuItemTypeFor) return
         view?.let {
             if (goto == MenuItemType.Products){
