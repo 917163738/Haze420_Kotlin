@@ -5,6 +5,15 @@
         android:layout_height="match_parent"
         android:background="@color/alpha_black"
         xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View
+            android:id="@+id/viewShadow"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shadow"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/_90sdp"
+            android:visibility="invisible"
+    />
     <com.haze420.android.view.main.MenuItemView
             android:id="@+id/products"
             android:layout_width="@dimen/_90sdp"

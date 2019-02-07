@@ -12,6 +12,7 @@ buildscript {
         xlegacysupport_version = '1.0.0-beta01'
         navigationfragment_version = '1.0.0-beta01'
         ktlintVersion = '0.29.0'
+        cardview_version = '1.0.0'
     }
     repositories {
         google()

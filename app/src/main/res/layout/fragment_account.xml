@@ -3,15 +3,70 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/product_bg1"
         tools:context=".ui.main.account.AccountFragment">
-
-    <TextView
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center"
-            android:text="Account "/>
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <View
+                    android:id="@+id/viewNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@color/account_note_bg"
+                    app:layout_constraintTop_toTopOf="parent"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/s_account"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_18ssp"
+                    android:fontFamily="@font/avenir_medium"
+                    app:layout_constraintTop_toTopOf="@+id/viewNote"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewNote"
+                    app:layout_constraintLeft_toLeftOf="@+id/viewNote"
+                    android:layout_marginLeft="@dimen/_13sdp"
+            />
 
+            <Button
+                    android:id="@+id/btnBillingAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textAllCaps="false"
+                    android:text="@string/str_billing_address"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_13ssp"
+                    android:fontFamily="@font/avenir_medium"
+                    app:layout_constraintTop_toTopOf="@+id/viewNote"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewNote"
+                    app:layout_constraintRight_toRightOf="@+id/viewNote"
+                    android:layout_marginRight="@dimen/_13sdp"
+            />
+            <View
+                    android:id="@+id/viewAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_115sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/viewNote"
+                    android:background="@color/red"
+            />
+
+            <ImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_70sdp"
+                    app:layout_constraintTop_toTopOf="@+id/viewAvatar"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewAvatar"
+                    app:layout_constraintLeft_toLeftOf="@+id/viewAvatar"
+
+            />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </FrameLayout>

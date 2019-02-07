@@ -43,6 +43,7 @@ dependencies {
 
     implementation "com.intuit.sdp:sdp-android:$rootProject.sdp_version"
     implementation "com.intuit.ssp:ssp-android:$rootProject.sdp_version"
+    implementation "androidx.cardview:cardview:$rootProject.cardview_version"
 
     // Testing dependencies
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
