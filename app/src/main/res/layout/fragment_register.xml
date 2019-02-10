@@ -24,8 +24,8 @@
                     android:layout_height="@dimen/_32sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="@dimen/_40sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:src="@drawable/logo"/>
 
             <TextView
@@ -38,8 +38,8 @@
                     android:textSize="@dimen/_19ssp"
                     app:layout_constraintTop_toBottomOf="@+id/imgLogo"
                     android:layout_marginTop="@dimen/_15sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
             <TextView
                     android:id="@+id/txtLetsdo"
                     android:layout_width="wrap_content"
@@ -49,8 +49,8 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.haze420.android.widget.onboarding.EmailForm
                     android:id="@+id/emailForm"
@@ -58,8 +58,8 @@
                     android:layout_height="@dimen/_45sdp"
                     app:layout_constraintTop_toBottomOf="@+id/txtLetsdo"
                     android:layout_marginTop="@dimen/_20sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_36sdp"
                     android:layout_marginEnd="@dimen/_36sdp"/>
             <com.haze420.android.widget.onboarding.PasswordForm
@@ -67,8 +67,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     app:layout_constraintTop_toBottomOf="@+id/emailForm"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_36sdp"
                     android:layout_marginEnd="@dimen/_36sdp"/>
             <com.haze420.android.widget.onboarding.PhonenumForm
@@ -76,8 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     app:layout_constraintTop_toBottomOf="@+id/pwdForm"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_36sdp"
                     android:layout_marginEnd="@dimen/_36sdp"/>
 
@@ -86,8 +86,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
                     app:layout_constraintTop_toBottomOf="@+id/phoneForm"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_36sdp"
                     android:layout_marginEnd="@dimen/_36sdp"/>
             <TextView
@@ -100,8 +100,8 @@
                     android:gravity="center"
                     android:background="@drawable/red_border_bg"
                     android:layout_marginTop="@dimen/_5sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_36sdp"
                     android:layout_marginEnd="@dimen/_36sdp"
                     app:layout_constraintTop_toBottomOf="@+id/birthForm"/>
@@ -116,7 +116,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintTop_toBottomOf="@+id/txt18Note"
-                    app:layout_constraintRight_toRightOf="@+id/pwdForm"
+                    app:layout_constraintEnd_toEndOf="@+id/pwdForm"
                     android:layout_marginTop="@dimen/_14sdp"
             />
             <Button
@@ -131,7 +131,7 @@
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintTop_toTopOf="@+id/btnRegister"
                     app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
-                    app:layout_constraintLeft_toLeftOf="@+id/pwdForm"/>
+                    app:layout_constraintStart_toStartOf="@+id/pwdForm"/>
 
             <TextView
                     android:id="@+id/txtFollowus"
@@ -141,8 +141,8 @@
                     android:text="@string/follow_us_text"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btnRegister"
                     android:layout_marginTop="@dimen/_15sdp"/>
             <View
@@ -151,25 +151,25 @@
                     android:background="@color/red"
                     app:layout_constraintTop_toTopOf="@+id/txtFollowus"
                     app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
-                    app:layout_constraintLeft_toRightOf="@+id/txtFollowus"
+                    app:layout_constraintStart_toEndOf="@+id/txtFollowus"
                     android:layout_marginStart="@dimen/_12sdp"
-                    app:layout_constraintRight_toRightOf="@+id/btnRegister"/>
+                    app:layout_constraintEnd_toEndOf="@+id/btnRegister"/>
             <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:background="@color/red"
                     app:layout_constraintTop_toTopOf="@+id/txtFollowus"
                     app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
-                    app:layout_constraintRight_toLeftOf="@+id/txtFollowus"
+                    app:layout_constraintEnd_toStartOf="@+id/txtFollowus"
                     android:layout_marginEnd="@dimen/_12sdp"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnLogin"/>
+                    app:layout_constraintStart_toStartOf="@+id/btnLogin"/>
             <ImageView
                     android:id="@+id/imgTwitter"
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_12sdp"
                     android:src="@drawable/twitter"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtFollowus"
                     android:layout_marginTop="@dimen/_12sdp"/>
 
@@ -178,7 +178,7 @@
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_12sdp"
                     android:src="@drawable/facebook"
-                    app:layout_constraintRight_toLeftOf="@+id/imgTwitter"
+                    app:layout_constraintEnd_toStartOf="@+id/imgTwitter"
                     android:layout_marginEnd="@dimen/_38sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgTwitter"
             />
@@ -187,7 +187,7 @@
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_12sdp"
                     android:src="@drawable/instagram"
-                    app:layout_constraintLeft_toRightOf="@+id/imgTwitter"
+                    app:layout_constraintStart_toEndOf="@+id/imgTwitter"
                     android:layout_marginStart="@dimen/_38sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/imgTwitter"
             />
@@ -204,8 +204,8 @@
                     android:paddingBottom="@dimen/_5ssp"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/_11ssp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgTwitter"
                     android:layout_marginTop="@dimen/_24sdp"
             />
@@ -215,8 +215,8 @@
                     android:background="@android:color/white"
                     app:layout_constraintTop_toTopOf="@+id/btnForgot"
                     android:layout_marginTop="@dimen/_21sdp"
-                    app:layout_constraintLeft_toLeftOf="@+id/btnForgot"
-                    app:layout_constraintRight_toRightOf="@+id/btnForgot"
+                    app:layout_constraintStart_toStartOf="@+id/btnForgot"
+                    app:layout_constraintEnd_toEndOf="@+id/btnForgot"
             />
             <TextView
                     android:id="@+id/txtPrivacy"
@@ -228,8 +228,8 @@
                     android:text="@string/agreement_privacy_policy_text"
                     android:textColor="@color/email_hint_color"
                     android:textSize="@dimen/_8ssp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@+id/btnForgot"

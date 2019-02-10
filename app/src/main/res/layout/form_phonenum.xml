@@ -12,7 +12,7 @@
             android:src="@drawable/phone"
             app:layout_constraintTop_toTopOf="@+id/edtPhone"
             app:layout_constraintBottom_toBottomOf="@+id/edtPhone"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
             android:id="@+id/edtPhone"
@@ -24,9 +24,9 @@
             android:imeOptions="actionNext"
             android:inputType="phone"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/imgPhone"
+            app:layout_constraintStart_toStartOf="@+id/imgPhone"
             android:layout_marginStart="@dimen/_10sdp"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:id="@+id/imgClear"
             android:layout_width="@dimen/_18sdp"
@@ -36,15 +36,15 @@
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="@+id/imgPhone"
             app:layout_constraintBottom_toBottomOf="@+id/imgPhone"
-            app:layout_constraintRight_toRightOf="@+id/edtPhone"/>
+            app:layout_constraintEnd_toEndOf="@+id/edtPhone"/>
 
     <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/edtPhone"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:id="@+id/txtError"
             android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
             android:paddingBottom="@dimen/_6sdp"
             android:fontFamily="@font/avenir_light"
             app:layout_constraintTop_toBottomOf="@+id/edtPhone"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:id="@+id/imgError"
             android:layout_width="@dimen/_13sdp"
@@ -67,6 +67,6 @@
             android:src="@drawable/info"
             app:layout_constraintTop_toTopOf="@+id/txtError"
             app:layout_constraintBottom_toBottomOf="@+id/txtError"
-            app:layout_constraintRight_toLeftOf="@+id/txtError"/>
+            app:layout_constraintEnd_toStartOf="@+id/txtError"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

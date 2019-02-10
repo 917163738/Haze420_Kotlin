@@ -30,7 +30,7 @@
                     android:fontFamily="@font/avenir_medium"
                     app:layout_constraintTop_toTopOf="@+id/viewNote"
                     app:layout_constraintBottom_toBottomOf="@+id/viewNote"
-                    app:layout_constraintLeft_toLeftOf="@+id/viewNote"
+                    app:layout_constraintStart_toStartOf="@+id/viewNote"
                     android:layout_marginStart="@dimen/_12sdp"
             />
 
@@ -46,7 +46,7 @@
                     android:fontFamily="@font/avenir_medium"
                     app:layout_constraintTop_toTopOf="@+id/viewNote"
                     app:layout_constraintBottom_toBottomOf="@+id/viewNote"
-                    app:layout_constraintRight_toRightOf="@+id/viewNote"
+                    app:layout_constraintEnd_toEndOf="@+id/viewNote"
                     android:layout_marginEnd="@dimen/_13sdp"
             />
             <View
@@ -63,7 +63,7 @@
                     android:src="@drawable/avatar"
                     app:layout_constraintTop_toTopOf="@+id/viewAvatar"
                     app:layout_constraintBottom_toBottomOf="@+id/viewAvatar"
-                    app:layout_constraintLeft_toLeftOf="@+id/viewAvatar"
+                    app:layout_constraintStart_toStartOf="@+id/viewAvatar"
                     android:layout_marginStart="@dimen/_14sdp"
             />
             <EditText
@@ -73,16 +73,16 @@
                     style="@style/OnboardingEditTextStyle"
                     android:hint="@string/str_first_name"
                     app:layout_constraintTop_toTopOf="@+id/imgAvatar"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/imgAvatar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgAvatar"
                     android:layout_marginStart="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_35sdp"
                     android:layout_marginTop="@dimen/_5sdp"
             />
             <View android:layout_width="0dp" android:layout_height="1dp"
                   android:background="@android:color/white"
-                  app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
-                  app:layout_constraintRight_toRightOf="@+id/edtFirstName"
+                  app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+                  app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
                   app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
             />
 
@@ -94,13 +94,13 @@
                     android:hint="@string/str_last_name"
                     app:layout_constraintBottom_toBottomOf="@+id/imgAvatar"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    app:layout_constraintRight_toRightOf="@id/edtFirstName"
-                    app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
+                    app:layout_constraintEnd_toEndOf="@id/edtFirstName"
+                    app:layout_constraintStart_toStartOf="@+id/edtFirstName"
             />
             <View android:layout_width="0dp" android:layout_height="1dp"
                   android:background="@android:color/white"
-                  app:layout_constraintLeft_toLeftOf="@+id/edtFirstName"
-                  app:layout_constraintRight_toRightOf="@+id/edtFirstName"
+                  app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+                  app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
                   app:layout_constraintTop_toBottomOf="@+id/edtLastName"
             />
 
@@ -121,8 +121,8 @@
                     android:id="@+id/emailForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    app:layout_constraintRight_toRightOf="@+id/edtFirstName"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_35sdp"
                     app:layout_constraintTop_toBottomOf="@+id/txtUserInfo"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -131,8 +131,8 @@
                     android:id="@+id/pwdForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    app:layout_constraintRight_toRightOf="@+id/emailForm"
-                    app:layout_constraintLeft_toLeftOf="@+id/emailForm"
+                    app:layout_constraintEnd_toEndOf="@+id/emailForm"
+                    app:layout_constraintStart_toStartOf="@+id/emailForm"
                     app:layout_constraintTop_toBottomOf="@+id/emailForm"
                     android:layout_marginTop="@dimen/_5sdp"
             />
@@ -140,8 +140,8 @@
                     android:id="@+id/phoneForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    app:layout_constraintRight_toRightOf="@+id/pwdForm"
-                    app:layout_constraintLeft_toLeftOf="@+id/pwdForm"
+                    app:layout_constraintEnd_toEndOf="@+id/pwdForm"
+                    app:layout_constraintStart_toStartOf="@+id/pwdForm"
                     app:layout_constraintTop_toBottomOf="@+id/pwdForm"
                     android:layout_marginTop="@dimen/_5sdp"
             />
@@ -151,8 +151,8 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     layout="@layout/form_location"
-                    app:layout_constraintRight_toRightOf="@+id/phoneForm"
-                    app:layout_constraintLeft_toLeftOf="@+id/phoneForm"
+                    app:layout_constraintEnd_toEndOf="@+id/phoneForm"
+                    app:layout_constraintStart_toStartOf="@+id/phoneForm"
                     app:layout_constraintTop_toBottomOf="@+id/phoneForm"
                     android:layout_marginTop="@dimen/_5sdp"
             />
@@ -167,7 +167,7 @@
                     android:textColor="@android:color/white"
                     android:paddingLeft="@dimen/_12sdp"
                     app:layout_constraintTop_toBottomOf="@+id/location"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/_12sdp"
             />
 
@@ -195,8 +195,8 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintTop_toTopOf="@+id/viewReferralLink"
                     app:layout_constraintBottom_toBottomOf="@+id/viewReferralLink"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/imgCopy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imgCopy"
             />
             <ImageView
                     android:id="@+id/imgCopy"
@@ -206,9 +206,9 @@
                     android:padding="@dimen/_3sdp"
                     app:layout_constraintTop_toTopOf="@+id/viewReferralLink"
                     app:layout_constraintBottom_toBottomOf="@+id/viewReferralLink"
-                    app:layout_constraintLeft_toRightOf="@+id/txtReferralLink"
+                    app:layout_constraintStart_toEndOf="@+id/txtReferralLink"
                     android:layout_marginStart="@dimen/_12sdp"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
             />
 
             <Button
@@ -221,8 +221,8 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
                     app:layout_constraintTop_toBottomOf="@+id/viewReferralLink"
-                    app:layout_constraintRight_toRightOf="@+id/viewReferralLink"
-                    app:layout_constraintLeft_toLeftOf="@+id/viewReferralLink"
+                    app:layout_constraintEnd_toEndOf="@+id/viewReferralLink"
+                    app:layout_constraintStart_toStartOf="@+id/viewReferralLink"
                     android:layout_marginTop="@dimen/_20sdp"
             />
 

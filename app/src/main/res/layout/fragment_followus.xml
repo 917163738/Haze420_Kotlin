@@ -30,21 +30,29 @@
             app:layout_constraintTop_toBottomOf="@id/txtFollowus"
             android:layout_marginTop="@dimen/_25sdp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgTwitter"
+            app:layout_constraintHorizontal_chainStyle="spread"
     />
 
         <ImageView
                 android:id="@+id/imgTwitter"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:src="@mipmap/twitter_square" />
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:src="@mipmap/twitter_square"
+                app:layout_constraintTop_toTopOf="@id/imgFB"
+                app:layout_constraintStart_toEndOf="@id/imgFB"
+                app:layout_constraintEnd_toStartOf="@+id/imgInstagram"
+        />
 
         <ImageView
                 android:id="@+id/imgInstagram"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="50dp"
-                android:src="@mipmap/instagram" />
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:src="@mipmap/instagram"
+                app:layout_constraintTop_toTopOf="@id/imgFB"
+                app:layout_constraintStart_toEndOf="@id/imgTwitter"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
     
 
 </androidx.constraintlayout.widget.ConstraintLayout>

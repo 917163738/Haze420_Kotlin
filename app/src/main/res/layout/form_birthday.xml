@@ -12,7 +12,7 @@
             android:src="@drawable/user"
             app:layout_constraintTop_toTopOf="@+id/txtBirth"
             app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
             android:id="@+id/txtBirth"
@@ -25,17 +25,17 @@
             android:background="@android:color/transparent"
             android:text="@string/hint_birth"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/imgUser"
+            app:layout_constraintStart_toStartOf="@+id/imgUser"
             android:layout_marginStart="@dimen/_10sdp"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/txtBirth"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:id="@+id/txtError"
             android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
             android:paddingBottom="@dimen/_6sdp"
             android:fontFamily="@font/avenir_light"
             app:layout_constraintTop_toBottomOf="@+id/txtBirth"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:id="@+id/imgError"
             android:layout_width="@dimen/_13sdp"
@@ -58,7 +58,7 @@
             android:src="@drawable/info"
             app:layout_constraintTop_toTopOf="@+id/txtError"
             app:layout_constraintBottom_toBottomOf="@+id/txtError"
-            app:layout_constraintRight_toLeftOf="@+id/txtError"/>
+            app:layout_constraintEnd_toStartOf="@+id/txtError"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
