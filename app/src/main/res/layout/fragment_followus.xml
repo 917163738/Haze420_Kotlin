@@ -24,35 +24,75 @@
 
     <ImageView
             android:id="@+id/imgFB"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:padding="@dimen/_3sdp"
             android:src="@mipmap/facebook_square"
             app:layout_constraintTop_toBottomOf="@id/txtFollowus"
-            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgTwitter"
             app:layout_constraintHorizontal_chainStyle="spread"
     />
 
-        <ImageView
-                android:id="@+id/imgTwitter"
-                android:layout_width="@dimen/_22sdp"
-                android:layout_height="@dimen/_22sdp"
-                android:src="@mipmap/twitter_square"
-                app:layout_constraintTop_toTopOf="@id/imgFB"
-                app:layout_constraintStart_toEndOf="@id/imgFB"
-                app:layout_constraintEnd_toStartOf="@+id/imgInstagram"
-        />
+    <ImageView
+            android:id="@+id/imgTwitter"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:padding="@dimen/_3sdp"
+            android:src="@mipmap/twitter_square"
+            app:layout_constraintTop_toTopOf="@id/imgFB"
+            app:layout_constraintStart_toEndOf="@id/imgFB"
+            app:layout_constraintEnd_toStartOf="@+id/imgInstagram"
+    />
 
-        <ImageView
-                android:id="@+id/imgInstagram"
-                android:layout_width="@dimen/_22sdp"
-                android:layout_height="@dimen/_22sdp"
-                android:src="@mipmap/instagram"
-                app:layout_constraintTop_toTopOf="@id/imgFB"
-                app:layout_constraintStart_toEndOf="@id/imgTwitter"
-                app:layout_constraintEnd_toEndOf="parent"
-        />
-    
+    <ImageView
+            android:id="@+id/imgInstagram"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:padding="@dimen/_3sdp"
+            android:src="@mipmap/instagram"
+            app:layout_constraintTop_toTopOf="@id/imgFB"
+            app:layout_constraintStart_toEndOf="@id/imgTwitter"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+    <TextView
+            android:id="@+id/txtSubscribe"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/str_subscribe"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@id/imgFB"
+            android:layout_marginTop="@dimen/_30sdp"
+    />
+
+    <TextView
+            android:id="@+id/txtAgreeNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/str_promotion"
+            android:textColor="@color/white60"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/avenir_oblique"
+            app:layout_constraintTop_toBottomOf="@id/txtSubscribe"
+            android:layout_marginTop="@dimen/_15sdp"
+    />
+
+    <ImageView
+            android:id="@+id/imgSwitch"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:src="@drawable/switch_on"
+            app:layout_constraintTop_toTopOf="@id/txtAgreeNote"
+            app:layout_constraintBottom_toBottomOf="@id/txtAgreeNote"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_12sdp"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

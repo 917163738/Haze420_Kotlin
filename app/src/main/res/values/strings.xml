@@ -63,7 +63,7 @@
 
     <string name="str_feedback">FEEDBACK</string>
     <string name="str_subscribe">Subscribe to our Newsletter</string>
-    <string name="str_promotion">I agree to receive news about new promotions and sales</string>
+    <string name="str_promotion">I agree to receive news about new \npromotions and sales</string>
     <string name="str_review">Leave a review...</string>
     <string name="str_comments">Add new comments...</string>
     <string name="str_send">SEND</string>
@@ -138,5 +138,12 @@
     <string name="register_to_continue_text">Register to continue</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="fb_link">https://www.facebook.com/haze420uk</string>
+    <string name="fb_pageid">haze420uk</string>
+    <string name="youtube_link">https://www.youtube.com/channel/UCtLj3Rr4eyhdB1IwGqe74nQ</string>
+    <string name="instagra_link">https://www.instagram.com/haze420uk/?hl=en</string>
+
+
 
 </resources>

@@ -13,6 +13,7 @@ import com.haze420.android.R
 import com.haze420.android.model.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_billing_address.*
 
 class BillingAddressFragment : Fragment() {
 
@@ -46,7 +47,7 @@ class BillingAddressFragment : Fragment() {
         // init viewModel
         viewModel = ViewModelProviders.of(this).get(BillingAddressViewModel::class.java)
 
-        view?.findViewById<View>(R.id.txtCountry)?.setOnClickListener {
+        txtCountry.setOnClickListener {
             view?.let{
                 val act = BillingAddressFragmentDirections.actionBillingAddressFragmentToCountriesFragment()
                 Navigation.findNavController(it).navigate(act)}

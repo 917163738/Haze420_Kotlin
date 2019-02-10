@@ -42,7 +42,8 @@
     <color name="dialog_bg_color">#17171a</color>
     <color name="dialog_bg_color1">#3f3f47</color>
 
-    <color name="email_hint_color">#80ffffff</color>
+    <color name="white50">#80ffffff</color>
+    <color name="white60">#99ffffff</color>
     <color name="grey_disabled_bg">#808080</color>
     <color name="alpha_black">#40000000</color>
     <color name="menu_inactive">#858585</color>

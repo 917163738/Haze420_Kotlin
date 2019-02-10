@@ -2,8 +2,6 @@ package com.haze420.android.ui.main.followus
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +12,12 @@ import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_followus.*
+import android.content.pm.PackageManager
+import android.content.Intent
+import android.net.Uri
+import androidx.lifecycle.Observer
+
 
 class FollowusFragment : BaseMenuLevelFragment(){
     companion object {
@@ -27,15 +31,61 @@ class FollowusFragment : BaseMenuLevelFragment(){
         savedInstanceState: Bundle?
     ): View? {
         menuItemTypeFor = MenuItemType.Followus
-        return inflater.inflate(R.layout.fragment_followus, container, false)
+        return inflater.inflate(com.haze420.android.R.layout.fragment_followus, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FollowusViewModel::class.java)
         (activity as MainActivity).actionBarView.config_FollowusFragment()
-        // TODO: Use the ViewModel
+        imgFB.setOnClickListener{openFB()}
+        imgTwitter.setOnClickListener { openYoutube() }
+        imgInstagram.setOnClickListener { openInstagram() }
+
+        imgSwitch.setOnClickListener {
+            viewModel.isSubscribed.value = !viewModel.isSubscribed.value!!
+        }
+        viewModel.isSubscribed.observe(this, Observer {
+            if (it){
+                imgSwitch.setImageResource(R.drawable.switch_on)
+            }else{
+                imgSwitch.setImageResource(R.drawable.switch_off)
+            }
+        })
     }
+
+    private fun openFB(){
+        val facebookIntent = Intent(Intent.ACTION_VIEW)
+        val facebookUrl = getFBPageURL()
+        facebookIntent.data = Uri.parse(facebookUrl)
+        startActivity(facebookIntent)
+    }
+
+    private fun getFBPageURL(): String{
+        val fbURL = getString(R.string.fb_link)
+        val fbPageId = getString(R.string.fb_pageid)
+        val packageManager = context?.getPackageManager()
+        try {
+            val versionCode = packageManager?.getPackageInfo("com.facebook.katana", 0)?.versionCode
+            return if (versionCode != null && versionCode >= 3002850) { //newer versions of fb app
+                "fb://facewebmodal/f?href=$fbURL"
+            } else { //older versions of fb app
+                "fb://page/$fbPageId"
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            return fbURL //normal web url
+        }
+    }
+
+    private fun openYoutube(){
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.youtube_link))))
+    }
+
+    private fun openInstagram(){
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.instagra_link))))
+    }
+
+
 
     override fun handleTransaction(goto: MenuItemType){
         if (goto == menuItemTypeFor) return

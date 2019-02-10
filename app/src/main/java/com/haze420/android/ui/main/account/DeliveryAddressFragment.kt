@@ -13,6 +13,7 @@ import com.haze420.android.R
 import com.haze420.android.model.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_delivery_address.*
 
 class DeliveryAddressFragment : Fragment() {
 
@@ -47,7 +48,7 @@ class DeliveryAddressFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(DeliveryAddressViewModel::class.java)
         // TODO: Use the ViewModel
-        view?.findViewById<View>(R.id.txtCountry)?.setOnClickListener {
+        txtCountry.setOnClickListener {
             view?.let{Navigation.findNavController(it).navigate(R.id.action_deliveryAddressFragment_to_countriesFragment)}
         }
     }

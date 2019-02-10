@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft = "@dimen/_8sdp"
-            android:textColor="@color/email_hint_color"
+            android:textColor="@color/white50"
             android:fontFamily="@font/avenir_lightoblique"
             android:textSize="@dimen/_12ssp"
             android:background="@android:color/transparent"

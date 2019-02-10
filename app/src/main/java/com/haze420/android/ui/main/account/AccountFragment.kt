@@ -17,6 +17,7 @@ import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_account.*
 
 class AccountFragment : BaseMenuLevelFragment(){
     companion object {
@@ -48,7 +49,7 @@ class AccountFragment : BaseMenuLevelFragment(){
 
         //Init viewModel
         viewModel = ViewModelProviders.of(this).get(AccountViewModel::class.java)
-        view?.findViewById<View>(R.id.imgCopy)?.setOnClickListener {
+        imgCopy.setOnClickListener {
             val dialog = Dialog(context)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.setCancelable(true)
@@ -56,12 +57,12 @@ class AccountFragment : BaseMenuLevelFragment(){
             dialog.show()
             Handler().postDelayed({dialog.dismiss()}, 1000)
         }
-        view?.findViewById<View>(R.id.location)?.setOnClickListener {
+        location.setOnClickListener {
             view?.let{
                 Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_deliveryAddressFragment)
             }
         }
-        view?.findViewById<View>(R.id.txtBillingAddress)?.setOnClickListener {
+        btnBillingAddress.setOnClickListener {
             view?.let{
                 Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_billingAddressFragment)
             }
