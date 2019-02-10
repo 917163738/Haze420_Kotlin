@@ -52,8 +52,8 @@
             android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"/>
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"/>
 
     <Button
             android:id="@+id/btnSend"
@@ -124,8 +124,8 @@
             android:textSize="@dimen/_8ssp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/_18sdp"/>
     <ImageView
@@ -144,7 +144,7 @@
             android:layout_height="@dimen/_12sdp"
             android:src="@drawable/facebook"
             app:layout_constraintRight_toLeftOf="@+id/imgTwitter"
-            android:layout_marginRight="@dimen/_38sdp"
+            android:layout_marginEnd="@dimen/_38sdp"
             app:layout_constraintBottom_toBottomOf="@+id/imgTwitter"
     />
     <ImageView
@@ -153,7 +153,7 @@
             android:layout_height="@dimen/_12sdp"
             android:src="@drawable/instagram"
             app:layout_constraintLeft_toRightOf="@+id/imgTwitter"
-            android:layout_marginLeft="@dimen/_38sdp"
+            android:layout_marginStart="@dimen/_38sdp"
             app:layout_constraintBottom_toBottomOf="@+id/imgTwitter"
     />
 
@@ -176,7 +176,7 @@
             app:layout_constraintTop_toTopOf="@+id/txtFollowus"
             app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
             app:layout_constraintLeft_toRightOf="@+id/txtFollowus"
-            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             app:layout_constraintRight_toRightOf="@+id/btnSend"/>
     <View
             android:layout_width="0dp"
@@ -185,7 +185,7 @@
             app:layout_constraintTop_toTopOf="@+id/txtFollowus"
             app:layout_constraintBottom_toBottomOf="@+id/txtFollowus"
             app:layout_constraintRight_toLeftOf="@+id/txtFollowus"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             app:layout_constraintLeft_toLeftOf="@+id/btnSend"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

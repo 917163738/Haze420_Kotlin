@@ -11,7 +11,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/shadow"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginLeft="@dimen/_90sdp"
+            android:layout_marginStart="@dimen/_90sdp"
             android:visibility="invisible"
     />
     <com.haze420.android.widget.main.MenuItemView

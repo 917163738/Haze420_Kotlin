@@ -32,8 +32,8 @@
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
 
     />
 
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="@+id/txtCountry"
             app:layout_constraintBottom_toBottomOf="@+id/txtCountry"
             app:layout_constraintRight_toRightOf="@+id/txtCountry"
-            android:layout_marginRight="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
     />
 
     <EditText
@@ -58,8 +58,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCountry"
             android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
     <EditText
             android:id="@+id/edtStreet"
@@ -72,8 +72,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtPostcode"
             android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <EditText
@@ -87,8 +87,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtStreet"
             android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <EditText
@@ -102,8 +102,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtCity"
             android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
     <TextView
             android:id="@+id/txtAdditional"
@@ -132,8 +132,8 @@
             app:layout_constraintBottom_toTopOf="@+id/btnSaveAddress"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <Button

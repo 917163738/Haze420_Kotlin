@@ -33,8 +33,8 @@
             android:layout_marginTop="@dimen/_24sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             app:layout_constraintVertical_chainStyle="spread_inside"
     />
     <EditText
@@ -48,8 +48,8 @@
             app:layout_constraintBottom_toTopOf="@+id/edtPhone"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
     <EditText
             android:id="@+id/edtPhone"
@@ -62,8 +62,8 @@
             app:layout_constraintBottom_toTopOf="@+id/txtCountry"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <TextView
@@ -76,8 +76,8 @@
             app:layout_constraintBottom_toTopOf="@+id/edtPostcode"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
 
     />
 
@@ -88,7 +88,7 @@
             app:layout_constraintTop_toTopOf="@+id/txtCountry"
             app:layout_constraintBottom_toBottomOf="@+id/txtCountry"
             app:layout_constraintRight_toRightOf="@+id/txtCountry"
-            android:layout_marginRight="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
     />
 
 
@@ -103,8 +103,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCountry"
             app:layout_constraintBottom_toTopOf="@+id/edtStreet"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
     <EditText
             android:id="@+id/edtStreet"
@@ -117,8 +117,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtPostcode"
             app:layout_constraintBottom_toTopOf="@+id/edtCity"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <EditText
@@ -132,8 +132,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtStreet"
             app:layout_constraintBottom_toTopOf="@+id/edtCounty"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
     <EditText
@@ -148,8 +148,8 @@
             app:layout_constraintTop_toBottomOf="@+id/edtCity"
             android:layout_marginBottom="@dimen/_24sdp"
             app:layout_constraintBottom_toTopOf="@+id/btnSaveAddress"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
     />
 
 
