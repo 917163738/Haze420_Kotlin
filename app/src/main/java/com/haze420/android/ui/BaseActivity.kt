@@ -2,13 +2,7 @@ package com.haze420.android.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
-import com.haze420.android.R
-import com.haze420.android.view.main.DrawerLayout
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager

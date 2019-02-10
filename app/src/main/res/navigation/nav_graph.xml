@@ -103,6 +103,20 @@
         <action android:id="@+id/action_accountFragment_to_ordersFragment" app:destination="@id/ordersFragment"/>
         <action android:id="@+id/action_accountFragment_to_followusFragment" app:destination="@id/followusFragment"/>
         <action android:id="@+id/action_accountFragment_to_infoFragment" app:destination="@id/infoFragment"/>
+        <action android:id="@+id/action_accountFragment_to_deliveryAddressFragment"
+                app:destination="@id/deliveryAddressFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+        />
+        <action android:id="@+id/action_accountFragment_to_billingAddressFragment"
+                app:destination="@id/billingAddressFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+        />
     </fragment>
     <fragment android:id="@+id/basketFragment" android:name="com.haze420.android.ui.main.basket.BasketFragment"
               android:label="fragment_basket" tools:layout="@layout/fragment_basket">
@@ -131,4 +145,29 @@
         <action android:id="@+id/action_infoFragment_to_accountFragment" app:destination="@id/accountFragment"/>
         <action android:id="@+id/action_infoFragment_to_followusFragment" app:destination="@id/followusFragment"/>
     </fragment>
+    <fragment android:id="@+id/deliveryAddressFragment"
+              android:name="com.haze420.android.ui.main.account.DeliveryAddressFragment"
+              android:label="fragment_delivery_address" tools:layout="@layout/fragment_delivery_address">
+        <action android:id="@+id/action_deliveryAddressFragment_to_countriesFragment"
+                app:destination="@id/countriesFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+        />
+    </fragment>
+    <fragment android:id="@+id/billingAddressFragment"
+              android:name="com.haze420.android.ui.main.account.BillingAddressFragment"
+              android:label="fragment_billing_address" tools:layout="@layout/fragment_billing_address">
+        <action android:id="@+id/action_billingAddressFragment_to_countriesFragment"
+                app:destination="@id/countriesFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+        />
+    </fragment>
+    <fragment android:id="@+id/countriesFragment"
+              android:name="com.haze420.android.ui.main.account.CountriesFragment" tools:layout="@layout/fragment_countries"
+              android:label="CountriesFragment"/>
 </navigation>

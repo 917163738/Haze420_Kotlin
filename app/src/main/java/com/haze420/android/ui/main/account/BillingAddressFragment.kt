@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class BillingAddressFragment : Fragment() {
 
@@ -26,8 +29,20 @@ class BillingAddressFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).actionBarView.config_BillingAddressFragment()
         viewModel = ViewModelProviders.of(this).get(BillingAddressViewModel::class.java)
+
+        view?.findViewById<View>(R.id.txtCountry)?.setOnClickListener {
+            view?.let{
+                val act = BillingAddressFragmentDirections.actionBillingAddressFragmentToCountriesFragment()
+
+                Navigation.findNavController(it).navigate(act)}
+        }
+
+
         // TODO: Use the ViewModel
     }
+
+
 
 }

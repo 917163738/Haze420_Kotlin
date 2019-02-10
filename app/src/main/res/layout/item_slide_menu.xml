@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/itemview"
         android:minHeight="@dimen/_40sdp"
         xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -26,7 +27,6 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/_3sdp"
             android:layout_above="@+id/center"
-
             />
 
     <View

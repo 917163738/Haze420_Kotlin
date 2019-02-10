@@ -44,7 +44,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
-    <com.haze420.android.view.onboarding.EmailForm
+    <com.haze420.android.widget.onboarding.EmailForm
             android:id="@+id/emailForm"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"

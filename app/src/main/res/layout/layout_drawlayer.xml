@@ -14,7 +14,7 @@
             android:layout_marginLeft="@dimen/_90sdp"
             android:visibility="invisible"
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/products"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/basket"
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/basket"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toTopOf="@+id/sales"
 
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/sales"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -43,7 +43,7 @@
             app:layout_constraintBottom_toTopOf="@+id/orders"
 
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/orders"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -53,7 +53,7 @@
             app:layout_constraintBottom_toTopOf="@+id/account"
 
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/account"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -62,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/orders"
             app:layout_constraintBottom_toTopOf="@+id/info"
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/info"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"
@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/account"
             app:layout_constraintBottom_toTopOf="@+id/followus"
     />
-    <com.haze420.android.view.main.MenuItemView
+    <com.haze420.android.widget.main.MenuItemView
             android:id="@+id/followus"
             android:layout_width="@dimen/_90sdp"
             android:layout_height="0dp"

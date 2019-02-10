@@ -1,4 +1,4 @@
-package com.haze420.android.view.main
+package com.haze420.android.widget.main
 
 import android.content.Context
 import android.content.res.ColorStateList

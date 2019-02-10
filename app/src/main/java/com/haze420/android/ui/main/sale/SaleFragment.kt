@@ -13,6 +13,7 @@ import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class SaleFragment : BaseMenuLevelFragment(){
 
@@ -32,6 +33,7 @@ class SaleFragment : BaseMenuLevelFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).actionBarView.config_SALEFragment()
         viewModel = ViewModelProviders.of(this).get(SaleViewModel::class.java)
         // TODO: Use the ViewModel
     }

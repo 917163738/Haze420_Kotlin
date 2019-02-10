@@ -1,4 +1,4 @@
-package com.haze420.android.view.onboarding
+package com.haze420.android.widget.onboarding
 
 import android.content.Context
 import android.util.AttributeSet

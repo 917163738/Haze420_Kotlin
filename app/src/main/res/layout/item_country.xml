@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <!--<variable-->
+                <!--name="clickListener"-->
+                <!--type="android.view.View.OnClickListener"/>-->
+        <!--<variable name="country"-->
+                  <!--type="String"/>-->
+        <variable
+                name="position"
+                type="java.lang.Integer" />
+        <variable name="viewModel"
+                  type="com.haze420.android.ui.main.account.CountriesViewModel"/>
+    </data>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onItemClick(position)}"
+            android:background="@{position %2 == 0 ? @color/referral_color : @color/global_bg, default=@color/referral_color}"
+            >
+        <TextView
+                android:id="@+id/txtCountryName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.getCountryAt(position)}"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="@dimen/_26sdp"
+                android:layout_centerVertical="true"
+        />
+
+    </RelativeLayout>
+</layout>

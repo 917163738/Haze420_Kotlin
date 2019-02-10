@@ -13,6 +13,7 @@ import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class ProductsFragment : BaseMenuLevelFragment(){
 
@@ -36,6 +37,8 @@ class ProductsFragment : BaseMenuLevelFragment(){
         val mainActivity = activity as MainActivity
         mainActivity.showActionBarView()
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        mainActivity.actionBarView.config_ProductsFragment()
+
         // TODO: Use the ViewModel
     }
 

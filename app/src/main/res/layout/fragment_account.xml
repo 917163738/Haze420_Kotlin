@@ -117,7 +117,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/_12sdp"
             />
-            <com.haze420.android.view.onboarding.EmailForm
+            <com.haze420.android.widget.onboarding.EmailForm
                     android:id="@+id/emailForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
@@ -127,7 +127,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtUserInfo"
                     android:layout_marginTop="@dimen/_10sdp"
             />
-            <com.haze420.android.view.onboarding.PasswordForm
+            <com.haze420.android.widget.onboarding.PasswordForm
                     android:id="@+id/pwdForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
@@ -136,7 +136,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/emailForm"
                     android:layout_marginTop="@dimen/_5sdp"
             />
-            <com.haze420.android.view.onboarding.PhonenumForm
+            <com.haze420.android.widget.onboarding.PhonenumForm
                     android:id="@+id/phoneForm"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"

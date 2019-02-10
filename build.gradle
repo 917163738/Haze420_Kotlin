@@ -13,6 +13,8 @@ buildscript {
         navigationfragment_version = '1.0.0-beta01'
         ktlintVersion = '0.29.0'
         circelimageview_version = '3.0.0'
+        recyclerViewVersion = '1.0.0'
+        glideVersion = '4.8.0'
     }
     repositories {
         google()

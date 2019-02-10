@@ -13,10 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.R
 import com.haze420.android.ui.MainActivity
-import com.haze420.android.view.onboarding.BirthForm
-import com.haze420.android.view.onboarding.EmailForm
-import com.haze420.android.view.onboarding.PasswordForm
-import com.haze420.android.view.onboarding.PhonenumForm
+import com.haze420.android.widget.onboarding.BirthForm
+import com.haze420.android.widget.onboarding.EmailForm
+import com.haze420.android.widget.onboarding.PasswordForm
+import com.haze420.android.widget.onboarding.PhonenumForm
 import java.util.*
 
 

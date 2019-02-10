@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class DeliveryAddressFragment : Fragment() {
 
@@ -26,8 +29,11 @@ class DeliveryAddressFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).actionBarView.config_DeliveryAddressFragment()
         viewModel = ViewModelProviders.of(this).get(DeliveryAddressViewModel::class.java)
         // TODO: Use the ViewModel
+        view?.findViewById<View>(R.id.txtCountry)?.setOnClickListener {
+            view?.let{Navigation.findNavController(it).navigate(R.id.action_deliveryAddressFragment_to_countriesFragment)}
+        }
     }
-
 }

@@ -16,8 +16,8 @@ import androidx.navigation.Navigation
 import com.haze420.android.BuildConfig
 import com.haze420.android.R
 import com.haze420.android.ui.MainActivity
-import com.haze420.android.view.onboarding.EmailForm
-import com.haze420.android.view.onboarding.PasswordForm
+import com.haze420.android.widget.onboarding.EmailForm
+import com.haze420.android.widget.onboarding.PasswordForm
 
 //import com.haze420.android.model.LoginModel
 

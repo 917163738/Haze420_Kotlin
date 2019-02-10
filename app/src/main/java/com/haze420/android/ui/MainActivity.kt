@@ -1,54 +1,55 @@
 package com.haze420.android.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import com.haze420.android.R
-import com.haze420.android.view.main.DrawerLayout
+import com.haze420.android.model.ActionBarItemType
 
-import android.content.Context
-import android.view.inputmethod.InputMethodManager
 import com.haze420.android.model.MenuItemType
+import kotlinx.android.synthetic.main.actionbar.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
 
-    private var menuChangedListners : ArrayList<ChangedMenuListener> = ArrayList()
+    lateinit var viewModel: SharedViewModel
 
-    lateinit var drawerLayout : DrawerLayout
-    lateinit var actionBarView : RelativeLayout
+    private var menuChangedListners : ArrayList<ChangedMenuListener> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 //        var fragment = supportFragmentManager.findFragmentById(R.id.productsFragment) as ProductsFragment
+        viewModel = ViewModelProviders.of(this).get(SharedViewModel::class.java)
 
-
-        actionBarView = findViewById(R.id.actionBarView)
-
-        drawerLayout = findViewById(R.id.drawerLayout)
-        findViewById<Button>(R.id.btnMenu).setOnClickListener {
-            hideKeyboard()
-            if (drawerLayout.isMenuOpened.value!!){
-                drawerLayout.closeMenu()
-            }else{
-                drawerLayout.openMenu()
-            }
-        }
-
-        drawerLayout.isMenuOpened.observe(this, Observer {
-            if (it){
-                findViewById<Button>(R.id.btnMenu).background = ContextCompat.getDrawable(applicationContext, R.drawable.ic_close)
-            }else{
-                findViewById<Button>(R.id.btnMenu).background = ContextCompat.getDrawable(applicationContext, R.drawable.ic_menu)
+        actionBarView.getSelectedItem().observe(this, Observer { clickedItem ->
+            when (clickedItem){
+                ActionBarItemType.MENU_CLOSE -> {
+                    hideKeyboard()
+                    if (slideMenuLayout.isMenuOpened.value!!){
+                        slideMenuLayout.closeMenu()
+                    }else{
+                        slideMenuLayout.openMenu()
+                    }
+                }
+                ActionBarItemType.LOGOUT -> {
+                    hideKeyboard()
+                    viewModel.setSelectedActionbarItem(clickedItem)  // Fragments will observer this value
+                }
             }
         })
 
-        drawerLayout.selectedMenuType.observe(this, Observer {
+        slideMenuLayout.isMenuOpened.observe(this, Observer {
+            if (it){
+                imgMenu.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_close))
+            }else{
+                imgMenu.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_menu))
+            }
+        })
+
+        slideMenuLayout.selectedMenuType.observe(this, Observer {
             val selectedType = it
             if (menuChangedListners.count() > 0){
                 menuChangedListners.forEach {
@@ -59,19 +60,21 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (drawerLayout.isMenuOpened.value!!){
-            drawerLayout.closeMenu()
+        if (slideMenuLayout.isMenuOpened.value!!){
+            slideMenuLayout.closeMenu()
         }else{
             super.onBackPressed()
         }
     }
 
     fun addMenuChangedListner(listner: ChangedMenuListener){
-        menuChangedListners.add(listner)
+        menuChangedListners.add(listner) // Register fragmennt to listen menu change
+//        TODO() Should move to shared ViewModel
     }
 
     fun removeMenuChangedListner(listner: ChangedMenuListener){
         menuChangedListners.remove(listner)
+        //        TODO() Should move to shared ViewModel
     }
 
     fun hideActionBarView(){
@@ -83,6 +86,7 @@ class MainActivity : BaseActivity() {
 
     interface ChangedMenuListener{
         fun onMenuChanged(type: MenuItemType)
+        //        TODO() Should move to shared ViewModel
     }
 }
 

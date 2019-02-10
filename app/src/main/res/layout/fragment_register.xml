@@ -52,7 +52,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-            <com.haze420.android.view.onboarding.EmailForm
+            <com.haze420.android.widget.onboarding.EmailForm
                     android:id="@+id/emailForm"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
@@ -62,7 +62,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     android:layout_marginLeft="@dimen/_36sdp"
                     android:layout_marginRight="@dimen/_36sdp"/>
-            <com.haze420.android.view.onboarding.PasswordForm
+            <com.haze420.android.widget.onboarding.PasswordForm
                     android:id="@+id/pwdForm"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
@@ -71,7 +71,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     android:layout_marginLeft="@dimen/_36sdp"
                     android:layout_marginRight="@dimen/_36sdp"/>
-            <com.haze420.android.view.onboarding.PhonenumForm
+            <com.haze420.android.widget.onboarding.PhonenumForm
                     android:id="@+id/phoneForm"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"
@@ -81,7 +81,7 @@
                     android:layout_marginLeft="@dimen/_36sdp"
                     android:layout_marginRight="@dimen/_36sdp"/>
 
-            <com.haze420.android.view.onboarding.BirthForm
+            <com.haze420.android.widget.onboarding.BirthForm
                     android:id="@+id/birthForm"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_45sdp"

@@ -100,7 +100,8 @@
     <string name="str_delivery_address">Delivery address</string>
     <string name="str_additional_address">Additional Delivery Instructions</string>
     <string name="str_add_text">Add text...</string>
-    <string name="str_country_district">County/District</string>
+    <string name="str_county_district">County/District</string>
+    <string name="str_country">Country</string>
 
     <string name="str_password_recovery_dlg">Message sent to e-mail address</string>
     <string name="str_password_recovery_confirm_text">Check your emails / follow link to change password</string>

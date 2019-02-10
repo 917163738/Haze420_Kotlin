@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.haze420.android.R
+import com.haze420.android.ui.MainActivity
 
 class LaunchFragment : Fragment() {
 
@@ -24,6 +25,8 @@ class LaunchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val mainAct = activity as MainActivity
+        mainAct.hideActionBarView()
         Handler().postDelayed({
             context?.let {
                 findNavController(this).navigate(R.id.action_launchFragment_to_loginFragment)

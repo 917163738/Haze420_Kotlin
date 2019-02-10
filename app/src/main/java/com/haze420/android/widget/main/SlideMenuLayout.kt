@@ -1,4 +1,4 @@
-package com.haze420.android.view.main
+package com.haze420.android.widget.main
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,12 +10,11 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
-import kotlinx.android.synthetic.main.layout_drawlayer.view.*
 
 /**
  * TODO: document your custom view class.
  */
-class DrawerLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
+class SlideMenuLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
 
 
     private lateinit var productsMenuView : MenuItemView

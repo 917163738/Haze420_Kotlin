@@ -8,11 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.model.ActionBarItemType
 import com.haze420.android.model.MenuItemType
+import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class AccountFragment : BaseMenuLevelFragment(){
     companion object {
@@ -31,6 +35,13 @@ class AccountFragment : BaseMenuLevelFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val mainAct = activity as MainActivity
+        mainAct.actionBarView.config_AccountFragment()
+        mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
+            if (clickedItem == ActionBarItemType.LOGOUT){
+                view?.let{Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_deliveryAddressFragment)}
+            }
+        })
         viewModel = ViewModelProviders.of(this).get(AccountViewModel::class.java)
         view?.findViewById<View>(R.id.imgCopy)?.setOnClickListener {
             val dialog = Dialog(context)
@@ -39,6 +50,16 @@ class AccountFragment : BaseMenuLevelFragment(){
             dialog.setContentView(R.layout.dialog_link_copied)
             dialog.show()
             Handler().postDelayed({dialog.dismiss()}, 1000)
+        }
+        view?.findViewById<View>(R.id.location)?.setOnClickListener {
+            view?.let{
+                Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_deliveryAddressFragment)
+            }
+        }
+        view?.findViewById<View>(R.id.txtBillingAddress)?.setOnClickListener {
+            view?.let{
+                Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_billingAddressFragment)
+            }
         }
     }
 

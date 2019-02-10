@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 open class BaseMenuLevelFragment : Fragment(), MainActivity.ChangedMenuListener{
 
@@ -21,7 +22,7 @@ open class BaseMenuLevelFragment : Fragment(), MainActivity.ChangedMenuListener{
         super.onResume()
         (activity as MainActivity).addMenuChangedListner(this)
         Handler().postDelayed({
-            (activity as MainActivity).drawerLayout.selectedMenuType.value = menuItemTypeFor
+            (activity as MainActivity).slideMenuLayout.selectedMenuType.value = menuItemTypeFor
         }, 300)
     }
     override fun onPause() {

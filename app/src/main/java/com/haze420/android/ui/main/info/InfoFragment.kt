@@ -13,6 +13,7 @@ import com.haze420.android.R
 import com.haze420.android.model.MenuItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class InfoFragment : BaseMenuLevelFragment(){
 
@@ -33,6 +34,7 @@ class InfoFragment : BaseMenuLevelFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(InfoViewModel::class.java)
+        (activity as MainActivity).actionBarView.config_InfoFragment()
         // TODO: Use the ViewModel
     }
 
