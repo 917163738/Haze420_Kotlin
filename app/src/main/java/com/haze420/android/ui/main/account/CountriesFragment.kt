@@ -13,6 +13,7 @@ import com.haze420.android.R
 
 import com.haze420.android.adapter.CountriesAdapter
 import com.haze420.android.databinding.FragmentCountriesBinding
+import com.haze420.android.model.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,7 +32,6 @@ class CountriesFragment : Fragment() {
     ): View? {
         val binding = FragmentCountriesBinding.inflate(inflater, container, false)
         val context = context ?: return binding.root
-
         viewModel = ViewModelProviders.of(this).get(CountriesViewModel::class.java)
         val adapter = CountriesAdapter(viewModel)
         binding.recyclerView.adapter = adapter
@@ -42,8 +42,17 @@ class CountriesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as MainActivity).actionBarView.config_CountriesFragment()
-        // TODO: Use the ViewModel
+
+        val mainAct = activity as MainActivity
+        //Config action bar
+        mainAct.actionBarView.config_CountriesFragment()
+
+        // observe log out action from actionbar
+        mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
+            if (clickedItem == ActionBarItemType.LOGOUT){
+                view?.let{Navigation.findNavController(it).navigate(R.id.action_countriesFragment_to_loginFragment)}
+            }
+        })
     }
 
     private fun subscribeUi(adapter: CountriesAdapter) {

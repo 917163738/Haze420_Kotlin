@@ -36,12 +36,17 @@ class AccountFragment : BaseMenuLevelFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val mainAct = activity as MainActivity
+        //Config action bar
         mainAct.actionBarView.config_AccountFragment()
+
+        // observe log out action from actionbar
         mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
             if (clickedItem == ActionBarItemType.LOGOUT){
-                view?.let{Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_deliveryAddressFragment)}
+                view?.let{Navigation.findNavController(it).navigate(R.id.action_accountFragment_to_loginFragment)}
             }
         })
+
+        //Init viewModel
         viewModel = ViewModelProviders.of(this).get(AccountViewModel::class.java)
         view?.findViewById<View>(R.id.imgCopy)?.setOnClickListener {
             val dialog = Dialog(context)

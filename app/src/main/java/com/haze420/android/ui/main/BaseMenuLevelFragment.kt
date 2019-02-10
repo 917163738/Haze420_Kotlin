@@ -21,9 +21,7 @@ open class BaseMenuLevelFragment : Fragment(), MainActivity.ChangedMenuListener{
     override fun onResume() {
         super.onResume()
         (activity as MainActivity).addMenuChangedListner(this)
-        Handler().postDelayed({
-            (activity as MainActivity).slideMenuLayout.selectedMenuType.value = menuItemTypeFor
-        }, 300)
+        (activity as MainActivity).slideMenuLayout.selectedMenuType.value = menuItemTypeFor
     }
     override fun onPause() {
         (activity as MainActivity).removeMenuChangedListner(this)

@@ -1,16 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/global_bg"
         tools:context=".ui.main.followus.FollowusFragment">
 
     <TextView
+            android:id="@+id/txtFollowus"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/follow_us_text"
+            android:gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:text="Follow us"/>
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toTopOf="parent"
+    />
 
-</FrameLayout>
+    <ImageView
+            android:id="@+id/imgFB"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:src="@mipmap/facebook_square"
+            app:layout_constraintTop_toBottomOf="@id/txtFollowus"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintStart_toStartOf="parent"
+    />
+
+        <ImageView
+                android:id="@+id/imgTwitter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:src="@mipmap/twitter_square" />
+
+        <ImageView
+                android:id="@+id/imgInstagram"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="50dp"
+                android:src="@mipmap/instagram" />
+    
+
+</androidx.constraintlayout.widget.ConstraintLayout>
