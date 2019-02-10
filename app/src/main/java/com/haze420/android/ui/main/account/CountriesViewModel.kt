@@ -3,7 +3,7 @@ package com.haze420.android.ui.main.account
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.haze420.android.R
-import com.haze420.android.model.CountriesRepository
+import com.haze420.android.model.repositories.CountriesRepository
 
 class CountriesViewModel : ViewModel() {
 

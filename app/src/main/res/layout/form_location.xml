@@ -10,20 +10,22 @@
             android:layout_width="@dimen/_12sdp"
             android:layout_height="@dimen/_12sdp"
             android:src="@mipmap/map_pin"
-            app:layout_constraintTop_toTopOf="@+id/txtBirth"
-            app:layout_constraintBottom_toBottomOf="@+id/txtBirth"
+            app:layout_constraintTop_toTopOf="@+id/txtLocation"
+            app:layout_constraintBottom_toBottomOf="@+id/txtLocation"
             app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-            android:id="@+id/txtBirth"
+            android:id="@+id/txtLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft = "@dimen/_8sdp"
-            android:textColor="@color/white50"
+            android:textColorHint="@color/white50"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
             android:fontFamily="@font/avenir_lightoblique"
             android:textSize="@dimen/_12ssp"
             android:background="@android:color/transparent"
-            android:text="@string/str_location"
+            android:hint="@string/str_location"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imgLocation"
             android:layout_marginStart="@dimen/_10sdp"
@@ -33,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/txtBirth"
+            app:layout_constraintTop_toBottomOf="@+id/txtLocation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
@@ -48,7 +50,7 @@
             android:paddingTop="@dimen/_6sdp"
             android:paddingBottom="@dimen/_6sdp"
             android:fontFamily="@font/avenir_light"
-            app:layout_constraintTop_toBottomOf="@+id/txtBirth"
+            app:layout_constraintTop_toBottomOf="@+id/txtLocation"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:id="@+id/imgError"

@@ -149,7 +149,7 @@
             <include
                     android:id="@+id/location"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="49dp"
                     layout="@layout/form_location"
                     app:layout_constraintEnd_toEndOf="@+id/phoneForm"
                     app:layout_constraintStart_toStartOf="@+id/phoneForm"
