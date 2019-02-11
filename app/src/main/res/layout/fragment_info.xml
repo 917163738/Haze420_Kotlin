@@ -1,16 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/global_bg"
         tools:context=".ui.main.info.InfoFragment">
 
     <TextView
+            android:id="@+id/txtInfo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/s_info"
+            android:gravity="center_vertical"
             android:textColor="@android:color/white"
-            android:text="Info"/>
+            android:textSize="@dimen/_18ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toTopOf="parent"
 
-</FrameLayout>
+    />
+
+    <TextView
+            android:id="@+id/txtDropUs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingRight="@dimen/_26sdp"
+            android:text="@string/str_infor3"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtInfo"
+            android:layout_marginTop="@dimen/_12sdp"
+    />
+
+    <TextView
+            android:id="@+id/txtHazeProducts"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/str_infor_product"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtDropUs"
+            android:layout_marginTop="@dimen/_12sdp"
+    />
+
+    <TextView
+            android:id="@+id/txtEdge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor4"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtHazeProducts"
+            app:layout_constraintBottom_toTopOf="@+id/txtLabs"
+            app:layout_constraintVertical_chainStyle="spread"
+    />
+
+    <TextView
+            android:id="@+id/txtLabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor5"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtEdge"
+            app:layout_constraintBottom_toTopOf="@+id/txtFollower"
+    />
+
+    <TextView
+            android:id="@+id/txtFollower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor6"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabs"
+            app:layout_constraintBottom_toTopOf="@+id/txtUp"
+    />
+    <TextView
+            android:id="@+id/txtUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor7"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtFollower"
+            app:layout_constraintBottom_toTopOf="@+id/txtContactUs"
+    />
+
+    <TextView
+            android:id="@+id/txtContactUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor8"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtUp"
+            app:layout_constraintBottom_toTopOf="@+id/txtBlog"
+    />
+
+    <TextView
+            android:id="@+id/txtBlog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/str_infor9"
+            android:gravity="center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintTop_toBottomOf="@+id/txtContactUs"
+            app:layout_constraintBottom_toTopOf="@+id/txtNotifications"
+    />
+
+    <TextView
+            android:id="@+id/txtNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/account_note_bg"
+            android:paddingLeft="@dimen/_12sdp"
+            android:text="@string/str_notifications"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_medium"
+            app:layout_constraintBottom_toTopOf="@+id/txtNotificationNote"
+            android:layout_marginBottom="@dimen/_6sdp"
+    />
+
+    <TextView
+            android:id="@+id/txtNotificationNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_12sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:text="@string/str_enable_notifications"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_13ssp"
+            android:fontFamily="@font/avenir_book"
+            app:layout_constraintBottom_toTopOf="@+id/btnStore"
+            android:layout_marginBottom="@dimen/_16sdp"
+    />
+    <ImageView
+            android:id="@+id/imgSwitch"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:src="@drawable/switch_on"
+            app:layout_constraintTop_toTopOf="@+id/txtNotificationNote"
+            app:layout_constraintBottom_toBottomOf="@+id/txtNotificationNote"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_12sdp"
+    />
+
+    <Button
+            android:id="@+id/btnStore"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_32sdp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/avenir_heavy"
+            android:text="@string/str_store"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_14sdp"
+    />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
