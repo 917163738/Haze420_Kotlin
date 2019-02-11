@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
+import androidx.navigation.Navigation
 import com.haze420.android.R
 import com.haze420.android.model.ActionBarItemType
 
@@ -37,6 +38,12 @@ class MainActivity : BaseMainActivity(){
                 ActionBarItemType.LOGOUT -> {
                     hideKeyboardAndCloseMenu()
                     sharedViewModel.setSelectedActionbarItem(ActionBarItemType.LOGOUT)
+                }
+
+                ActionBarItemType.BACK -> {
+                    hideKeyboard()
+                    val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+                    navController.popBackStack()
                 }
             }
         })
