@@ -51,7 +51,7 @@ class CountriesFragment : Fragment() {
         mainActivity.sharedViewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
             if (clickedItem == ActionBarItemType.LOGOUT){
                 mainActivity.sharedViewModel.setSelectedActionbarItem(null)
-                view?.let{Navigation.findNavController(it).navigate(R.id.action_deliveryAddressFragment_to_loginFragment)}
+                view?.let{Navigation.findNavController(it).navigate(R.id.action_countriesFragment_to_loginFragment)}
             }
         })
     }
