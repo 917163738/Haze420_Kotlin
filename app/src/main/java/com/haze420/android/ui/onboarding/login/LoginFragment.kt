@@ -15,9 +15,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.BuildConfig
 import com.haze420.android.R
+import com.haze420.android.model.SlideMenuType
 import com.haze420.android.ui.MainActivity
+import com.haze420.android.util.findMainNavController
 import com.haze420.android.widget.onboarding.EmailForm
 import com.haze420.android.widget.onboarding.PasswordForm
+import kotlinx.android.synthetic.main.activity_main.*
 
 //import com.haze420.android.model.LoginModel
 
@@ -56,6 +59,7 @@ class LoginFragment : Fragment() {
         view?.findViewById<Button>(R.id.btnLogin)?.setOnClickListener {
             mainAct.hideKeyboard()
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
+//            findMainNavController().navigate(R.id.action_loginFragment_to_productsFragment)
         }
 
         val pwdForm = view?.findViewById<PasswordForm>(R.id.pwdForm)
@@ -84,18 +88,4 @@ class LoginFragment : Fragment() {
             pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("aaa@gmail.com")
         }
     }
-
-}
-
-fun String.isValidEmail() : Boolean{
-    if (this != null && this != ""){
-        return Patterns.EMAIL_ADDRESS.matcher(this).matches()
-    }
-    return false;
-}
-fun String.isValidPhone() : Boolean{
-    if (this != null && this != ""){
-        return Patterns.PHONE.matcher(this).matches()
-    }
-    return false;
 }

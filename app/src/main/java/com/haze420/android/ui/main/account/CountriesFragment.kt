@@ -43,14 +43,15 @@ class CountriesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val mainAct = activity as MainActivity
+        val mainActivity = activity as MainActivity
         //Config action bar
-        mainAct.actionBarView.config_CountriesFragment()
+        mainActivity.actionBarView.config_CountriesFragment()
 
         // observe log out action from actionbar
-        mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
+        mainActivity.sharedViewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
             if (clickedItem == ActionBarItemType.LOGOUT){
-                view?.let{Navigation.findNavController(it).navigate(R.id.action_countriesFragment_to_loginFragment)}
+                mainActivity.sharedViewModel.setSelectedActionbarItem(null)
+                view?.let{Navigation.findNavController(it).navigate(R.id.action_deliveryAddressFragment_to_loginFragment)}
             }
         })
     }
@@ -60,8 +61,8 @@ class CountriesFragment : Fragment() {
             if (countries.size == 0) {
                 // Show  empty warning!
             } else {
-//                viewModel.showEmpty.set(View.GONE)
-//                viewModel.setDogBreedsInAdapter(dogBreeds)
+//                sharedViewModel.showEmpty.set(View.GONE)
+//                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
                 adapter.submitList(countries)
             }
 
@@ -69,16 +70,16 @@ class CountriesFragment : Fragment() {
     }
 
 //    private fun subscribeUi() {
-////        viewModel.loading.set(View.VISIBLE)
-////        viewModel.fetchList()
-//        viewModel.getCountryList().observe(this, Observer{ countries ->
-////            viewModel.loading.set(View.GONE)
+////        sharedViewModel.loading.set(View.VISIBLE)
+////        sharedViewModel.fetchList()
+//        sharedViewModel.getCountryList().observe(this, Observer{ countries ->
+////            sharedViewModel.loading.set(View.GONE)
 //            if (countries.size == 0) {
-////                viewModel.showEmpty.set(View.VISIBLE)
+////                sharedViewModel.showEmpty.set(View.VISIBLE)
 //            } else {
-//                viewModel.getAdapter().submitList(countries)
-////                viewModel.showEmpty.set(View.GONE)
-////                viewModel.setDogBreedsInAdapter(dogBreeds)
+//                sharedViewModel.getAdapter().submitList(countries)
+////                sharedViewModel.showEmpty.set(View.GONE)
+////                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
 //            }
 //        })
 //        setupListClick()
@@ -87,7 +88,7 @@ class CountriesFragment : Fragment() {
     private fun setupListClick() {
         viewModel.getSelected().observe(this, Observer{position  ->
             Toast.makeText(context, "Selected"+ position.toString(), Toast.LENGTH_SHORT).show()
-//            viewModel.refresh(position)
+//            sharedViewModel.refresh(position)
             view?.let {
 
                 if (!Navigation.findNavController(it).popBackStack(R.id.deliveryAddressFragment, false)){

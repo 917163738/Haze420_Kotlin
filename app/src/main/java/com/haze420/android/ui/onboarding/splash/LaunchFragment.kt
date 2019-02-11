@@ -2,6 +2,7 @@ package com.haze420.android.ui.onboarding.splash
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.haze420.android.R
 import com.haze420.android.ui.MainActivity
+import com.haze420.android.util.findMainNavController
 
 class LaunchFragment : Fragment() {
 
@@ -28,10 +30,10 @@ class LaunchFragment : Fragment() {
         val mainAct = activity as MainActivity
         mainAct.hideActionBarView()
         Handler().postDelayed({
-            context?.let {
+            view?.let {
                 findNavController(this).navigate(R.id.action_launchFragment_to_loginFragment)
             }
+//            findMainNavController().navigate(R.id.action_launchFragment_to_loginFragment)
         }, 1500)
     }
-
 }

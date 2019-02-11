@@ -6,10 +6,13 @@ import androidx.lifecycle.*
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
-import com.haze420.android.model.MenuItemType
+import com.haze420.android.model.SlideMenuType
+import com.haze420.android.widget.main.SlideMenuLayout
 
 
-open class BaseActivity : AppCompatActivity(), LifecycleOwner {
+open class BaseMainActivity : AppCompatActivity(), LifecycleOwner, SlideMenuLayout.SlideMenuClickedListner  {
+
+    private var slideMenuChangedListners : ArrayList<SlideMenuChangedListner> = ArrayList() // Fragment List to listen slideMenu
 
     private lateinit var mLifecycleRegistry: LifecycleRegistry
 
@@ -43,9 +46,29 @@ open class BaseActivity : AppCompatActivity(), LifecycleOwner {
         }
     }
 
-    interface ChangedMenuListener{
-        fun onMenuChanged(type: MenuItemType)
+    // Slide Menu Layout Listener
+    override fun onItemSelected(current: SlideMenuType, to: SlideMenuType) {
+        if (slideMenuChangedListners.size > 0){
+            slideMenuChangedListners.forEach { it.onMenuChanged(current, to) }
+        }
     }
+
+    // Interface: // Fragments will implement this interface to listen menuchanged
+    interface SlideMenuChangedListner{
+        fun onMenuChanged(from: SlideMenuType, to: SlideMenuType)
+    }
+
+    fun addMenuChangedListner(listner: SlideMenuChangedListner){
+        slideMenuChangedListners.add(listner) // Register fragmennt to listen menu change
+    }
+
+    fun removeMenuChangedListner(listner: SlideMenuChangedListner){
+        slideMenuChangedListners.remove(listner)
+    }
+
+
+
+
 }
 
 

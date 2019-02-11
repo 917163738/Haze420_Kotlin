@@ -28,7 +28,7 @@
             android:layout_height="@dimen/_28sdp"
             android:padding="@dimen/_3sdp"
             android:src="@mipmap/facebook_square"
-            app:layout_constraintTop_toBottomOf="@id/txtFollowus"
+            app:layout_constraintTop_toBottomOf="@+id/txtFollowus"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgTwitter"
@@ -41,8 +41,8 @@
             android:layout_height="@dimen/_28sdp"
             android:padding="@dimen/_3sdp"
             android:src="@mipmap/twitter_square"
-            app:layout_constraintTop_toTopOf="@id/imgFB"
-            app:layout_constraintStart_toEndOf="@id/imgFB"
+            app:layout_constraintTop_toTopOf="@+id/imgFB"
+            app:layout_constraintStart_toEndOf="@+id/imgFB"
             app:layout_constraintEnd_toStartOf="@+id/imgInstagram"
     />
 
@@ -52,8 +52,8 @@
             android:layout_height="@dimen/_28sdp"
             android:padding="@dimen/_3sdp"
             android:src="@mipmap/instagram"
-            app:layout_constraintTop_toTopOf="@id/imgFB"
-            app:layout_constraintStart_toEndOf="@id/imgTwitter"
+            app:layout_constraintTop_toTopOf="@+id/imgFB"
+            app:layout_constraintStart_toEndOf="@+id/imgTwitter"
             app:layout_constraintEnd_toEndOf="parent"
     />
     <TextView
@@ -67,7 +67,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/_13ssp"
             android:fontFamily="@font/avenir_medium"
-            app:layout_constraintTop_toBottomOf="@id/imgFB"
+            app:layout_constraintTop_toBottomOf="@+id/imgFB"
             android:layout_marginTop="@dimen/_30sdp"
     />
 
@@ -80,7 +80,7 @@
             android:textColor="@color/white60"
             android:textSize="@dimen/_10ssp"
             android:fontFamily="@font/avenir_oblique"
-            app:layout_constraintTop_toBottomOf="@id/txtSubscribe"
+            app:layout_constraintTop_toBottomOf="@+id/txtSubscribe"
             android:layout_marginTop="@dimen/_15sdp"
     />
 
@@ -89,8 +89,8 @@
             android:layout_width="@dimen/_26sdp"
             android:layout_height="@dimen/_26sdp"
             android:src="@drawable/switch_on"
-            app:layout_constraintTop_toTopOf="@id/txtAgreeNote"
-            app:layout_constraintBottom_toBottomOf="@id/txtAgreeNote"
+            app:layout_constraintTop_toTopOf="@+id/txtAgreeNote"
+            app:layout_constraintBottom_toBottomOf="@+id/txtAgreeNote"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/_12sdp"
             />

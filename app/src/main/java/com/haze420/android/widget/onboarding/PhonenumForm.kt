@@ -12,7 +12,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
-import com.haze420.android.ui.onboarding.login.isValidPhone
+import com.haze420.android.util.isValidPhone
 
 /**
  * TODO: document your custom view class.

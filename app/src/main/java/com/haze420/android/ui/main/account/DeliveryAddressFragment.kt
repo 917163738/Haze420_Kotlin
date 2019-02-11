@@ -33,18 +33,19 @@ class DeliveryAddressFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val mainAct = activity as MainActivity
+        val mainActivity = activity as MainActivity
         //Config action bar
-        mainAct.actionBarView.config_DeliveryAddressFragment()
+        mainActivity.actionBarView.config_DeliveryAddressFragment()
 
         // observe log out action from actionbar
-        mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
+        mainActivity.sharedViewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
             if (clickedItem == ActionBarItemType.LOGOUT){
+                mainActivity.sharedViewModel.setSelectedActionbarItem(null)
                 view?.let{Navigation.findNavController(it).navigate(R.id.action_deliveryAddressFragment_to_loginFragment)}
             }
         })
 
-        //Init viewModel
+        //Init ViewModel
 
         viewModel = ViewModelProviders.of(this).get(DeliveryAddressViewModel::class.java)
         // TODO: Use the ViewModel

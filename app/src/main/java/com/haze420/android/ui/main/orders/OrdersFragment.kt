@@ -2,15 +2,14 @@ package com.haze420.android.ui.main.orders
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.model.MenuItemType
+import com.haze420.android.model.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +26,7 @@ class OrdersFragment : BaseMenuLevelFragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        menuItemTypeFor = MenuItemType.Orders
+        menuItemTypeFor = SlideMenuType.Orders
         return inflater.inflate(R.layout.fragment_orders, container, false)
     }
 
@@ -38,30 +37,32 @@ class OrdersFragment : BaseMenuLevelFragment(){
         // TODO: Use the ViewModel
     }
 
-    override fun handleTransaction(goto: MenuItemType){
-        if (goto == menuItemTypeFor) return
+    override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
+        Log.d("Test", "handleTransaction(goto: SlideMenuType) ------------------")
+        if (goto == menuItemTypeFor) return // Filter actions for me.
+        if (from != menuItemTypeFor) return // Filter actions for me.
         view?.let {
-            if (goto == MenuItemType.Products){
+            if (goto == SlideMenuType.Products){
                 if (!Navigation.findNavController(it).popBackStack(R.id.productsFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_productsFragment)
                 }
-            }else if (goto == MenuItemType.Basket){
+            }else if (goto == SlideMenuType.Basket){
                 if (!Navigation.findNavController(it).popBackStack(R.id.basketFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_basketFragment)
                 }
-            }else if (goto == MenuItemType.SALE){
+            }else if (goto == SlideMenuType.SALE){
                 if (!Navigation.findNavController(it).popBackStack(R.id.saleFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_saleFragment)
                 }
-            }else if (goto == MenuItemType.Account){
+            }else if (goto == SlideMenuType.Account){
                 if (!Navigation.findNavController(it).popBackStack(R.id.accountFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_accountFragment)
                 }
-            }else if (goto == MenuItemType.Info){
+            }else if (goto == SlideMenuType.Info){
                 if (!Navigation.findNavController(it).popBackStack(R.id.infoFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_infoFragment)
                 }
-            }else if (goto == MenuItemType.Followus){
+            }else if (goto == SlideMenuType.Followus){
                 if (!Navigation.findNavController(it).popBackStack(R.id.followusFragment, false)){
                     Navigation.findNavController(it).navigate(R.id.action_ordersFragment_to_followusFragment)
                 }

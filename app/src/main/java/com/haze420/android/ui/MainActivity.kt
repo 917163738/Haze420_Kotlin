@@ -7,23 +7,23 @@ import androidx.lifecycle.*
 import com.haze420.android.R
 import com.haze420.android.model.ActionBarItemType
 
-import com.haze420.android.model.MenuItemType
 import kotlinx.android.synthetic.main.actionbar.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseMainActivity(){
 
-    lateinit var viewModel: SharedViewModel
+    lateinit var sharedViewModel: SharedViewModel
 
-    private var menuChangedListners : ArrayList<ChangedMenuListener> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 //        var fragment = supportFragmentManager.findFragmentById(R.id.productsFragment) as ProductsFragment
-        viewModel = ViewModelProviders.of(this).get(SharedViewModel::class.java)
+        sharedViewModel = ViewModelProviders.of(this).get(SharedViewModel::class.java)
 
+        // Config action bar
         actionBarView.getSelectedItem().observe(this, Observer { clickedItem ->
             when (clickedItem){
                 ActionBarItemType.MENU_CLOSE -> {
@@ -35,12 +35,15 @@ class MainActivity : BaseActivity() {
                     }
                 }
                 ActionBarItemType.LOGOUT -> {
-                    hideKeyboard()
-                    viewModel.setSelectedActionbarItem(clickedItem)  // Fragments will observer this value
+                    hideKeyboardAndCloseMenu()
+                    sharedViewModel.setSelectedActionbarItem(ActionBarItemType.LOGOUT)
                 }
             }
         })
 
+
+        //Config slide menu
+        slideMenuLayout.listener = this
         slideMenuLayout.isMenuOpened.observe(this, Observer {
             if (it){
                 imgMenu.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_close))
@@ -48,33 +51,29 @@ class MainActivity : BaseActivity() {
                 imgMenu.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_menu))
             }
         })
+    }
 
-        slideMenuLayout.selectedMenuType.observe(this, Observer {
-            val selectedType = it
-            if (menuChangedListners.count() > 0){
-                menuChangedListners.forEach {
-                    it.onMenuChanged(selectedType)
-                }
-            }
-        })
+    private fun hideKeyboardAndCloseMenu(){
+        hideKeyboard()
+        if (slideMenuLayout.isMenuOpened.value!!){
+            slideMenuLayout.closeMenu()
+        }
     }
 
     override fun onBackPressed() {
         if (slideMenuLayout.isMenuOpened.value!!){
             slideMenuLayout.closeMenu()
         }else{
-            super.onBackPressed()
+//            val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+//            if (navController.currentDestination?.id == R.id.registerFragment){
+//                val homeIntent = Intent(Intent.ACTION_MAIN, null)
+//                homeIntent.addCategory(Intent.CATEGORY_HOME)
+//                homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+//                startActivity(homeIntent)
+//            }else{
+                super.onBackPressed()
+//            }
         }
-    }
-
-    fun addMenuChangedListner(listner: ChangedMenuListener){
-        menuChangedListners.add(listner) // Register fragmennt to listen menu change
-//        TODO() Should move to shared ViewModel
-    }
-
-    fun removeMenuChangedListner(listner: ChangedMenuListener){
-        menuChangedListners.remove(listner)
-        //        TODO() Should move to shared ViewModel
     }
 
     fun hideActionBarView(){
@@ -84,10 +83,7 @@ class MainActivity : BaseActivity() {
         actionBarView.visibility = View.VISIBLE
     }
 
-    interface ChangedMenuListener{
-        fun onMenuChanged(type: MenuItemType)
-        //        TODO() Should move to shared ViewModel
-    }
+
 }
 
 

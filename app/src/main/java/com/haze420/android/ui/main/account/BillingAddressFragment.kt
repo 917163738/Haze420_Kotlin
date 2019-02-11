@@ -33,18 +33,19 @@ class BillingAddressFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val mainAct = activity as MainActivity
+        val mainActivity = activity as MainActivity
         //Config action bar
-        mainAct.actionBarView.config_BillingAddressFragment()
+        mainActivity.actionBarView.config_BillingAddressFragment()
 
         // observe log out action from actionbar
-        mainAct.viewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
+        mainActivity.sharedViewModel.getSelectedActionbarItem().observe(this, Observer { clickedItem ->
             if (clickedItem == ActionBarItemType.LOGOUT){
+                mainActivity.sharedViewModel.setSelectedActionbarItem(null)
                 view?.let{Navigation.findNavController(it).navigate(R.id.action_billingAddressFragment_to_loginFragment)}
             }
         })
 
-        // init viewModel
+        // init sharedViewModel
         viewModel = ViewModelProviders.of(this).get(BillingAddressViewModel::class.java)
 
         txtCountry.setOnClickListener {

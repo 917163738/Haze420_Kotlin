@@ -1,38 +1,31 @@
 package com.haze420.android.ui.main
 
-import androidx.lifecycle.ViewModelProviders
-import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
 
-import com.haze420.android.R
-import com.haze420.android.model.MenuItemType
+import com.haze420.android.model.SlideMenuType
+import com.haze420.android.ui.BaseMainActivity
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-open class BaseMenuLevelFragment : Fragment(), MainActivity.ChangedMenuListener{
+open class BaseMenuLevelFragment : Fragment(), BaseMainActivity.SlideMenuChangedListner{
 
-    protected lateinit var menuItemTypeFor : MenuItemType
+    protected lateinit var menuItemTypeFor : SlideMenuType
 
     override fun onResume() {
         super.onResume()
         (activity as MainActivity).addMenuChangedListner(this)
-        (activity as MainActivity).slideMenuLayout.selectedMenuType.value = menuItemTypeFor
+        (activity as MainActivity).slideMenuLayout.setActiveMenu(menuItemTypeFor)
     }
     override fun onPause() {
         (activity as MainActivity).removeMenuChangedListner(this)
         super.onPause()
     }
     // menu item changed listener
-    override fun onMenuChanged(type: MenuItemType) {
-        handleTransaction(type)
+    override fun onMenuChanged(from: SlideMenuType, to: SlideMenuType) {
+        handleTransaction(from, to)
     }
 
-    open fun handleTransaction(goto: MenuItemType){
+    open fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
 
     }
 }

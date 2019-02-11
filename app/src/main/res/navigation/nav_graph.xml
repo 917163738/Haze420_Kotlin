@@ -12,6 +12,12 @@
                 app:popUpTo="@id/launchFragment"
                 app:popUpToInclusive="true"
         />
+        <action
+                android:id="@+id/action_launchFragment_to_productsFragment"
+                app:destination="@id/productsFragment"
+                app:popUpTo="@id/launchFragment"
+                app:popUpToInclusive="true"
+        />
     </fragment>
     <fragment android:id="@+id/loginFragment"
               android:name="com.haze420.android.ui.onboarding.login.LoginFragment"
@@ -119,7 +125,7 @@
         />
         <action android:id="@+id/action_accountFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
-                app:popUpTo="@id/productsFragment"
+                app:popUpTo="@id/accountFragment"
                 app:popUpToInclusive="true"
         />
     </fragment>
@@ -162,8 +168,6 @@
         />
         <action android:id="@+id/action_deliveryAddressFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
-                app:popUpTo="@id/productsFragment"
-                app:popUpToInclusive="true"
         />
     </fragment>
     <fragment android:id="@+id/billingAddressFragment"
@@ -178,8 +182,6 @@
         />
         <action android:id="@+id/action_billingAddressFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
-                app:popUpTo="@id/productsFragment"
-                app:popUpToInclusive="true"
         />
     </fragment>
     <fragment android:id="@+id/countriesFragment"
@@ -187,8 +189,6 @@
               android:label="CountriesFragment">
         <action android:id="@+id/action_countriesFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
-                app:popUpTo="@id/productsFragment"
-                app:popUpToInclusive="true"
         />
     </fragment>
 </navigation>

@@ -9,12 +9,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
-import com.haze420.android.model.MenuItemType
+import com.haze420.android.model.SlideMenuType
 
 /**
  * TODO: document your custom view class.
  */
 class SlideMenuLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
+
+    var listener: SlideMenuClickedListner? = null
 
 
     private lateinit var productsMenuView : MenuItemView
@@ -27,7 +29,11 @@ class SlideMenuLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
     private lateinit var shadowView: View
 
     var isMenuOpened = MutableLiveData<Boolean>()
-    var selectedMenuType = MutableLiveData<MenuItemType>()
+
+    private var _activeMenu = SlideMenuType.Products
+    fun setActiveMenu(menu: SlideMenuType){
+        _activeMenu = menu
+    }
 
     constructor(context: Context) : super(context) {
         init(context,null, 0)
@@ -45,7 +51,6 @@ class SlideMenuLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
         // Load attributes
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.layout_drawlayer, this)
         isMenuOpened.value = false
-        selectedMenuType.value = MenuItemType.Products
         productsMenuView = rootView?.findViewById(R.id.products)!!
         productsMenuView.listener = this
 
@@ -179,42 +184,52 @@ class SlideMenuLayout : ConstraintLayout, MenuItemView.MenuItemViewListner{
         }, 180)
     }
 
-    private fun getItemByType(type: MenuItemType) : MenuItemView{
-        if (type == MenuItemType.Products)
+    private fun getItemByType(type: SlideMenuType) : MenuItemView{
+        if (type == SlideMenuType.Products)
             return productsMenuView
-        if (type == MenuItemType.Basket)
+        if (type == SlideMenuType.Basket)
             return basketMenuView
-        if (type == MenuItemType.SALE)
+        if (type == SlideMenuType.SALE)
             return salesMenuView
-        if (type == MenuItemType.Orders)
+        if (type == SlideMenuType.Orders)
             return ordersMenuView
-        if (type == MenuItemType.Account)
+        if (type == SlideMenuType.Account)
             return accountMenuView
-        if (type == MenuItemType.Info)
+        if (type == SlideMenuType.Info)
             return infoMenuView
-        if (type == MenuItemType.Followus)
+        if (type == SlideMenuType.Followus)
             return followusMenuView
         return productsMenuView
     }
 
     private fun activeMenuItem(){
-        productsMenuView.setActive(selectedMenuType.value!! == MenuItemType.Products)
-        basketMenuView.setActive(selectedMenuType.value!! == MenuItemType.Basket)
-        salesMenuView.setActive(selectedMenuType.value!! == MenuItemType.SALE)
-        ordersMenuView.setActive(selectedMenuType.value!! == MenuItemType.Orders)
-        accountMenuView.setActive(selectedMenuType.value!! == MenuItemType.Account)
-        infoMenuView.setActive(selectedMenuType.value!! == MenuItemType.Info)
-        followusMenuView.setActive(selectedMenuType.value!! == MenuItemType.Followus)
+        productsMenuView.setActive(_activeMenu == SlideMenuType.Products)
+        basketMenuView.setActive(_activeMenu == SlideMenuType.Basket)
+        salesMenuView.setActive(_activeMenu == SlideMenuType.SALE)
+        ordersMenuView.setActive(_activeMenu == SlideMenuType.Orders)
+        accountMenuView.setActive(_activeMenu == SlideMenuType.Account)
+        infoMenuView.setActive(_activeMenu == SlideMenuType.Info)
+        followusMenuView.setActive(_activeMenu == SlideMenuType.Followus)
 
     }
     // MenuItemView listner implement
-    override fun onItemSelected(type: MenuItemType) {
-        if (selectedMenuType.value!! != type){
-            getItemByType(selectedMenuType.value!!).setActive(false)
-            selectedMenuType.value = type
-            getItemByType(selectedMenuType.value!!).setActive(true)
+    override fun onItemSelected(selected: SlideMenuType) {
+        if (_activeMenu != selected){
+            getItemByType(_activeMenu).setActive(false)
+            getItemByType(selected).setActive(true)
+
             // Post event menut item changed
+            if (listener != null){
+                listener!!.onItemSelected(_activeMenu, selected)
+            }
+
+            //Change active menu
+            _activeMenu = selected
         }
         closeMenu()
+    }
+
+    interface SlideMenuClickedListner{
+        fun onItemSelected(current: SlideMenuType, to: SlideMenuType)
     }
 }

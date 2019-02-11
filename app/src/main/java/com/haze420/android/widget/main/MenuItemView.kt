@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.widget.ImageViewCompat
 import com.haze420.android.R
-import com.haze420.android.model.MenuItemType
+import com.haze420.android.model.SlideMenuType
 
 /**
  * TODO: document your custom view class.
@@ -22,7 +22,7 @@ class MenuItemView : RelativeLayout {
     private var _typeString: String? = null // TODO: use a default from R.string...
 
     var listener: MenuItemViewListner? = null
-    var type : MenuItemType = MenuItemType.Products
+    var type : SlideMenuType = SlideMenuType.Products
 
     constructor(context: Context) : super(context) {
         init(null, 0)
@@ -56,38 +56,38 @@ class MenuItemView : RelativeLayout {
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.product_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.product)
-            type = MenuItemType.Products
+            type = SlideMenuType.Products
         }else if (_typeString == context.getString(R.string.s_basket)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.basket_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.shopping_basket_1)
-            type = MenuItemType.Basket
+            type = SlideMenuType.Basket
         }else if (_typeString == context.getString(R.string.s_sale)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.sale_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.percent)
             rootView?.findViewById<View>(R.id.salemark)?.visibility = View.VISIBLE
-            type = MenuItemType.SALE
+            type = SlideMenuType.SALE
         }else if (_typeString == context.getString(R.string.s_orders)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.orders_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.box_add)
-            type = MenuItemType.Orders
+            type = SlideMenuType.Orders
         }else if (_typeString == context.getString(R.string.s_account)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.account_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.gas_mask)
-            type = MenuItemType.Account
+            type = SlideMenuType.Account
         }else if (_typeString == context.getString(R.string.s_info)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.info_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.mipmap.interface_information)
-            type = MenuItemType.Info
+            type = SlideMenuType.Info
         }else if (_typeString == context.getString(R.string.s_follow)){
             rootView?.setBackgroundColor(ContextCompat.getColor(context, R.color.followus_menu_bg))
             rootView?.findViewById<TextView>(R.id.txtMenuTitle)?.setText(_typeString)
             rootView?.findViewById<ImageView>(R.id.imgMenuIcon)?.setImageResource(R.drawable.facebook1)
-            type = MenuItemType.Followus
+            type = SlideMenuType.Followus
         }
     }
 
@@ -101,6 +101,6 @@ class MenuItemView : RelativeLayout {
     }
 
     interface MenuItemViewListner{
-        fun onItemSelected(type: MenuItemType)
+        fun onItemSelected(selected: SlideMenuType)
     }
 }
