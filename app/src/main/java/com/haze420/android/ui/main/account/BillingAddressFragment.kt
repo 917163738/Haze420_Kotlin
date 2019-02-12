@@ -50,8 +50,9 @@ class BillingAddressFragment : Fragment() {
 
         txtCountry.setOnClickListener {
             view?.let{
-                val act = BillingAddressFragmentDirections.actionBillingAddressFragmentToCountriesFragment()
-                Navigation.findNavController(it).navigate(act)}
+//                val act = BillingAddressFragmentDirections.actionBillingAddressFragmentToCountriesFragment()
+//                Navigation.findNavController(it).navigate(act)}
+                Navigation.findNavController(it).navigate(R.id.action_billingAddressFragment_to_countriesFragment)}
         }
 
 

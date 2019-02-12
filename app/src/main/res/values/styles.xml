@@ -13,6 +13,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">14dp</item>
+        <item name="android:maxHeight">14dp</item>
+    </style>
+
     <style name="OnboardingEditTextStyle" parent="@android:style/Widget.EditText">
         <item name="android:paddingLeft">@dimen/_8sdp</item>
         <item name="android:textColor">@android:color/white</item>

@@ -10,10 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.adapter.CountriesAdapter
+import com.haze420.android.adapter.ProductsAdapter
 import com.haze420.android.model.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_products.*
 
 class ProductsFragment : BaseMenuLevelFragment(){
 
@@ -39,8 +42,24 @@ class ProductsFragment : BaseMenuLevelFragment(){
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         mainActivity.actionBarView.config_ProductsFragment()
 
+//        val adapter = ProductsAdapter(viewModel)
+//        recyclerView.adapter = adapter
+//        subscribeUi(adapter)
+
         // TODO: Use the ViewModel
 
+    }
+
+    private fun subscribeUi(adapter: ProductsAdapter) {
+        viewModel.getProductsList().observe(viewLifecycleOwner, Observer { p ->
+            if (p.size == 0) {
+                // Show  empty warning!
+            } else {
+//                sharedViewModel.showEmpty.set(View.GONE)
+//                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
+                adapter.submitList(p)
+            }
+        })
     }
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
