@@ -18,6 +18,9 @@ import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_products.*
 
+import androidx.recyclerview.widget.RecyclerView
+
+
 class ProductsFragment : BaseMenuLevelFragment(){
 
     companion object {
@@ -42,9 +45,9 @@ class ProductsFragment : BaseMenuLevelFragment(){
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         mainActivity.actionBarView.config_ProductsFragment()
 
-//        val adapter = ProductsAdapter(viewModel)
-//        recyclerView.adapter = adapter
-//        subscribeUi(adapter)
+        val adapter = ProductsAdapter(viewModel)
+        recyclerView.adapter = adapter
+        subscribeUi(adapter)
 
         // TODO: Use the ViewModel
 
@@ -58,6 +61,8 @@ class ProductsFragment : BaseMenuLevelFragment(){
 //                sharedViewModel.showEmpty.set(View.GONE)
 //                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
                 adapter.submitList(p)
+//                adapter.notifyItemChanged(0)
+//                recyclerView.smoothScrollToPosition(0)
             }
         })
     }

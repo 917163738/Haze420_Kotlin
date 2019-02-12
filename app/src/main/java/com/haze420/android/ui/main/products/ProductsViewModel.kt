@@ -1,5 +1,6 @@
 package com.haze420.android.ui.main.products
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.haze420.android.model.CATEGORY
@@ -11,54 +12,56 @@ import java.util.*
 class ProductsViewModel : ViewModel() {
     private val _selected = MutableLiveData<Int>()
     private  val _repository = ProductsRepository()
-    private  var _activeCategory : CATEGORY
+    private  val _activeCategory = MutableLiveData<CATEGORY>()
     init {
-        _activeCategory = CATEGORY.Sativa
-        _repository.trigerFetchList(false, CATEGORY.Sativa)
+        _activeCategory.value = CATEGORY.Sativa
+        refresh()
     }
 
     //Getter
     fun getProductsList() : MutableLiveData<List<Product>>{
         return _repository.getProductList()
     }
+    fun getActiveCategory() : MutableLiveData<CATEGORY>{
+        return _activeCategory
+    }
     fun getSelected(): MutableLiveData<Int>{
         return _selected
     }
 
     // Commands from View
-    fun refresh(category: CATEGORY){
-        _repository.trigerFetchList(false, category)
+    fun refresh(){
+        _repository.trigerFetchList(false, _activeCategory.value!!)
     }
 
     // Data binding
     fun isCategoryActive(index: Int): Boolean{
         when (index){
-            0 -> return _activeCategory == CATEGORY.Sativa
-            1 -> return _activeCategory == CATEGORY.Hybrid
-            2 -> return _activeCategory == CATEGORY.Indica
+            0 -> return _activeCategory.value!! == CATEGORY.Sativa
+            1 -> return _activeCategory.value!! == CATEGORY.Hybrid
+            2 -> return _activeCategory.value!! == CATEGORY.Indica
             else -> {
-                return _activeCategory == CATEGORY.ALL
+                return false
             }
         }
-
     }
     fun onCategoryClicked(index: Int){
         when (index){
             0 -> {
-                _activeCategory = CATEGORY.Sativa
-                refresh(CATEGORY.Sativa)
+                _activeCategory.value = CATEGORY.Sativa
+                refresh()
             }
             1 -> {
-                _activeCategory = CATEGORY.Hybrid
-                refresh(CATEGORY.Hybrid)
+                _activeCategory.value = CATEGORY.Hybrid
+                refresh()
             }
             2 -> {
-                _activeCategory = CATEGORY.Indica
-                refresh(CATEGORY.Indica)
+                _activeCategory.value = CATEGORY.Indica
+                refresh()
             }
             else ->{
-                _activeCategory = CATEGORY.ALL
-                refresh(CATEGORY.ALL)
+                _activeCategory.value = CATEGORY.ALL
+                refresh()
             }
 
         }
@@ -70,13 +73,18 @@ class ProductsViewModel : ViewModel() {
     }
 
     fun getProductNameAt(position: Int): String{
+        if (position >= getProductsList().value?.size!!){
+            Log.e("Error", "============ " + position.toString())
+            return "========================"
+        }
         return getProductsList().value?.get(position)?.name!!
     }
-    fun getAvgRateAt(position: Int): String{
-        val avg_rate = getProductsList().value?.get(position)?.avg_rating
-        if (avg_rate != null)
-            return avg_rate
-        return "0"
+    fun getAvgRateAt(position: Int): Float{
+//        val avg_rate = getProductsList().value?.get(position)?.avg_rating
+//        if (avg_rate != null)
+//            return avg_rate
+//        return "0"
+        return 4.0f
     }
 
     fun checkLevelImage1(position: Int): Boolean{

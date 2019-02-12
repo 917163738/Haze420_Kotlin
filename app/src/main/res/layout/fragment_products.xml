@@ -13,8 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:textColor="@android:color/white"
-            android:background="@color/red"
-            android:text="@string/s_product"
+            android:background="@color/account_note_bg"
+            android:text="@string/str_strain"
+            android:fontFamily="@font/avenir_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/_12sdp"
             app:layout_constraintTop_toTopOf="parent"
     />
     <androidx.recyclerview.widget.RecyclerView
