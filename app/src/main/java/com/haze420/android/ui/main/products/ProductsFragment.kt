@@ -2,23 +2,26 @@ package com.haze420.android.ui.main.products
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.adapter.CountriesAdapter
 import com.haze420.android.adapter.ProductsAdapter
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.FilterType
+import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_products.*
 
-import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.form_filter.*
 
 
 class ProductsFragment : BaseMenuLevelFragment(){
@@ -48,8 +51,10 @@ class ProductsFragment : BaseMenuLevelFragment(){
         val adapter = ProductsAdapter(viewModel)
         recyclerView.adapter = adapter
         subscribeUi(adapter)
-
-        // TODO: Use the ViewModel
+        setUpFilterLayout()
+        viewModel.getActiveCategory().observe(this, Observer {
+            txtStrainType.setText(it.toString())
+        })
 
     }
 
@@ -65,6 +70,66 @@ class ProductsFragment : BaseMenuLevelFragment(){
 //                recyclerView.smoothScrollToPosition(0)
             }
         })
+    }
+    var isOpenedFilter = false
+    var activeFilterType = FilterType.MostPopular
+    private fun setUpFilterLayout(){
+        imgFilter.setOnClickListener {
+            if (isOpenedFilter){
+                closeFilter()
+            }else{
+                openFilter()
+            }
+        }
+        txtMostPopular.setOnClickListener {
+            activeFilterType = FilterType.MostPopular
+            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
+            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            closeFilter()
+        }
+        txtLowToHigh.setOnClickListener {
+            activeFilterType = FilterType.LowToHigh
+            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
+            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            closeFilter()
+        }
+        txtHightToLow.setOnClickListener {
+            activeFilterType = FilterType.HighToLow
+            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
+            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            closeFilter()
+        }
+        txtTopRated.setOnClickListener {
+            activeFilterType = FilterType.TopRated
+            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
+            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
+            closeFilter()
+        }
+    }
+
+    private fun openFilter(){
+        layoutFilter.alpha = 0.0f
+        layoutFilter.visibility = View.VISIBLE
+        val anim1 = AnimationUtils.loadAnimation(context, R.anim.opening_filter)
+        layoutFilter.startAnimation(anim1)
+        layoutFilter.alpha = 1.0f
+        isOpenedFilter = true
+    }
+
+    private fun closeFilter(){
+
+        val anim1 = AnimationUtils.loadAnimation(context, R.anim.closing_filter)
+        layoutFilter.startAnimation(anim1)
+        Handler().postDelayed({layoutFilter.visibility = View.GONE}, 150)
+        isOpenedFilter = false
     }
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){

@@ -29,6 +29,8 @@
     <string name="str_low_to_high">Low to high (prices)</string>
     <string name="str_high_to_low">high to low (prices)</string>
     <string name="str_eight">Eight</string>
+    <string name="str_top_rated">Top Rated</string>
+
 
     <string name="str_orders_place">Orders Placed:</string>
     <string name="str_show_all">Show All</string>

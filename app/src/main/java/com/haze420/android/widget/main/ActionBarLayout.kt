@@ -8,7 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
-import com.haze420.android.model.ActionBarItemType
+import com.haze420.android.model.enums.ActionBarItemType
 import kotlinx.android.synthetic.main.actionbar.view.*
 
 class ActionBarLayout : ConstraintLayout {

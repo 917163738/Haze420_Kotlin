@@ -13,8 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.model.ActionBarItemType
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.ActionBarItemType
+import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*

@@ -2,7 +2,6 @@ package com.haze420.android.ui.onboarding.login
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.BuildConfig
 import com.haze420.android.R
-import com.haze420.android.model.SlideMenuType
 import com.haze420.android.ui.MainActivity
-import com.haze420.android.util.findMainNavController
 import com.haze420.android.widget.onboarding.EmailForm
 import com.haze420.android.widget.onboarding.PasswordForm
-import kotlinx.android.synthetic.main.activity_main.*
 
 //import com.haze420.android.model.LoginModel
 

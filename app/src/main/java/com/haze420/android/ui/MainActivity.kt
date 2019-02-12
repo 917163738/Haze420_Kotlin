@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import androidx.navigation.Navigation
 import com.haze420.android.R
-import com.haze420.android.model.ActionBarItemType
+import com.haze420.android.model.enums.ActionBarItemType
 
 import kotlinx.android.synthetic.main.actionbar.*
 import kotlinx.android.synthetic.main.activity_main.*

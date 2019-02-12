@@ -2,8 +2,7 @@ package com.haze420.android.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
-import com.haze420.android.model.ActionBarItemType
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.ActionBarItemType
 
 class SharedViewModel : ViewModel() {
     private val _selectedActionBarItem = MutableLiveData<ActionBarItemType?>()

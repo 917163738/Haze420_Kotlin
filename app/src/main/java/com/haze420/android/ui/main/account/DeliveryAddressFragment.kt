@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.model.ActionBarItemType
+import com.haze420.android.model.enums.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_delivery_address.*

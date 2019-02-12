@@ -1,5 +1,8 @@
 package com.haze420.android.model
 
+import com.haze420.android.model.enums.CATEGORY
+import com.haze420.android.model.enums.THC
+
 data class Product(
     val prductId: String,
     val isSale: Boolean = false,

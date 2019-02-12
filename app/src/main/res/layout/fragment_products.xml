@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         tools:context=".ui.main.products.ProductsFragment"
         android:background="@color/global_bg">
 
-    <TextView
-            android:id="@+id/layoutFilter"
+    <View
+            android:id="@+id/viewStrainType"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:textColor="@android:color/white"
+            android:layout_height="@dimen/_26sdp"
             android:background="@color/account_note_bg"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
+            android:id="@+id/txtStrainLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="@string/str_strain"
             android:fontFamily="@font/avenir_medium"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/_12sdp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewStrainType"
+            app:layout_constraintBottom_toBottomOf="@+id/viewStrainType"
+            app:layout_constraintStart_toStartOf="parent"
     />
+    <TextView
+            android:id="@+id/txtStrainType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text=""
+            android:fontFamily="@font/avenir_heavy"
+            android:paddingStart="@dimen/_3sdp"
+            app:layout_constraintTop_toTopOf="@+id/viewStrainType"
+            app:layout_constraintBottom_toBottomOf="@+id/viewStrainType"
+            app:layout_constraintStart_toEndOf="@+id/txtStrainLabel"
+    />
+    <ImageView
+            android:id="@+id/imgFilter"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ico_filter"
+            android:tint="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="@+id/viewStrainType"
+            app:layout_constraintBottom_toBottomOf="@+id/viewStrainType"
+    />
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -27,9 +61,13 @@
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:background="@color/global_bg"
-            app:layout_constraintTop_toBottomOf="@+id/layoutFilter"
+            app:layout_constraintTop_toBottomOf="@+id/viewStrainType"
             app:layout_constraintBottom_toBottomOf="parent"
     />
-
-
+    <include
+            layout="@layout/form_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/viewStrainType"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

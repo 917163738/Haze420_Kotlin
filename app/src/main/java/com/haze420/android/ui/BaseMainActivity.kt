@@ -6,7 +6,7 @@ import androidx.lifecycle.*
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.widget.main.SlideMenuLayout
 
 

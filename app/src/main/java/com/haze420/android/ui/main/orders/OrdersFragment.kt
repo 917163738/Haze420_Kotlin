@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*

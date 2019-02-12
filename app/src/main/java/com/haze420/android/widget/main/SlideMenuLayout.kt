@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.SlideMenuType
 
 /**
  * TODO: document your custom view class.

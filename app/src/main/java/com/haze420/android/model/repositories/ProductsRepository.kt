@@ -1,7 +1,7 @@
 package com.haze420.android.model.repositories
 
 import androidx.lifecycle.MutableLiveData
-import com.haze420.android.model.CATEGORY
+import com.haze420.android.model.enums.CATEGORY
 import com.haze420.android.model.Product
 
 class ProductsRepository {

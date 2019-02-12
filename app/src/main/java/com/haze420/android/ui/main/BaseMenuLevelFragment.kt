@@ -2,7 +2,7 @@ package com.haze420.android.ui.main
 
 import androidx.fragment.app.Fragment
 
-import com.haze420.android.model.SlideMenuType
+import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.BaseMainActivity
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*

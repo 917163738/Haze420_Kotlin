@@ -1,4 +1,4 @@
-package com.haze420.android.model
+package com.haze420.android.model.enums
 
 import com.haze420.android.R
 

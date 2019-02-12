@@ -3,11 +3,10 @@ package com.haze420.android.ui.main.products
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
-import com.haze420.android.model.CATEGORY
+import com.haze420.android.model.enums.CATEGORY
 import com.haze420.android.model.Product
-import com.haze420.android.model.THC
+import com.haze420.android.model.enums.THC
 import com.haze420.android.model.repositories.ProductsRepository
-import java.util.*
 
 class ProductsViewModel : ViewModel() {
     private val _selected = MutableLiveData<Int>()
