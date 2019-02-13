@@ -6,13 +6,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.adapter.BasketAdapter
+import com.haze420.android.adapter.ProductsAdapter
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_products.*
 
 class BasketFragment : BaseMenuLevelFragment(){
 
@@ -35,8 +39,21 @@ class BasketFragment : BaseMenuLevelFragment(){
         viewModel = ViewModelProviders.of(this).get(BasketViewModel::class.java)
         val mainActivity = activity as MainActivity
         mainActivity.actionBarView.config_BasketFragment()
-        // TODO: Use the ViewModel
+        val adapter = BasketAdapter(viewModel)
+        recyclerView.adapter = adapter
+        subscribeUi(adapter)
 
+    }
+
+    private fun subscribeUi(adapter: BasketAdapter) {
+        viewModel.getBasketItemList().observe(viewLifecycleOwner, Observer { p ->
+            if (p.size == 0) {
+                // Show  empty warning!
+            } else {
+//                sharedViewModel.showEmpty.set(View.GONE)
+                adapter.submitList(p)
+            }
+        })
     }
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){

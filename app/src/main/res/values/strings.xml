@@ -18,7 +18,7 @@
     <string name="str_indica">Indica</string>
 
     <string name="str_product">Product:</string>
-    <string name="str_quantity">Quantity</string>
+    <string name="str_quantity">Quantity:</string>
     <string name="str_price">Price</string>
     <string name="str_delete">Delete</string>
     <string name="str_share">Share</string>

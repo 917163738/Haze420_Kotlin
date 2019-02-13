@@ -6,12 +6,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.haze420.android.R
+import com.haze420.android.adapter.CountriesAdapter
+import com.haze420.android.adapter.OrdersAdapter
+import com.haze420.android.adapter.ProductsAdapter
+import com.haze420.android.databinding.FragmentCountriesBinding
+import com.haze420.android.databinding.FragmentOrdersBinding
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import com.haze420.android.ui.main.account.CountriesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class OrdersFragment : BaseMenuLevelFragment(){
@@ -27,15 +34,34 @@ class OrdersFragment : BaseMenuLevelFragment(){
         savedInstanceState: Bundle?
     ): View? {
         menuItemTypeFor = SlideMenuType.Orders
-        return inflater.inflate(R.layout.fragment_orders, container, false)
+        val binding = FragmentOrdersBinding.inflate(inflater, container, false)
+        val context = context ?: return binding.root
+        viewModel = ViewModelProviders.of(this).get(OrdersViewModel::class.java)
+        val adapter = OrdersAdapter(viewModel)
+        binding.recyclerView.adapter = adapter
+        subscribeUi(adapter)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(OrdersViewModel::class.java)
         (activity as MainActivity).actionBarView.config_OrdersFragment()
         // TODO: Use the ViewModel
     }
+    private fun subscribeUi(adapter: OrdersAdapter) {
+        viewModel.getOrderList().observe(viewLifecycleOwner, Observer { p ->
+            if (p.size == 0) {
+                // Show  empty warning!
+            } else {
+//                sharedViewModel.showEmpty.set(View.GONE)
+//                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
+                adapter.submitList(p)
+//                adapter.notifyItemChanged(0)
+//                recyclerView.smoothScrollToPosition(0)
+            }
+        })
+    }
+
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
         Log.d("Test", "handleTransaction(goto: SlideMenuType) ------------------")

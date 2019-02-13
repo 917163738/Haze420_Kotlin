@@ -4,14 +4,18 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.getSystemService
 import androidx.lifecycle.MutableLiveData
 import com.haze420.android.R
 import com.haze420.android.model.enums.ActionBarItemType
 import kotlinx.android.synthetic.main.actionbar.view.*
+import java.util.logging.Handler
 
-class ActionBarLayout : ConstraintLayout {
+class ActionBarLayout : ConstraintLayout{
+
 
     private val _selectedItem = MutableLiveData<ActionBarItemType>()
 
@@ -32,6 +36,7 @@ class ActionBarLayout : ConstraintLayout {
 
     private fun init(context: Context, attrs: AttributeSet?, defStyle: Int) {
         val rootView = context.getSystemService<LayoutInflater>()?.inflate(R.layout.actionbar, this)
+
         imgMenu.setOnClickListener{
             _selectedItem.value = ActionBarItemType.MENU_CLOSE
         }
@@ -44,10 +49,22 @@ class ActionBarLayout : ConstraintLayout {
         imgSearch.setOnClickListener{
 //            TODO() Show search bar with animation
             _selectedItem.value = ActionBarItemType.SEARCH
+            val anim = AnimationUtils.loadAnimation(context, R.anim.opening_actionbar_search)
+            layoutSearch.alpha = 0.0f
+            layoutSearch.startAnimation(anim)
+            layoutSearch.alpha = 1.0f
+            imgSearch.visibility = View.GONE
         }
         imgSearchClose.setOnClickListener{
             //            TODO() Hinde search bar with animation
             _selectedItem.value = ActionBarItemType.SEARCH_CLOSE
+            val anim = AnimationUtils.loadAnimation(context, R.anim.closing_actionbar_search)
+            layoutSearch.startAnimation(anim)
+            android.os.Handler().postDelayed({imgSearch.visibility = View.VISIBLE}, 100)
+
+        }
+        viewFake.setOnClickListener {
+
         }
         imgShare.setOnClickListener{
             _selectedItem.value = ActionBarItemType.SHARE

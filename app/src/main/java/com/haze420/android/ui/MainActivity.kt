@@ -26,6 +26,7 @@ class MainActivity : BaseMainActivity(){
 
         // Config action bar
         actionBarView.getSelectedItem().observe(this, Observer { clickedItem ->
+
             when (clickedItem){
                 ActionBarItemType.MENU_CLOSE -> {
                     hideKeyboard()
@@ -35,8 +36,19 @@ class MainActivity : BaseMainActivity(){
                         slideMenuLayout.openMenu()
                     }
                 }
+                ActionBarItemType.SEARCH_CLOSE -> {
+                    hideKeyboard()
+                }
+                ActionBarItemType.SEARCH -> {
+                    if (slideMenuLayout.isMenuOpened.value!!){
+                        slideMenuLayout.closeMenu()
+                    }
+                }
                 ActionBarItemType.LOGOUT -> {
-                    hideKeyboardAndCloseMenu()
+                    hideKeyboard()
+                    if (slideMenuLayout.isMenuOpened.value!!){
+                        slideMenuLayout.closeMenu()
+                    }
                     sharedViewModel.setSelectedActionbarItem(ActionBarItemType.LOGOUT)
                 }
 
@@ -58,13 +70,6 @@ class MainActivity : BaseMainActivity(){
                 imgMenu.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_menu))
             }
         })
-    }
-
-    private fun hideKeyboardAndCloseMenu(){
-        hideKeyboard()
-        if (slideMenuLayout.isMenuOpened.value!!){
-            slideMenuLayout.closeMenu()
-        }
     }
 
     override fun onBackPressed() {

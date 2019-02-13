@@ -2,6 +2,7 @@ package com.haze420.android.ui.onboarding.splash
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,9 @@ class LaunchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        for (i in 0 until 3){
+            Log.e("ATG", "============= " + i.toString())
+        }
         return inflater.inflate(R.layout.fragment_launch, container, false)
     }
 

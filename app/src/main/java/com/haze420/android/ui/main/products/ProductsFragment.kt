@@ -71,6 +71,9 @@ class ProductsFragment : BaseMenuLevelFragment(){
             }
         })
     }
+
+    // Filter management ---------------------------------------------
+    // TODO: Need to create a separate widget class for filter layout
     var isOpenedFilter = false
     var activeFilterType = FilterType.MostPopular
     private fun setUpFilterLayout(){
