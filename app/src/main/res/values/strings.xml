@@ -87,6 +87,7 @@
 
     <string name="str_review_test">Great guys! bought a lot !! Everyone liked it! But ended quickly</string>
     <string name="str_post">POST</string>
+    <string name="str_reviews">Reviews</string>
 
     <string name="str_country_region">Country/Region</string>
     <string name="str_postal_code">Postcode/Zipcode</string>

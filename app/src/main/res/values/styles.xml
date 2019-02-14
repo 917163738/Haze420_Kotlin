@@ -18,6 +18,12 @@
         <item name="android:minHeight">14dp</item>
         <item name="android:maxHeight">14dp</item>
     </style>
+    <style name="CustomRatingBarSmall" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+
+        <item name="android:minHeight">14dip</item>
+        <item name="android:maxHeight">14dip</item>
+    </style>
     <style name="GlobalButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/_16ssp</item>

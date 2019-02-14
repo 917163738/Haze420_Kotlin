@@ -9,14 +9,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Dimension
 import androidx.core.app.ShareCompat
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.haze420.android.R
 import com.haze420.android.adapter.ImageViewPagerAdapter
 
 import com.haze420.android.databinding.FragmentProductDetailBinding
 import com.haze420.android.model.ImageModel
+import com.haze420.android.model.Product
 import com.haze420.android.model.enums.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.util.InjectorUtils
@@ -37,6 +40,8 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
         fun newInstance() = ProductDetailFragment()
     }
 
+
+    private lateinit var product: Product
     private lateinit var viewModel: ProductDetailViewModel
 
 
@@ -45,7 +50,7 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val product = ProductDetailFragmentArgs.fromBundle(arguments!!).productData
+        product = ProductDetailFragmentArgs.fromBundle(arguments!!).productData
         val binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         val context = context ?: return binding.root
         val factory = InjectorUtils.provideProductDetailViewModelFactory(product)
@@ -58,14 +63,13 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
         super.onActivityCreated(savedInstanceState)
 
         val mainActivity = activity as MainActivity
-        mainActivity.showActionBarView()
         mainActivity.actionBarView.config_ProductDeatilFragment()
 
-        // --------------- Shared menu setup
-        mainActivity.sharedViewModel.getSelectedActionbarItem().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-                clickedItem ->
-
-        })
+        // --------------- Rating bar menu setup
+        ratingLayout.setOnClickListener {
+            val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(product.name, product.prductId, false)
+            findNavController().navigate(direction)
+        }
         // -------------- View Pager Set up
         populateList()
         viewPager.adapter = ImageViewPagerAdapter(context!!, imageModelArrayList)

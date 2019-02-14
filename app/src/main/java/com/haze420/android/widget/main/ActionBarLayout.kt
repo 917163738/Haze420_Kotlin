@@ -83,6 +83,10 @@ class ActionBarLayout : ConstraintLayout{
         configure_Back_Share()
     }
 
+    fun config_ReviewsFragment(){
+        configure_Back_Share()
+    }
+
     fun config_BasketFragment(){
         configure_Menu_Coupon()
     }

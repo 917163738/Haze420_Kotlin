@@ -12,6 +12,7 @@ import android.view.Window
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
 import com.haze420.android.adapter.CountriesAdapter
@@ -19,10 +20,12 @@ import com.haze420.android.adapter.OrdersAdapter
 import com.haze420.android.adapter.ProductsAdapter
 import com.haze420.android.databinding.FragmentCountriesBinding
 import com.haze420.android.databinding.FragmentOrdersBinding
+import com.haze420.android.model.Product
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import com.haze420.android.ui.main.account.CountriesViewModel
+import com.haze420.android.ui.main.products.ProductDetailFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
 
 class OrdersFragment : BaseMenuLevelFragment(){
@@ -60,7 +63,20 @@ class OrdersFragment : BaseMenuLevelFragment(){
             dialog.show()
             Handler().postDelayed({dialog.dismiss()}, 3000)
         })
+        viewModel.getSelectedWriteReview().observe(this, Observer {product ->
+            if (product != null) {
+                viewModel.clearSelectedWriteReview()
+                val direction = OrdersFragmentDirections.actionOrdersToReviews(product!!.name, product!!.prductId, true)
+                findNavController().navigate(direction)
+            }
+        })
     }
+
+    private fun gotoReviews(selectedProduct: Product){
+        val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(selectedProduct.name, selectedProduct.prductId, false)
+        findNavController().navigate(direction)
+    }
+
     private fun subscribeUi(adapter: OrdersAdapter) {
         viewModel.getOrderList().observe(viewLifecycleOwner, Observer { p ->
             if (p.size == 0) {
