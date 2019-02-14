@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/review_contentbg"
             android:text="@{viewModel.getReviewAt(position)}"
+            android:textSize="@dimen/_11ssp"
             android:textColor="@color/white"
             android:fontFamily="@font/avenir_oblique"
             android:paddingStart="@dimen/_8sdp"
