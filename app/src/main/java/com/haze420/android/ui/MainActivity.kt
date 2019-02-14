@@ -1,7 +1,10 @@
 package com.haze420.android.ui
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import androidx.navigation.Navigation
@@ -50,6 +53,28 @@ class MainActivity : BaseMainActivity(){
                         slideMenuLayout.closeMenu()
                     }
                     sharedViewModel.setSelectedActionbarItem(ActionBarItemType.LOGOUT)
+                }
+                ActionBarItemType.SHARE -> {
+                    hideKeyboard()
+                    if (slideMenuLayout.isMenuOpened.value!!){
+                        slideMenuLayout.closeMenu()
+                    }
+                    val shareText = "Enjoy Haze420. https://itunes.apple.com/go here."
+                    val shareIntent = ShareCompat.IntentBuilder.from(this)
+                        .setText(shareText)
+                        .setType("text/plain")
+                        .createChooserIntent()
+                        .apply {
+                            // https://android-developers.googleblog.com/2012/02/share-with-intents.html
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                // If we're on Lollipop, we can open the intent as a document
+                                addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                            } else {
+                                // Else, we will use the old CLEAR_WHEN_TASK_RESET flag
+                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
+                            }
+                        }
+                    startActivity(shareIntent)
                 }
 
                 ActionBarItemType.BACK -> {

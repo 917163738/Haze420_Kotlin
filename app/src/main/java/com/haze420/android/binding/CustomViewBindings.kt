@@ -33,7 +33,7 @@ import com.haze420.android.R
 
 
 @BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) { /// Try thumnail link to load list pages. And then try fullImage link in detail page
     if (!imageUrl.isNullOrEmpty()) {
         // Show placeholder as a static image
 //        val requestOption = RequestOptions()
@@ -51,6 +51,30 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(view)
 
+    }
+}
+@BindingAdapter("fullImageFromUrl")
+fun bindFullImageFromUrl(view: ImageView, fullImageUrl: String?) {
+    fullImageUrl ?: return
+    val thumbnailUrl = fullImageUrl.replace("500x500", "100x100")
+    if (!fullImageUrl.isNullOrEmpty()) {
+        // Show placeholder as a static image
+        val requestOption = RequestOptions()
+            .placeholder(R.drawable.ico_placeholder).centerCrop()
+        if (!thumbnailUrl.isNullOrEmpty()){
+            Glide.with(view.context)
+                .load(fullImageUrl)
+                .apply(requestOption)
+                .thumbnail(Glide.with(view.context).load(thumbnailUrl))
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(view)
+        }else{
+            Glide.with(view.context)
+                .load(fullImageUrl)
+                .apply(requestOption)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(view)
+        }
     }
 }
 

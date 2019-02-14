@@ -78,6 +78,11 @@ class ActionBarLayout : ConstraintLayout{
     fun config_ProductsFragment(){
         configure_Menu_Search()
     }
+
+    fun config_ProductDeatilFragment(){
+        configure_Back_Share()
+    }
+
     fun config_BasketFragment(){
         configure_Menu_Coupon()
     }

@@ -12,7 +12,10 @@ import com.haze420.android.databinding.ItemCountryBinding
 import com.haze420.android.databinding.ItemProductListBinding
 import com.haze420.android.model.Product
 import com.haze420.android.ui.main.account.CountriesViewModel
+import com.haze420.android.ui.main.products.ProductsFragmentDirections
 import com.haze420.android.ui.main.products.ProductsViewModel
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 
 class ProductsAdapter(viewModel_: ProductsViewModel) : ListAdapter<Product, ProductsAdapter.ViewHolder>(ProductDiffCallback()){
 
@@ -45,6 +48,12 @@ class ProductsAdapter(viewModel_: ProductsViewModel) : ListAdapter<Product, Prod
                 executePendingBindings()
             }
 //            txtView = binding.root.findViewById(R.id.txtCountryName)
+        }
+
+        fun gotoDetail(){
+
+//            val direction = ProductsFragmentDirections.actionProductsFragmentToAccountFragment()
+//            findNavController(txtView!!).navigate(direction)
         }
 
 

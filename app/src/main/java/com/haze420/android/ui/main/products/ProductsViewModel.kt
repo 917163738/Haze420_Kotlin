@@ -9,7 +9,7 @@ import com.haze420.android.model.enums.THC
 import com.haze420.android.model.repositories.ProductsRepository
 
 class ProductsViewModel : ViewModel() {
-    private val _selected = MutableLiveData<Int>()
+    private val _selected = MutableLiveData<Product?>()
     private  val _repository = ProductsRepository()
     private  val _activeCategory = MutableLiveData<CATEGORY>()
     init {
@@ -24,8 +24,12 @@ class ProductsViewModel : ViewModel() {
     fun getActiveCategory() : MutableLiveData<CATEGORY>{
         return _activeCategory
     }
-    fun getSelected(): MutableLiveData<Int>{
+    fun getSelected(): MutableLiveData<Product?>{
         return _selected
+    }
+
+    fun clearSelected(){
+        _selected.value = null
     }
 
     // Commands from View
@@ -68,7 +72,7 @@ class ProductsViewModel : ViewModel() {
     }
 
     fun onProductClick(position: Int){
-        _selected.value = position
+        _selected.value = getProductsList().value?.get(position)
     }
 
     fun getProductNameAt(position: Int): String{

@@ -214,7 +214,7 @@
             <ImageView
                     android:id="@+id/imgTHC1"
                     android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_3sdp"
+                    android:layout_height="@dimen/_2sdp"
                     android:src="@drawable/red_line"
                     app:layout_constraintStart_toStartOf="@+id/txtProductName"
                     app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"
@@ -223,7 +223,7 @@
             <ImageView
                     android:id="@+id/imgTHC2"
                     android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_3sdp"
+                    android:layout_height="@dimen/_2sdp"
                     android:src="@{viewModel.checkLevelImage2(position) ? @drawable/red_line: @drawable/grey_line}"
                     app:layout_constraintStart_toEndOf="@+id/imgTHC1"
                     app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"
@@ -232,7 +232,7 @@
             <ImageView
                     android:id="@+id/imgTHC3"
                     android:layout_width="@dimen/_12sdp"
-                    android:layout_height="@dimen/_3sdp"
+                    android:layout_height="@dimen/_2sdp"
                     android:src="@{viewModel.checkLevelImage3(position) ? @drawable/red_line: @drawable/grey_line}"
                     app:layout_constraintStart_toEndOf="@+id/imgTHC2"
                     app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"

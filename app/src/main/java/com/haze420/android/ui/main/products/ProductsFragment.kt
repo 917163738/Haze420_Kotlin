@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
 import com.haze420.android.adapter.ProductsAdapter
@@ -45,8 +46,9 @@ class ProductsFragment : BaseMenuLevelFragment(){
         super.onActivityCreated(savedInstanceState)
         val mainActivity = activity as MainActivity
         mainActivity.showActionBarView()
-        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         mainActivity.actionBarView.config_ProductsFragment()
+
+        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
 
         val adapter = ProductsAdapter(viewModel)
         recyclerView.adapter = adapter
@@ -69,6 +71,14 @@ class ProductsFragment : BaseMenuLevelFragment(){
 //                adapter.notifyItemChanged(0)
 //                recyclerView.smoothScrollToPosition(0)
             }
+        })
+        viewModel.getSelected().observe(this, Observer {
+            if (it != null){
+                viewModel.clearSelected()
+                val direction = ProductsFragmentDirections.actionProductsFragmentToProductDetail(it)
+                findNavController().navigate(direction)
+            }
+
         })
     }
 
