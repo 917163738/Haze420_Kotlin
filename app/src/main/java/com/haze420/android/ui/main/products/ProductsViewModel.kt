@@ -36,9 +36,9 @@ class ProductsViewModel : ViewModel() {
     // Data binding
     fun isCategoryActive(index: Int): Boolean{
         when (index){
-            0 -> return _activeCategory.value!! == CATEGORY.Sativa
-            1 -> return _activeCategory.value!! == CATEGORY.Hybrid
-            2 -> return _activeCategory.value!! == CATEGORY.Indica
+            0 -> return _activeCategory.value!! == CATEGORY.Sativa || _activeCategory.value!! == CATEGORY.ALL
+            1 -> return _activeCategory.value!! == CATEGORY.Hybrid || _activeCategory.value!! == CATEGORY.ALL
+            2 -> return _activeCategory.value!! == CATEGORY.Indica || _activeCategory.value!! == CATEGORY.ALL
             else -> {
                 return false
             }

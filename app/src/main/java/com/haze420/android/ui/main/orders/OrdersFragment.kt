@@ -1,11 +1,15 @@
 package com.haze420.android.ui.main.orders
 
+import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
@@ -46,7 +50,16 @@ class OrdersFragment : BaseMenuLevelFragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         (activity as MainActivity).actionBarView.config_OrdersFragment()
-        // TODO: Use the ViewModel
+
+        viewModel.getSelectedTrackNum().observe(this, Observer {
+            val dialog = Dialog(context)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(true)
+            dialog.setContentView(R.layout.dialog_track_number)
+            dialog.findViewById<TextView>(R.id.txtTrackNum)!!.setText(it)
+            dialog.show()
+            Handler().postDelayed({dialog.dismiss()}, 3000)
+        })
     }
     private fun subscribeUi(adapter: OrdersAdapter) {
         viewModel.getOrderList().observe(viewLifecycleOwner, Observer { p ->

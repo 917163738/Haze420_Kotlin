@@ -28,16 +28,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-
+import com.bumptech.glide.request.RequestOptions
+import com.haze420.android.R
 
 
 @BindingAdapter("imageFromUrl")
 fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
+        // Show placeholder as a static image
+//        val requestOption = RequestOptions()
+//            .placeholder(R.drawable.ico_placeholder).centerCrop()
+//        Glide.with(view.context)
+//                .load(imageUrl)
+//                .apply(requestOption)
+//                .transition(DrawableTransitionOptions.withCrossFade())
+//                .into(view)
+
+        //load gif as a thumbnail like animating placeholder
         Glide.with(view.context)
-                .load(imageUrl)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(view)
+            .load(imageUrl)
+            .thumbnail(Glide.with(view.context).load(R.drawable.loadinggif))
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(view)
 
     }
 }

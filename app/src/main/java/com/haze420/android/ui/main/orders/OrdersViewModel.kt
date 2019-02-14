@@ -1,15 +1,19 @@
 package com.haze420.android.ui.main.orders
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.haze420.android.model.BasketItem
 import com.haze420.android.model.OrderItem
+import com.haze420.android.model.enums.CATEGORY
 import com.haze420.android.model.repositories.BasketRepository
 import com.haze420.android.model.repositories.OrdersRepository
 
 class OrdersViewModel : ViewModel() {
     private  val _repository = OrdersRepository()
-    val imageLink = "https://haze420.co.uk/wp-content/uploads/2018/12/girl-scout-cookies__primary_31a7.jpg"
+    val imageLink = "https://www.haze420.co.uk/wp-content/uploads/2018/12/OG-Kush-500x500.png"
+
+    private  val _selectedTrack = MutableLiveData<String>()
 
     init {
         refresh()
@@ -17,6 +21,10 @@ class OrdersViewModel : ViewModel() {
 
     fun getOrderList(): LiveData<List<OrderItem>> {
         return _repository.getOrderList()
+    }
+
+    fun getSelectedTrackNum(): LiveData<String>{
+        return _selectedTrack
     }
 
     private fun refresh(){
@@ -41,7 +49,7 @@ class OrdersViewModel : ViewModel() {
     }
 
     fun onClickTrackOrderAt(position: Int){
-
+        _selectedTrack.value = "#" + "378-6432-225" + position.toString()
     }
 
     fun onClickWriteReviewAt(position: Int){

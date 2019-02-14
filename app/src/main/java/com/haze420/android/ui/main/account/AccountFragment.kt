@@ -57,7 +57,7 @@ class AccountFragment : BaseMenuLevelFragment(){
             dialog.setCancelable(true)
             dialog.setContentView(R.layout.dialog_link_copied)
             dialog.show()
-            Handler().postDelayed({dialog.dismiss()}, 1000)
+            Handler().postDelayed({dialog.dismiss()}, 3000)
         }
         location.setOnClickListener {
             view?.let{
