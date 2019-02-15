@@ -53,7 +53,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) { /// Try thumnail link
 
     }
 }
-@BindingAdapter("fullImageFromUrl")
+@BindingAdapter("fullImageFromUrl") // unused
 fun bindFullImageFromUrl(view: ImageView, fullImageUrl: String?) {
     fullImageUrl ?: return
     val thumbnailUrl = fullImageUrl.replace("500x500", "100x100")

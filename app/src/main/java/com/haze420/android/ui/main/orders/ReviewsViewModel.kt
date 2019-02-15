@@ -22,7 +22,7 @@ class ReviewsViewModel : ViewModel() {
         if (position % 2 == 0){
             return "Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello"
         }
-        return "Good product nice \n will buy again"
+        return "Good product nice \nwill buy again"
     }
     fun getReviewerNameAt(position: Int): String{
         return "Reviwer Reviewer" + position.toString()

@@ -64,8 +64,8 @@
             app:layout_constraintTop_toBottomOf="@+id/viewStrainType"
             app:layout_constraintBottom_toBottomOf="parent"
     />
-    <include
-            layout="@layout/form_filter"
+    <com.haze420.android.widget.main.FiltersLayout
+            android:id="@+id/filtersLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/viewStrainType"

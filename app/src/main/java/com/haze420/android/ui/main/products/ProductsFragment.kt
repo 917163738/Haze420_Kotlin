@@ -32,7 +32,7 @@ class ProductsFragment : BaseMenuLevelFragment(){
     }
 
     private lateinit var viewModel: ProductsViewModel
-
+    var activeFilterType = FilterType.MostPopular
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +53,6 @@ class ProductsFragment : BaseMenuLevelFragment(){
         val adapter = ProductsAdapter(viewModel)
         recyclerView.adapter = adapter
         subscribeUi(adapter)
-        setUpFilterLayout()
         viewModel.getActiveCategory().observe(this, Observer {
             txtStrainType.setText(it.toString())
         })
@@ -61,6 +60,16 @@ class ProductsFragment : BaseMenuLevelFragment(){
     }
 
     private fun subscribeUi(adapter: ProductsAdapter) {
+        imgFilter.setOnClickListener {
+            if (filtersLayout.isOpenedFilter.value!!){
+                filtersLayout.closeFilter()
+            }else{
+                filtersLayout.openFilter()
+            }
+        }
+        filtersLayout.selectedFilter.observe(this, Observer {
+            Log.d("TAG", "================= Filter selected. " + it.toString())
+        })
         viewModel.getProductsList().observe(viewLifecycleOwner, Observer { p ->
             if (p.size == 0) {
                 // Show  empty warning!
@@ -84,66 +93,6 @@ class ProductsFragment : BaseMenuLevelFragment(){
 
     // Filter management ---------------------------------------------
     // TODO: Need to create a separate widget class for filter layout
-    var isOpenedFilter = false
-    var activeFilterType = FilterType.MostPopular
-    private fun setUpFilterLayout(){
-        imgFilter.setOnClickListener {
-            if (isOpenedFilter){
-                closeFilter()
-            }else{
-                openFilter()
-            }
-        }
-        txtMostPopular.setOnClickListener {
-            activeFilterType = FilterType.MostPopular
-            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
-            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            closeFilter()
-        }
-        txtLowToHigh.setOnClickListener {
-            activeFilterType = FilterType.LowToHigh
-            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
-            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            closeFilter()
-        }
-        txtHightToLow.setOnClickListener {
-            activeFilterType = FilterType.HighToLow
-            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
-            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            closeFilter()
-        }
-        txtTopRated.setOnClickListener {
-            activeFilterType = FilterType.TopRated
-            txtMostPopular.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtLowToHigh.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtHightToLow.setTextColor(ContextCompat.getColor(this.context!!, R.color.white))
-            txtTopRated.setTextColor(ContextCompat.getColor(this.context!!, R.color.red))
-            closeFilter()
-        }
-    }
-
-    private fun openFilter(){
-        layoutFilter.alpha = 0.0f
-        layoutFilter.visibility = View.VISIBLE
-        val anim1 = AnimationUtils.loadAnimation(context, R.anim.opening_filter)
-        layoutFilter.startAnimation(anim1)
-        layoutFilter.alpha = 1.0f
-        isOpenedFilter = true
-    }
-
-    private fun closeFilter(){
-
-        val anim1 = AnimationUtils.loadAnimation(context, R.anim.closing_filter)
-        layoutFilter.startAnimation(anim1)
-        Handler().postDelayed({layoutFilter.visibility = View.GONE}, 150)
-        isOpenedFilter = false
-    }
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
         Log.d("Test", "handleTransaction(goto: SlideMenuType) ------------------")

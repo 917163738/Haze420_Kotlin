@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <variable
+                name="position"
+                type="java.lang.Integer"/>
+        <variable name="viewModel"
+                  type="com.haze420.android.ui.main.products.ProductsViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@color/global_bg"
+            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCategory"
+                android:onClick="@{()->viewModel.onProductClick(position)}"
+        >
+            <ImageView
+                    android:id="@+id/imgProductImage"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_54sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    app:imageFromUrl="@{viewModel.getImageURLAt(position)}"
+                    android:scaleType="centerCrop"
+            />
+            <TextView
+                    android:id="@+id/txtProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:fontFamily="@font/avenir_book"
+                    android:text="@{viewModel.getProductNameAt(position)}"
+                    app:layout_constraintStart_toEndOf="@id/imgProductImage"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+            />
+            <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/CustomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="@{viewModel.getAvgRateAt(position)}"
+                    android:stepSize="0.01"
+                    android:isIndicator="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/_12sdp"
+            />
+
+            <TextView
+                    android:id="@+id/txtTHCLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:text="@string/thc"
+                    android:textSize="@dimen/_10sdp"
+                    android:fontFamily="@font/avenir_medium"
+                    app:layout_constraintStart_toStartOf="@id/txtProductName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtProductName"
+            />
+            <ImageView
+                    android:id="@+id/imgTHC1"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_2sdp"
+                    android:src="@drawable/red_line"
+                    app:layout_constraintStart_toStartOf="@+id/txtProductName"
+                    app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+            <ImageView
+                    android:id="@+id/imgTHC2"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_2sdp"
+                    android:src="@{viewModel.checkLevelImage2(position) ? @drawable/red_line: @drawable/grey_line}"
+                    app:layout_constraintStart_toEndOf="@+id/imgTHC1"
+                    app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+            <ImageView
+                    android:id="@+id/imgTHC3"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_2sdp"
+                    android:src="@{viewModel.checkLevelImage3(position) ? @drawable/red_line: @drawable/grey_line}"
+                    app:layout_constraintStart_toEndOf="@+id/imgTHC2"
+                    app:layout_constraintTop_toBottomOf="@id/txtTHCLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+            />
+
+            <TextView
+                    android:id="@+id/txtPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_17ssp"
+                    android:fontFamily="@font/avenir_light"
+                    android:text="@{viewModel.getPriceAt(position)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_6sdp"
+            />
+            <View android:layout_width="match_parent" android:layout_height="1dp"
+                  android:background="@color/list_indicate_color"
+                  app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
