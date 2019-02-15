@@ -8,7 +8,7 @@
                 name="position"
                 type="java.lang.Integer"/>
         <variable name="viewModel"
-                  type="com.haze420.android.ui.main.products.ProductsViewModel"/>
+                  type="com.haze420.android.ui.main.sale.SaleViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,6 +30,17 @@
                     android:layout_marginStart="@dimen/_12sdp"
                     app:imageFromUrl="@{viewModel.getImageURLAt(position)}"
                     android:scaleType="centerCrop"
+            />
+            <ImageView
+                android:id="@+id/imgSale"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_20sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:src="@mipmap/sale"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="@dimen/_12sdp"
             />
             <TextView
                     android:id="@+id/txtProductName"
@@ -110,6 +121,32 @@
                     android:layout_marginEnd="@dimen/_12sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="@dimen/_6sdp"
+            />
+            <TextView
+                android:id="@+id/txtOldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center_vertical"
+                android:text="@{viewModel.getOldPriceAt(position)}"
+                android:fontFamily="@font/avenir_book"
+                android:textColor="@color/sales_price"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintTop_toTopOf="@+id/txtPrice"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+                app:layout_constraintEnd_toStartOf="@id/txtPrice"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:visibility="visible"
+            />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/sales_price"
+                app:layout_constraintStart_toStartOf="@+id/txtOldPrice"
+                app:layout_constraintEnd_toEndOf="@+id/txtOldPrice"
+                app:layout_constraintTop_toTopOf="@+id/txtOldPrice"
+                app:layout_constraintBottom_toBottomOf="@+id/txtOldPrice"
             />
             <View android:layout_width="match_parent" android:layout_height="1dp"
                   android:background="@color/list_indicate_color"

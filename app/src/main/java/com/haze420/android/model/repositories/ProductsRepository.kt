@@ -13,7 +13,7 @@ class ProductsRepository {
         generateDummyProducts()
     }
 
-    fun trigerFetchList(isSale: Boolean = true, category: CATEGORY){
+    fun trigerFetchList(isSale: Boolean = true, category: CATEGORY = CATEGORY.ALL){
         _productsLiveData.value = filterCountryList(isSale, category)
     }
 

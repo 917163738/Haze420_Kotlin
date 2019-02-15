@@ -16,14 +16,16 @@ import com.haze420.android.ui.main.products.ProductsFragmentDirections
 import com.haze420.android.ui.main.products.ProductsViewModel
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import com.haze420.android.databinding.ItemSaleListBinding
+import com.haze420.android.ui.main.sale.SaleViewModel
 
-class ProductsAdapter(viewModel_: ProductsViewModel) : ListAdapter<Product, ProductsAdapter.ViewHolder>(ProductDiffCallback()){
+class SaleAdapter(viewModel_: SaleViewModel) : ListAdapter<Product, SaleAdapter.ViewHolder>(ProductDiffCallback()){
 
-    private var viewModel: ProductsViewModel? = viewModel_
+    private var viewModel: SaleViewModel? = viewModel_
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemProductListBinding.inflate(
+            ItemSaleListBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false))
     }
 
@@ -36,11 +38,11 @@ class ProductsAdapter(viewModel_: ProductsViewModel) : ListAdapter<Product, Prod
     }
 
     class ViewHolder(
-        private val binding: ItemProductListBinding
+        private val binding: ItemSaleListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         var _position = 0
         var txtView : TextView? = null
-        fun bind(viewModel: ProductsViewModel, position: Int) {
+        fun bind(viewModel: SaleViewModel, position: Int) {
             binding.apply {
                 binding.viewModel = viewModel
                 binding.position = position
@@ -60,7 +62,7 @@ class ProductsAdapter(viewModel_: ProductsViewModel) : ListAdapter<Product, Prod
     }
 }
 
-class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
+private class SaleDiffCallback : DiffUtil.ItemCallback<Product>() {
     override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem.prductId == newItem.prductId
     }

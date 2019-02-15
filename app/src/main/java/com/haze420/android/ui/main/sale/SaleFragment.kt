@@ -6,13 +6,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
+import com.haze420.android.adapter.ProductsAdapter
+import com.haze420.android.adapter.SaleAdapter
+import com.haze420.android.model.enums.FilterType
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import com.haze420.android.ui.main.products.ProductsFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_sale.*
 
 class SaleFragment : BaseMenuLevelFragment(){
 
@@ -34,7 +42,59 @@ class SaleFragment : BaseMenuLevelFragment(){
         super.onActivityCreated(savedInstanceState)
         (activity as MainActivity).actionBarView.config_SALEFragment()
         viewModel = ViewModelProviders.of(this).get(SaleViewModel::class.java)
-        // TODO: Use the ViewModel
+        val adapter = SaleAdapter(viewModel)
+        recyclerView.adapter = adapter
+        subscribeUi(adapter)
+    }
+
+    private fun subscribeUi(adapter: SaleAdapter) {
+        txtFilter.setOnClickListener {
+           onClickFilter()
+        }
+        imgFilter.setOnClickListener {
+            onClickFilter()
+        }
+        imgArrow.setOnClickListener {
+            onClickFilter()
+        }
+        filtersLayout.selectedFilter.observe(this, Observer {
+            Log.d("TAG", "================= Filter selected. " + it.toString())
+            viewModel.selectedFilter.set(it.toString())
+            txtFilter.setText(it.dispName)
+            val anim1 = AnimationUtils.loadAnimation(context, R.anim.rotate_up)
+            imgArrow.startAnimation(anim1)
+        })
+        viewModel.getProductsList().observe(viewLifecycleOwner, Observer { p ->
+            if (p.size == 0) {
+                // Show  empty warning!
+            } else {
+//                sharedViewModel.showEmpty.set(View.GONE)
+//                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
+                adapter.submitList(p)
+//                adapter.notifyItemChanged(0)
+//                recyclerView.smoothScrollToPosition(0)
+            }
+        })
+        viewModel.getSelected().observe(this, Observer {
+            if (it != null){
+                viewModel.clearSelected()
+                val direction = SaleFragmentDirections.actionSaleToProductDetail(it)
+                findNavController().navigate(direction)
+            }
+
+        })
+    }
+
+    private fun onClickFilter(){
+        if (filtersLayout.isOpenedFilter.value!!){
+            val anim1 = AnimationUtils.loadAnimation(context, R.anim.rotate_up)
+            imgArrow.startAnimation(anim1)
+            filtersLayout.closeFilter()
+        }else{
+            val anim1 = AnimationUtils.loadAnimation(context, R.anim.rotate_down)
+            imgArrow.startAnimation(anim1)
+            filtersLayout.openFilter()
+        }
     }
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
