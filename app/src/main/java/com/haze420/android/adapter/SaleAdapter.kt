@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.haze420.android.model.Product
 import com.haze420.android.databinding.ItemSaleListBinding
+import com.haze420.android.model.ProductModel
 import com.haze420.android.ui.main.sale.SaleViewModel
 
-class SaleAdapter(viewModel_: SaleViewModel) : ListAdapter<Product, SaleAdapter.ViewHolder>(ProductDiffCallback()){
+class SaleAdapter(viewModel_: SaleViewModel) : ListAdapter<ProductModel, SaleAdapter.ViewHolder>(ProductDiffCallback()){
 
     private var viewModel: SaleViewModel? = viewModel_
 

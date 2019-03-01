@@ -10,10 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.haze420.android.R
+import com.haze420.android.ui.BaseFragment
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.util.findMainNavController
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class LaunchFragment : Fragment() {
+class LaunchFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = LaunchFragment()
@@ -23,9 +28,6 @@ class LaunchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        for (i in 0 until 3){
-            Log.e("ATG", "============= " + i.toString())
-        }
         return inflater.inflate(R.layout.fragment_launch, container, false)
     }
 
@@ -33,11 +35,18 @@ class LaunchFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val mainAct = activity as MainActivity
         mainAct.hideActionBarView()
-        Handler().postDelayed({
-            view?.let {
-                findNavController(this).navigate(R.id.action_launchFragment_to_loginFragment)
+        GlobalScope.launch(Dispatchers.Main){
+            delay(1500)
+            if (mMainActivity.prefs.token == ""){
+                view?.let {
+                    findNavController(this@LaunchFragment).navigate(R.id.action_launchFragment_to_loginFragment)
+                }
+            }else{
+                view?.let {
+                    findNavController(this@LaunchFragment).navigate(R.id.action_launchFragment_to_productsFragment)
+                }
             }
-//            findMainNavController().navigate(R.id.action_launchFragment_to_loginFragment)
-        }, 1500)
+        }
+
     }
 }

@@ -70,7 +70,7 @@ class SaleFragment : BaseMenuLevelFragment(){
             } else {
 //                sharedViewModel.showEmpty.set(View.GONE)
 //                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
-                adapter.submitList(p)
+//                adapter.submitList(p)
 //                adapter.notifyItemChanged(0)
 //                recyclerView.smoothScrollToPosition(0)
             }

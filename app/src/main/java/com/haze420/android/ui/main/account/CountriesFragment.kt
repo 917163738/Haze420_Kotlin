@@ -88,7 +88,7 @@ class CountriesFragment : Fragment() {
     private fun setupListClick() {
         viewModel.getSelected().observe(this, Observer{position  ->
             Toast.makeText(context, "Selected"+ position.toString(), Toast.LENGTH_SHORT).show()
-//            sharedViewModel.refresh(position)
+//            sharedViewModel.filterCategoryAndSort(position)
             view?.let {
 
                 if (!Navigation.findNavController(it).popBackStack(R.id.deliveryAddressFragment, false)){

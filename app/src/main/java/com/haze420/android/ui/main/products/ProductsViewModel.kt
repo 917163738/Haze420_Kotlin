@@ -4,27 +4,41 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.haze420.android.model.enums.CATEGORY
-import com.haze420.android.model.Product
+import com.haze420.android.model.ProductModel
+import com.haze420.android.model.enums.FilterType
 import com.haze420.android.model.enums.THC
 import com.haze420.android.model.repositories.ProductsRepository
 
 class ProductsViewModel : ViewModel() {
-    private val _selected = MutableLiveData<Product?>()
-    private  val _repository = ProductsRepository()
+    private val _selected = MutableLiveData<ProductModel?>()
     private  val _activeCategory = MutableLiveData<CATEGORY>()
-    init {
-        _activeCategory.value = CATEGORY.Sativa
-        refresh()
+    private  val _productList = MutableLiveData<List<ProductModel>>()
+
+    private  val _repository = ProductsRepository()
+    var productListAll = ArrayList<ProductModel>()
+    set(value) {
+        field = value
+        filterCategoryAndSort()
     }
 
-    //Getter
-    fun getProductsList() : MutableLiveData<List<Product>>{
-        return _repository.getProductList()
+    var selectedFilter = FilterType.MostPopular
+        set(value) {
+            field = value
+            filterCategoryAndSort()
+        }
+
+    init {
+        _activeCategory.value = CATEGORY.ALL
     }
+
+    fun getProductsList() : MutableLiveData<List<ProductModel>>{
+        return _productList
+    }
+
     fun getActiveCategory() : MutableLiveData<CATEGORY>{
         return _activeCategory
     }
-    fun getSelected(): MutableLiveData<Product?>{
+    fun getSelected(): MutableLiveData<ProductModel?>{
         return _selected
     }
 
@@ -33,8 +47,48 @@ class ProductsViewModel : ViewModel() {
     }
 
     // Commands from View
-    fun refresh(){
-        _repository.trigerFetchList(false, _activeCategory.value!!)
+    fun filterCategoryAndSort(){
+        val categoryModel = ProductModel(-1,_activeCategory.value!!.dispName)
+        val filtered = productListAll.filter { productModel ->
+            when (_activeCategory.value!!){
+                CATEGORY.Sativa -> productModel.category == CATEGORY.Sativa
+                CATEGORY.Hybrid -> productModel.category == CATEGORY.Hybrid
+                CATEGORY.Indica -> productModel.category == CATEGORY.Indica
+                else -> true
+            }
+        }
+        var sortedList = filtered
+        if (selectedFilter != FilterType.MostPopular){
+            sortedList = filtered.sortedWith(object: Comparator<ProductModel>{
+                override fun compare(p1: ProductModel, p2: ProductModel): Int {
+                    if (selectedFilter == FilterType.LowToHigh){
+                        when {
+                            p1.price.toDouble() > p2.price.toDouble() -> return 1
+                            p1.price.toDouble() == p2.price.toDouble() -> return 0
+                            else -> return -1
+                        }
+                    }else if (selectedFilter == FilterType.HighToLow){
+                        when {
+                            p1.price.toDouble() < p2.price.toDouble() -> return 1
+                            p1.price.toDouble() == p2.price.toDouble() -> return 0
+                            else -> return -1
+                        }
+                    }else{
+                        when {
+                            p1.average_rating.toDouble() < p2.average_rating.toDouble() -> return 1
+                            p1.average_rating.toDouble() ==  p2.average_rating.toDouble() -> return 0
+                            else -> return -1
+                        }
+                    }
+                }
+            })
+        }
+
+        val manipulatedList = ArrayList<ProductModel>()
+        manipulatedList.add(categoryModel)
+        manipulatedList.addAll(sortedList)
+
+        _productList.value = manipulatedList
     }
 
     // Data binding
@@ -52,19 +106,19 @@ class ProductsViewModel : ViewModel() {
         when (index){
             0 -> {
                 _activeCategory.value = CATEGORY.Sativa
-                refresh()
+                filterCategoryAndSort()
             }
             1 -> {
                 _activeCategory.value = CATEGORY.Hybrid
-                refresh()
+                filterCategoryAndSort()
             }
             2 -> {
                 _activeCategory.value = CATEGORY.Indica
-                refresh()
+                filterCategoryAndSort()
             }
             else ->{
                 _activeCategory.value = CATEGORY.ALL
-                refresh()
+                filterCategoryAndSort()
             }
 
         }
@@ -83,11 +137,10 @@ class ProductsViewModel : ViewModel() {
         return getProductsList().value?.get(position)?.name!!
     }
     fun getAvgRateAt(position: Int): Float{
-//        val avg_rate = getProductsList().value?.get(position)?.avg_rating
-//        if (avg_rate != null)
-//            return avg_rate
-//        return "0"
-        return 4.0f
+        val avg_rate = getProductsList().value?.get(position)?.average_rating
+        if (avg_rate == "")
+            return 0f
+        return avg_rate!!.toFloat()
     }
 
     fun checkLevelImage1(position: Int): Boolean{
@@ -111,7 +164,7 @@ class ProductsViewModel : ViewModel() {
     }
 
     fun getImageURLAt(position: Int): String{
-        val url = getProductsList().value?.get(position)?.thumb_URL
+        val url = getProductsList().value?.get(position)?.thumbnail_image
         return url + ""
     }
 

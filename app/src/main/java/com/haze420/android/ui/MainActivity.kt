@@ -202,6 +202,10 @@ class MainActivity : BaseMainActivity(){
         loadingDlg.dismiss()
     }
 
+    fun showUnauthError(){
+
+    }
+
     fun showError(error: String, title: String = "Error", callback: (() -> Unit)? = null){
         showAlert(title, error, callback)
     }

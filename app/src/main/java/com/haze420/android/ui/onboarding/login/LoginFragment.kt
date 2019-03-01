@@ -79,8 +79,8 @@ class LoginFragment : BaseFragment() {
             btnLogin.isEnabled = it
         })
         if (BuildConfig.DEBUG){
-            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("testaccount3@gmail.com")
-            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("00000000t")
+            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("testaccount4@gmail.com")
+            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("00000000")
         }
     }
 
@@ -102,7 +102,7 @@ class LoginFragment : BaseFragment() {
 
                 // Handle response
                 if (response.success){
-                    mMainActivity.prefs?.token = response.data!!.jwt_token!!
+                    mMainActivity.prefs?.token = "Bearer " + response.data!!.jwt_token!!
                     gotoHome()
                 }else{
                     response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
@@ -116,45 +116,6 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
-
-//    private fun loadProducts(){
-//        if (!mMainActivity.checkConnection()!!){
-//            return
-//        }
-//        mMainActivity.showLoading()
-//        val token = mMainActivity.prefs.token
-//        if (token == null){
-////            mMainActivity.showError()
-//            return
-//        }
-//        val service = RetrofitFactory.makeHomeServiceService(token)
-//        GlobalScope.launch(Dispatchers.Main){
-//            val loginRequestBody = LoginRequest(mLoginViewModel.emailAddress.value!!, mLoginViewModel.password.value!!)
-//            val request = service.login(loginRequestBody)
-//            try {
-//                // Wait for response
-//                val response = request.await()
-//
-//                //Hide loading
-//                mMainActivity.hideLoading()
-//
-//                // Handle response
-//                if (response.success){
-//                    mMainActivity.prefs?.token = response.data!!.jwt_token!!
-//                    gotoHome()
-//                }else{
-//                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
-//                }
-//
-//            }catch (e: HttpException){
-//                handleAPIError(e)
-//
-//            }catch (e: Throwable){
-//                handleAPIError(e)
-//            }
-//        }
-//    }
-
     private fun gotoHome(){
         view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
     }

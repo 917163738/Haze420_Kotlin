@@ -163,27 +163,38 @@
         >
             <ImageView
                     android:id="@+id/imgProductImage"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_54sdp"
+                    android:layout_width="@dimen/_65sdp"
+                    android:layout_height="@dimen/_65sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="@dimen/_12sdp"
-                    app:imageFromUrl="@{viewModel.getImageURLAt(position)}"
                     android:scaleType="centerCrop"
+            />
+            <ImageView
+                android:id="@+id/imgPlaceholder"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_65sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:scaleType="centerCrop"
             />
             <TextView
                     android:id="@+id/txtProductName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_13ssp"
                     android:fontFamily="@font/avenir_book"
+                    android:maxLines="1"
                     android:text="@{viewModel.getProductNameAt(position)}"
                     app:layout_constraintStart_toEndOf="@id/imgProductImage"
                     android:layout_marginStart="@dimen/_16sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="@dimen/_10sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/ratingBar"
             />
             <RatingBar
                     android:id="@+id/ratingBar"
@@ -206,10 +217,11 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/red"
                     android:text="@string/thc"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:fontFamily="@font/avenir_medium"
                     app:layout_constraintStart_toStartOf="@id/txtProductName"
                     app:layout_constraintTop_toBottomOf="@+id/txtProductName"
+                    android:layout_marginTop="@dimen/_4sdp"
             />
             <ImageView
                     android:id="@+id/imgTHC1"

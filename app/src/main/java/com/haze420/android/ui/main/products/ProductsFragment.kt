@@ -15,14 +15,20 @@ import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
 import com.haze420.android.adapter.ProductsAdapter
+import com.haze420.android.model.ProductModel
 import com.haze420.android.model.enums.FilterType
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
+import com.haze420.android.webservice.core.RetrofitFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_products.*
 
 import kotlinx.android.synthetic.main.form_filter.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 
 class ProductsFragment : BaseMenuLevelFragment(){
@@ -69,6 +75,7 @@ class ProductsFragment : BaseMenuLevelFragment(){
         }
         filtersLayout.selectedFilter.observe(this, Observer {
             Log.d("TAG", "================= Filter selected. " + it.toString())
+            viewModel.selectedFilter = it
         })
         viewModel.getProductsList().observe(viewLifecycleOwner, Observer { p ->
             if (p.size == 0) {
@@ -84,11 +91,55 @@ class ProductsFragment : BaseMenuLevelFragment(){
         viewModel.getSelected().observe(this, Observer {
             if (it != null){
                 viewModel.clearSelected()
-                val direction = ProductsFragmentDirections.actionProductsFragmentToProductDetail(it)
-                findNavController().navigate(direction)
+//                val direction = ProductsFragmentDirections.actionProductsFragmentToProductDetail(it)
+//                findNavController().navigate(direction)
             }
 
         })
+        loadProducts()
+    }
+
+    private fun loadProducts(){
+        if (!mMainActivity.checkConnection()!!){
+            return
+        }
+        mMainActivity.showLoading()
+        val token = mMainActivity.prefs.token
+        if (token == ""){
+            mMainActivity.showUnauthError()
+            return
+        }
+        val service = RetrofitFactory.makeHomeServiceService(token)
+        GlobalScope.launch(Dispatchers.Main){
+            val params: HashMap<String, String> = HashMap()
+            params.set("page", "1")
+            params.set("per_page", "100")
+            params.set("offset", "0")
+            params.set("order", "desc")
+            params.set("orderby", "popularity")
+
+            val request = service.loadProducts(params)
+            try {
+                // Wait for response
+                val response = request.await()
+
+                //Hide loading
+                mMainActivity.hideLoading()
+                // Handle response
+                if (response.success){
+                    val productList = ArrayList<ProductModel>(response.data)
+                    viewModel.productListAll = productList
+                }else{
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
+                }
+
+            }catch (e: HttpException){
+                handleAPIError(e)
+
+            }catch (e: Throwable){
+                handleAPIError(e)
+            }
+        }
     }
 
     // Filter management ---------------------------------------------

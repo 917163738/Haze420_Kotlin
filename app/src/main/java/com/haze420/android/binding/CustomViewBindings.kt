@@ -30,6 +30,11 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.haze420.android.R
+import android.graphics.drawable.Drawable
+import com.bumptech.glide.RequestBuilder
+
+
+
 
 
 @BindingAdapter("imageFromUrl")
@@ -37,7 +42,7 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) { /// Try thumnail link
     if (!imageUrl.isNullOrEmpty()) {
         // Show placeholder as a static image
 //        val requestOption = RequestOptions()
-//            .placeholder(R.drawable.ico_placeholder).centerCrop()
+//            .placeholder(R.drawable.loadinggif).fitCenter()
 //        Glide.with(view.context)
 //                .load(imageUrl)
 //                .apply(requestOption)
@@ -45,9 +50,12 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) { /// Try thumnail link
 //                .into(view)
 
         //load gif as a thumbnail like animating placeholder
+        val thumbnailRequest = Glide
+            .with(view.context)
+            .load(R.drawable.loadinggif)
         Glide.with(view.context)
             .load(imageUrl)
-            .thumbnail(Glide.with(view.context).load(R.drawable.loadinggif))
+            .thumbnail(thumbnailRequest)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(view)
 
