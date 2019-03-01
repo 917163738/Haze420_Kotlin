@@ -28,7 +28,11 @@ android {
         enabled = true  // Enable data binding
     }
     androidExtensions {
-        experimental = true // Enable experimental like Parcelize
+        experimental = true // Enable experimental like Parcelize, coroutines
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -53,11 +57,20 @@ dependencies {
     implementation "com.intuit.ssp:ssp-android:$rootProject.sdp_version"
     implementation "de.hdodenhof:circleimageview:$rootProject.circelimageview_version"
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
-//    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 
     implementation 'me.relex:circleindicator:2.1.0'
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+
+    // Retrofit and coroutine adapter
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.coroutinesAdapterVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+//    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 
     // Testing dependencies
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'

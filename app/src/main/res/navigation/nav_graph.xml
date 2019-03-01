@@ -247,7 +247,7 @@
               android:label="CountriesFragment">
         <action android:id="@+id/action_countriesFragment_to_loginFragment"
                 app:destination="@id/loginFragment"
-                app:popUpTo="@id/countriesFragment"
+                app:popUpTo="@id/accountFragment"
                 app:popUpToInclusive="true"
         />
     </fragment>

@@ -2,11 +2,9 @@ package com.haze420.android.ui.onboarding.login
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 
 
@@ -14,19 +12,26 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.haze420.android.BuildConfig
 import com.haze420.android.R
+import com.haze420.android.model.apimodel.LoginRequest
 import com.haze420.android.ui.MainActivity
-import com.haze420.android.widget.onboarding.EmailForm
-import com.haze420.android.widget.onboarding.PasswordForm
+import com.haze420.android.webservice.core.RetrofitFactory
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import com.haze420.android.ui.BaseFragment
+
 
 //import com.haze420.android.model.LoginModel
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var mLoginViewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,50 +43,77 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val mainAct = activity as MainActivity
-        mainAct.hideActionBarView()
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        mMainActivity = activity as MainActivity
+        mMainActivity?.hideActionBarView()
+        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
-        view?.findViewById<Button>(R.id.btnForgot)?.setOnClickListener {
+        btnForgot.setOnClickListener {
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_ForgotFragment) }
-
         }
-        view?.findViewById<Button>(R.id.btnRegister)?.setOnClickListener {
-            mainAct.hideKeyboard()
+        btnRegister.setOnClickListener {
+            mMainActivity?.hideKeyboard()
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_RegisterFragment) }
-
         }
 
-        view?.findViewById<Button>(R.id.btnLogin)?.setOnClickListener {
-            mainAct.hideKeyboard()
-            view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
-//            findMainNavController().navigate(R.id.action_loginFragment_to_productsFragment)
+        btnLogin.setOnClickListener {
+            mMainActivity?.hideKeyboard()
+            login()
         }
 
-        val pwdForm = view?.findViewById<PasswordForm>(R.id.pwdForm)
         pwdForm?.password?.observe(this, Observer {
-            loginViewModel.password.value = it
+            mLoginViewModel.password.value = it
         })
 
         pwdForm?.isValid?.observe(this, Observer {
-            loginViewModel.updateValidPwd(it)
+            mLoginViewModel?.updateValidPwd(it)
         })
 
-        val emailForm = view?.findViewById<EmailForm>(R.id.emailForm)
         emailForm?.emailAdd?.observe(this, Observer {
-            loginViewModel.emailAddress.value = it
+            mLoginViewModel.emailAddress.value = it
         })
 
         emailForm?.isValid?.observe(this, Observer {
-            loginViewModel.updateValidEmail(it)
+            mLoginViewModel.updateValidEmail(it)
         })
 
-        loginViewModel.isAllValid.observe(this, Observer {
-            view?.findViewById<Button>(R.id.btnLogin)?.isEnabled = it
+        mLoginViewModel.isAllValid.observe(this, Observer {
+            btnLogin.isEnabled = it
         })
         if (BuildConfig.DEBUG){
-            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("aaa@gmail.com")
-            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("aaa@gmail.com")
+            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("testaccount3@gmail.com")
+            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("00000000t")
         }
+    }
+
+    private fun login(){
+        if (!mMainActivity?.checkConnection()!!){
+            return
+        }
+        mMainActivity?.showLoading()
+        val service = RetrofitFactory.makeOnboardingService()
+        GlobalScope.launch(Dispatchers.Main){
+            val loginRequestBody = LoginRequest(mLoginViewModel.emailAddress.value!!, mLoginViewModel.password.value!!)
+            val request = service.login(loginRequestBody)
+            try {
+                val response = request.await()
+                if (response.success){
+                    mMainActivity?.prefs?.token = response.data!!.jwt_token!!
+                    mMainActivity?.hideLoading()
+                    gotoHome()
+                }else{
+                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showNormalError(it1) } }
+                }
+
+            }catch (e: HttpException){
+                handleAPIError(e)
+
+            }catch (e: Throwable){
+                handleAPIError(e)
+            }
+        }
+    }
+
+    private fun gotoHome(){
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
     }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dig_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/_100sdp"
+    android:background="@color/dialog_bg_color">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/avenir_heavy"
+        android:text="Error"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:textSize="@dimen/_14ssp"/>
+
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/avenir_light"
+        android:padding="@dimen/_12sdp"
+        android:text="Hello,"
+        android:textColor="@color/white"
+
+        android:layout_below="@+id/txtTitle"
+        android:textSize="@dimen/_13ssp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"
+        android:layout_below="@+id/txtMessage"/>
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="@color/red"
+        android:text="OK"
+        android:layout_below="@+id/txtMessage"
+        android:textSize="@dimen/_14ssp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

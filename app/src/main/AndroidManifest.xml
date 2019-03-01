@@ -3,6 +3,7 @@
           xmlns:dist="http://schemas.android.com/apk/distribution"
           package="com.haze420.android">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <dist:module dist:instant="true"/>
 

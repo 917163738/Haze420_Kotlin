@@ -1,11 +1,16 @@
 package com.haze420.android.ui
 
+import android.text.BoringLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel;
 import com.haze420.android.model.enums.ActionBarItemType
 
 class SharedViewModel : ViewModel() {
     private val _selectedActionBarItem = MutableLiveData<ActionBarItemType?>()
+
+    init {
+
+    }
 
     // TODO: Implement the ViewModel
     fun getSelectedActionbarItem(): MutableLiveData<ActionBarItemType?>{
