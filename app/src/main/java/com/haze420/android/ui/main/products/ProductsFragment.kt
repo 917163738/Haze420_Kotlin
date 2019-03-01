@@ -91,8 +91,8 @@ class ProductsFragment : BaseMenuLevelFragment(){
         viewModel.getSelected().observe(this, Observer {
             if (it != null){
                 viewModel.clearSelected()
-//                val direction = ProductsFragmentDirections.actionProductsFragmentToProductDetail(it)
-//                findNavController().navigate(direction)
+                val direction = ProductsFragmentDirections.actionProductsFragmentToProductDetail(it)
+                findNavController().navigate(direction)
             }
 
         })

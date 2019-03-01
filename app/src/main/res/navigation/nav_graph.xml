@@ -98,7 +98,7 @@
               tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="product_data"
-            app:argType="com.haze420.android.model.Product"
+            app:argType="com.haze420.android.model.ProductModel"
         />
         <action android:id="@+id/action_productDetail_to_reviews"
                 app:destination="@id/reviewsFragment"

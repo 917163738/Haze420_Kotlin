@@ -130,10 +130,6 @@ class ProductsViewModel : ViewModel() {
     }
 
     fun getProductNameAt(position: Int): String{
-        if (position >= getProductsList().value?.size!!){
-            Log.e("Error", "============ " + position.toString())
-            return "========================"
-        }
         return getProductsList().value?.get(position)?.name!!
     }
     fun getAvgRateAt(position: Int): Float{

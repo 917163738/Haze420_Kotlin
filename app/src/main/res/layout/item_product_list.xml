@@ -163,7 +163,7 @@
         >
             <ImageView
                     android:id="@+id/imgProductImage"
-                    android:layout_width="@dimen/_65sdp"
+                    android:layout_width="@dimen/_70sdp"
                     android:layout_height="@dimen/_65sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -173,7 +173,7 @@
             />
             <ImageView
                 android:id="@+id/imgPlaceholder"
-                android:layout_width="@dimen/_65sdp"
+                android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_65sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

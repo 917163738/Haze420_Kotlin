@@ -12,15 +12,18 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
-import com.haze420.android.adapter.ProductsAdapter
 import com.haze420.android.adapter.SaleAdapter
-import com.haze420.android.model.enums.FilterType
+import com.haze420.android.model.ProductModel
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
-import com.haze420.android.ui.main.products.ProductsFragmentDirections
+import com.haze420.android.webservice.core.RetrofitFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_sale.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class SaleFragment : BaseMenuLevelFragment(){
 
@@ -59,7 +62,7 @@ class SaleFragment : BaseMenuLevelFragment(){
         }
         filtersLayout.selectedFilter.observe(this, Observer {
             Log.d("TAG", "================= Filter selected. " + it.toString())
-            viewModel.selectedFilter.set(it.toString())
+            viewModel.selectedFilter = it
             txtFilter.setText(it.dispName)
             val anim1 = AnimationUtils.loadAnimation(context, R.anim.rotate_up)
             imgArrow.startAnimation(anim1)
@@ -69,13 +72,11 @@ class SaleFragment : BaseMenuLevelFragment(){
                 // Show  empty warning!
             } else {
 //                sharedViewModel.showEmpty.set(View.GONE)
-//                sharedViewModel.setDogBreedsInAdapter(dogBreeds)
-//                adapter.submitList(p)
-//                adapter.notifyItemChanged(0)
-//                recyclerView.smoothScrollToPosition(0)
+                adapter.submitList(p)
+
             }
         })
-        viewModel.getSelected().observe(this, Observer {
+        viewModel.getSelectedProduct().observe(this, Observer {
             if (it != null){
                 viewModel.clearSelected()
                 val direction = SaleFragmentDirections.actionSaleToProductDetail(it)
@@ -83,6 +84,7 @@ class SaleFragment : BaseMenuLevelFragment(){
             }
 
         })
+        loadProducts()
     }
 
     private fun onClickFilter(){
@@ -96,6 +98,51 @@ class SaleFragment : BaseMenuLevelFragment(){
             filtersLayout.openFilter()
         }
     }
+
+    private fun loadProducts(){
+        if (!mMainActivity.checkConnection()!!){
+            return
+        }
+        mMainActivity.showLoading()
+        val token = mMainActivity.prefs.token
+        if (token == ""){
+            mMainActivity.showUnauthError()
+            return
+        }
+        val service = RetrofitFactory.makeHomeServiceService(token)
+        GlobalScope.launch(Dispatchers.Main){
+            val params: HashMap<String, String> = HashMap()
+            params.set("page", "1")
+            params.set("per_page", "100")
+            params.set("offset", "0")
+            params.set("order", "desc")
+            params.set("orderby", "popularity")
+            params.set("on_sale", "true")
+
+            val request = service.loadProducts(params)
+            try {
+                // Wait for response
+                val response = request.await()
+
+                //Hide loading
+                mMainActivity.hideLoading()
+                // Handle response
+                if (response.success){
+                    val productList = ArrayList<ProductModel>(response.data)
+                    viewModel.productListAll = productList
+                }else{
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
+                }
+
+            }catch (e: HttpException){
+                handleAPIError(e)
+
+            }catch (e: Throwable){
+                handleAPIError(e)
+            }
+        }
+    }
+
 
     override fun handleTransaction(from: SlideMenuType, goto: SlideMenuType){
         Log.d("Test", "handleTransaction(goto: SlideMenuType) ------------------")
