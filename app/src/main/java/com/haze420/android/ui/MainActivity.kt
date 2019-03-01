@@ -10,32 +10,19 @@ import android.view.Window
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.*
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.haze420.android.R
 import com.haze420.android.model.Constants
-import com.haze420.android.model.apimodel.LoginRequest
-import com.haze420.android.model.apimodel.LoginResponse
 import com.haze420.android.model.enums.ActionBarItemType
 import com.haze420.android.model.persist.Prefs
-import com.haze420.android.webservice.core.RetrofitFactory
 
 import kotlinx.android.synthetic.main.actionbar.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.util.concurrent.TimeUnit
 
 
 class MainActivity : BaseMainActivity(){
@@ -202,7 +189,7 @@ class MainActivity : BaseMainActivity(){
         if (mIsConnectedInternet){
             return true
         }else{
-            showNormalError(Constants.ERR_NETWORK)
+            showError(Constants.ERR_NETWORK)
             return false
         }
     }
@@ -215,15 +202,26 @@ class MainActivity : BaseMainActivity(){
         loadingDlg.dismiss()
     }
 
-    fun showNormalError(error: String, title: String = "Error"){
+    fun showError(error: String, title: String = "Error", callback: (() -> Unit)? = null){
+        showAlert(title, error, callback)
+    }
+
+    fun showNormalAlert(title: String, message: String, callback: (() -> Unit)? = null){
+        showAlert(title, message, callback)
+    }
+
+    private fun showAlert(title: String, message: String, callback: (() -> Unit)?){
         val dialog = Dialog(this@MainActivity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(true)
-        dialog.setContentView(R.layout.dialog_error)
+        dialog.setContentView(R.layout.dialog_normal)
         dialog.findViewById<TextView>(R.id.txtTitle)!!.setText(title)
-        dialog.findViewById<TextView>(R.id.txtMessage)!!.setText(error)
+        dialog.findViewById<TextView>(R.id.txtMessage)!!.setText(message)
         dialog.findViewById<Button>(R.id.btnOK)!!.setOnClickListener {
             dialog.dismiss()
+            if (callback != null){
+                callback()
+            }
         }
         dialog.show()
     }

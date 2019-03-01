@@ -29,13 +29,13 @@ open class BaseFragment : Fragment() {
                     errMessage = loginRes?.error?.message!!
                 }
             }
-            mMainActivity?.showNormalError(errMessage)
+            mMainActivity?.showError(errMessage)
         }else if (e is Throwable){
             Log.e("BaseFragment", e.localizedMessage)
-            mMainActivity?.showNormalError(Constants.ERR_SOMETHING_WRONG)
+            mMainActivity?.showError(Constants.ERR_SOMETHING_WRONG)
         }else{
             Log.e("BaseFragment", "Unknown")
-            mMainActivity?.showNormalError(Constants.ERR_UNKNOWN)
+            mMainActivity?.showError(Constants.ERR_UNKNOWN)
         }
     }
 

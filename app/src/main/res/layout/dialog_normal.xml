@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:fontFamily="@font/avenir_heavy"
-        android:text="Error"
+        android:text="Title"
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/_6sdp"
         android:textSize="@dimen/_14ssp"/>

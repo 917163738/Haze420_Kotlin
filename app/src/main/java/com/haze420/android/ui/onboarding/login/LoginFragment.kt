@@ -95,13 +95,18 @@ class LoginFragment : BaseFragment() {
             val loginRequestBody = LoginRequest(mLoginViewModel.emailAddress.value!!, mLoginViewModel.password.value!!)
             val request = service.login(loginRequestBody)
             try {
+                // Wait for response
                 val response = request.await()
+
+                //Hide loading
+                mMainActivity?.hideLoading()
+
+                // Handle response
                 if (response.success){
                     mMainActivity?.prefs?.token = response.data!!.jwt_token!!
-                    mMainActivity?.hideLoading()
                     gotoHome()
                 }else{
-                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showNormalError(it1) } }
+                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showError(it1) } }
                 }
 
             }catch (e: HttpException){

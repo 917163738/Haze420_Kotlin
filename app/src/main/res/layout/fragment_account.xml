@@ -169,6 +169,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/location"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/_12sdp"
+                    android:visibility="invisible"
             />
 
             <View
@@ -180,6 +181,7 @@
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_8sdp"
+                    android:visibility="invisible"
             />
 
             <TextView
@@ -197,6 +199,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/viewReferralLink"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imgCopy"
+                    android:visibility="invisible"
             />
             <ImageView
                     android:id="@+id/imgCopy"
@@ -209,6 +212,7 @@
                     app:layout_constraintStart_toEndOf="@+id/txtReferralLink"
                     android:layout_marginStart="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="invisible"
             />
 
             <Button
@@ -220,10 +224,9 @@
                     android:text="@string/str_save"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
-                    app:layout_constraintTop_toBottomOf="@+id/viewReferralLink"
+                    app:layout_constraintTop_toBottomOf="@+id/txtReferralLinkNote"
                     app:layout_constraintEnd_toEndOf="@+id/viewReferralLink"
                     app:layout_constraintStart_toStartOf="@+id/viewReferralLink"
-                    android:layout_marginTop="@dimen/_20sdp"
             />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
