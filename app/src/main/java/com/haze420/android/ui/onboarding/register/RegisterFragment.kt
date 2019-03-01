@@ -53,7 +53,6 @@ class RegisterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
-        mMainActivity = activity as MainActivity
         // TODO: Use the ViewModel
         btnForgot.setOnClickListener {
             view?.let {
@@ -161,5 +160,4 @@ class RegisterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
             }
         }
     }
-
 }

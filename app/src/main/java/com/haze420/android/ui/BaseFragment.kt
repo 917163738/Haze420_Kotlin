@@ -1,5 +1,6 @@
 package com.haze420.android.ui
 
+import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 
@@ -15,6 +16,11 @@ import com.squareup.moshi.Moshi
 open class BaseFragment : Fragment() {
 
     var mMainActivity: MainActivity? = null
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mMainActivity = activity as MainActivity
+    }
 
     fun handleAPIError(e: Any){
         mMainActivity?.hideLoading()

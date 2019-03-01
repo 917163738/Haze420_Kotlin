@@ -43,7 +43,6 @@ class LoginFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mMainActivity = activity as MainActivity
         mMainActivity?.hideActionBarView()
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
