@@ -1,7 +1,5 @@
 package com.haze420.android.ui.main.products
 
-import android.content.Intent
-import android.os.Build
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.os.Handler
@@ -9,18 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.Dimension
-import androidx.core.app.ShareCompat
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.haze420.android.R
 import com.haze420.android.adapter.ImageViewPagerAdapter
 
 import com.haze420.android.databinding.FragmentProductDetailBinding
 import com.haze420.android.model.ImageModel
 import com.haze420.android.model.Product
-import com.haze420.android.model.enums.ActionBarItemType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.util.InjectorUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -67,7 +60,7 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
 
         // --------------- Rating bar menu setup
         ratingLayout.setOnClickListener {
-            val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(product.name, product.prductId, false)
+            val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(product.name, product.id, false)
             findNavController().navigate(direction)
         }
         // -------------- View Pager Set up

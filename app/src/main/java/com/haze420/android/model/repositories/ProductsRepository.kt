@@ -27,19 +27,19 @@ class ProductsRepository {
         // add fake product for category selection
 
         for (i in 0..60){
-            if (i < 10){
-                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Sativa))
-            }else if (i < 20){
-                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Hybrid))
-            }else if (i < 30){
-                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Indica))
-            }else if (i < 40){
-                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Sativa))
-            }else if (i < 50){
-                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Hybrid))
-            }else{
-                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Indica))
-            }
+//            if (i < 10){
+//                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Sativa))
+//            }else if (i < 20){
+//                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Hybrid))
+//            }else if (i < 30){
+//                _productsList.add(Product(i.toString(), false, "AK-27_" + i.toString(), CATEGORY.Indica))
+//            }else if (i < 40){
+//                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Sativa))
+//            }else if (i < 50){
+//                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Hybrid))
+//            }else{
+//                _productsList.add(Product(i.toString(), true, "AK-27_" + i.toString(), CATEGORY.Indica))
+//            }
 
         }
 
@@ -47,7 +47,7 @@ class ProductsRepository {
 
     private fun filterCountryList(isSale: Boolean, category: CATEGORY): List<Product>{
         val rnds = (-200000..-100000).random()
-        val fakeForCategorySelection = Product("-1", false, rnds.toString())
+//        val fakeForCategorySelection = Product("-1", false, rnds.toString())
 
         val filtered = _productsList.filterIndexed { index, product ->
             if (isSale){
@@ -62,7 +62,7 @@ class ProductsRepository {
         }
         var resultArray = ArrayList<Product>()
         if (!isSale){
-            resultArray.add(fakeForCategorySelection)
+//            resultArray.add(fakeForCategorySelection)
         }
         resultArray.addAll(filtered)
         return resultArray

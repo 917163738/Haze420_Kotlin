@@ -74,7 +74,7 @@ class RegisterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
         })
 
         mViewModel.birthday.observe(this, Observer {
-            mMainActivity?.hideKeyboard()
+            mMainActivity.hideKeyboard()
             view?.findViewById<BirthForm>(R.id.birthForm)?.updateBirthday(it)
         })
 
@@ -133,10 +133,10 @@ class RegisterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun register(){
-        if (!mMainActivity?.checkConnection()!!){
+        if (!mMainActivity.checkConnection()!!){
             return
         }
-        mMainActivity?.showLoading()
+        mMainActivity.showLoading()
         val service = RetrofitFactory.makeOnboardingService()
         GlobalScope.launch(Dispatchers.Main){
             val signUpRequest = SignupRequest(mViewModel.emailAddress.value!!, mViewModel.password.value!!,
@@ -144,12 +144,12 @@ class RegisterFragment : BaseFragment(), DatePickerDialog.OnDateSetListener {
             val request = service.register(signUpRequest)
             try {
                 val response = request.await()
-                mMainActivity?.hideLoading()
+                mMainActivity.hideLoading()
                 if (response.success){
-                    mMainActivity?.showNormalAlert("Success",
+                    mMainActivity.showNormalAlert("Success",
                         "Successfully registered. Please log in with your credentials.")
                 }else{
-                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showError(it1) } }
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
                 }
 
             }catch (e: HttpException){

@@ -15,16 +15,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
 import com.haze420.android.R
-import com.haze420.android.adapter.CountriesAdapter
 import com.haze420.android.adapter.OrdersAdapter
-import com.haze420.android.adapter.ProductsAdapter
-import com.haze420.android.databinding.FragmentCountriesBinding
 import com.haze420.android.databinding.FragmentOrdersBinding
 import com.haze420.android.model.Product
 import com.haze420.android.model.enums.SlideMenuType
 import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
-import com.haze420.android.ui.main.account.CountriesViewModel
 import com.haze420.android.ui.main.products.ProductDetailFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -55,25 +51,29 @@ class OrdersFragment : BaseMenuLevelFragment(){
         (activity as MainActivity).actionBarView.config_OrdersFragment()
 
         viewModel.getSelectedTrackNum().observe(this, Observer {
-            val dialog = Dialog(context)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.setCancelable(true)
-            dialog.setContentView(R.layout.dialog_track_number)
-            dialog.findViewById<TextView>(R.id.txtTrackNum)!!.setText(it)
-            dialog.show()
-            Handler().postDelayed({dialog.dismiss()}, 3000)
+            if (it != null){
+                viewModel.clearSelectedTrackNum()
+                val dialog = Dialog(context)
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                dialog.setCancelable(true)
+                dialog.setContentView(R.layout.dialog_track_number)
+                dialog.findViewById<TextView>(R.id.txtTrackNum)!!.setText(it)
+                dialog.show()
+                Handler().postDelayed({dialog.dismiss()}, 3000)
+
+            }
         })
         viewModel.getSelectedWriteReview().observe(this, Observer {product ->
             if (product != null) {
                 viewModel.clearSelectedWriteReview()
-                val direction = OrdersFragmentDirections.actionOrdersToReviews(product!!.name, product!!.prductId, true)
+                val direction = OrdersFragmentDirections.actionOrdersToReviews(product!!.name, product!!.id, true)
                 findNavController().navigate(direction)
             }
         })
     }
 
     private fun gotoReviews(selectedProduct: Product){
-        val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(selectedProduct.name, selectedProduct.prductId, false)
+        val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(selectedProduct.name, selectedProduct.id, false)
         findNavController().navigate(direction)
     }
 

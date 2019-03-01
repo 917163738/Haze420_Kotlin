@@ -43,19 +43,19 @@ class LoginFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mMainActivity?.hideActionBarView()
+        mMainActivity.hideActionBarView()
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         btnForgot.setOnClickListener {
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_ForgotFragment) }
         }
         btnRegister.setOnClickListener {
-            mMainActivity?.hideKeyboard()
+            mMainActivity.hideKeyboard()
             view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_RegisterFragment) }
         }
 
         btnLogin.setOnClickListener {
-            mMainActivity?.hideKeyboard()
+            mMainActivity.hideKeyboard()
             login()
         }
 
@@ -85,10 +85,10 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun login(){
-        if (!mMainActivity?.checkConnection()!!){
+        if (!mMainActivity.checkConnection()!!){
             return
         }
-        mMainActivity?.showLoading()
+        mMainActivity.showLoading()
         val service = RetrofitFactory.makeOnboardingService()
         GlobalScope.launch(Dispatchers.Main){
             val loginRequestBody = LoginRequest(mLoginViewModel.emailAddress.value!!, mLoginViewModel.password.value!!)
@@ -98,14 +98,14 @@ class LoginFragment : BaseFragment() {
                 val response = request.await()
 
                 //Hide loading
-                mMainActivity?.hideLoading()
+                mMainActivity.hideLoading()
 
                 // Handle response
                 if (response.success){
-                    mMainActivity?.prefs?.token = response.data!!.jwt_token!!
+                    mMainActivity.prefs?.token = response.data!!.jwt_token!!
                     gotoHome()
                 }else{
-                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showError(it1) } }
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
                 }
 
             }catch (e: HttpException){
@@ -116,6 +116,44 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
+
+//    private fun loadProducts(){
+//        if (!mMainActivity.checkConnection()!!){
+//            return
+//        }
+//        mMainActivity.showLoading()
+//        val token = mMainActivity.prefs.token
+//        if (token == null){
+////            mMainActivity.showError()
+//            return
+//        }
+//        val service = RetrofitFactory.makeHomeServiceService(token)
+//        GlobalScope.launch(Dispatchers.Main){
+//            val loginRequestBody = LoginRequest(mLoginViewModel.emailAddress.value!!, mLoginViewModel.password.value!!)
+//            val request = service.login(loginRequestBody)
+//            try {
+//                // Wait for response
+//                val response = request.await()
+//
+//                //Hide loading
+//                mMainActivity.hideLoading()
+//
+//                // Handle response
+//                if (response.success){
+//                    mMainActivity.prefs?.token = response.data!!.jwt_token!!
+//                    gotoHome()
+//                }else{
+//                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
+//                }
+//
+//            }catch (e: HttpException){
+//                handleAPIError(e)
+//
+//            }catch (e: Throwable){
+//                handleAPIError(e)
+//            }
+//        }
+//    }
 
     private fun gotoHome(){
         view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }

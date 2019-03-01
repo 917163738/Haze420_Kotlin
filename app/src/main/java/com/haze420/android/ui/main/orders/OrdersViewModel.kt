@@ -14,7 +14,7 @@ class OrdersViewModel : ViewModel() {
     private  val _repository = OrdersRepository()
     val imageLink = "https://www.haze420.co.uk/wp-content/uploads/2018/12/OG-Kush-500x500.png"
 
-    private  val _selectedTrack = MutableLiveData<String>()
+    private  val _selectedTrack = MutableLiveData<String?>()
     private  val _selectedWriteProduct = MutableLiveData<Product?>()
 
     init {
@@ -25,8 +25,12 @@ class OrdersViewModel : ViewModel() {
         return _repository.getOrderList()
     }
 
-    fun getSelectedTrackNum(): LiveData<String>{
+    fun getSelectedTrackNum(): LiveData<String?>{
         return _selectedTrack
+    }
+
+    fun clearSelectedTrackNum(){
+        _selectedTrack.value = null
     }
     fun getSelectedWriteReview(): LiveData<Product?>{
         return _selectedWriteProduct
@@ -62,7 +66,7 @@ class OrdersViewModel : ViewModel() {
     }
 
     fun onClickWriteReviewAt(position: Int){
-        _selectedWriteProduct.value = Product(position.toString())
+        _selectedWriteProduct.value = null
     }
 
     fun onClickBuyAgainAt(position: Int){

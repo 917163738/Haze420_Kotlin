@@ -15,7 +15,7 @@ import com.squareup.moshi.Moshi
 
 open class BaseFragment : Fragment() {
 
-    var mMainActivity: MainActivity? = null
+    lateinit var mMainActivity: MainActivity
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

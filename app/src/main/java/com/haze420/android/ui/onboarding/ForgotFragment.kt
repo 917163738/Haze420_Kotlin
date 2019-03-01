@@ -46,7 +46,7 @@ class ForgotFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         mViewModel = ViewModelProviders.of(this).get(ForgotViewModel::class.java)
         btnSend.setOnClickListener({
-            mMainActivity?.hideKeyboard()
+            mMainActivity.hideKeyboard()
             forgotPwdAPI()
         })
         btnRegister.setOnClickListener({
@@ -68,22 +68,22 @@ class ForgotFragment : BaseFragment() {
     }
 
     private fun forgotPwdAPI(){
-        if (!mMainActivity?.checkConnection()!!){
+        if (!mMainActivity.checkConnection()!!){
             return
         }
-        mMainActivity?.showLoading()
+        mMainActivity.showLoading()
         val service = RetrofitFactory.makeOnboardingService()
         GlobalScope.launch(Dispatchers.Main){
             val forgotRequest = ForgotRequest(mViewModel.emailAddress.value!!)
             val request = service.forgotPwd(forgotRequest)
             try {
                 val response = request.await()
-                mMainActivity?.hideLoading()
+                mMainActivity.hideLoading()
                 if (response.success){
-                    mMainActivity?.showNormalAlert("Success",
+                    mMainActivity.showNormalAlert("Success",
                         "Reset Password link had been send to your email.")
                 }else{
-                    response.error?.let { it.message?.let { it1 -> mMainActivity?.showError(it1) } }
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
                 }
 
             }catch (e: HttpException){
