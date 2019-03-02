@@ -103,6 +103,40 @@ class LoginFragment : BaseFragment() {
                 // Handle response
                 if (response.success){
                     mMainActivity.prefs?.token = "Bearer " + response.data!!.jwt_token!!
+                    getUserProfile("Bearer " + response.data!!.jwt_token!!)
+                }else{
+                    response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
+                }
+
+            }catch (e: HttpException){
+                handleAPIError(e)
+
+            }catch (e: Throwable){
+                handleAPIError(e)
+            }
+        }
+    }
+
+    private fun getUserProfile(token: String){
+        if (!mMainActivity.checkConnection()!!){
+            return
+        }
+        mMainActivity.showLoading()
+        val service = RetrofitFactory.makeHomeServiceService(token)
+        GlobalScope.launch(Dispatchers.Main){
+
+            val request = service.getProfile()
+            try {
+                // Wait for response
+                val response = request.await()
+
+                //Hide loading
+                mMainActivity.hideLoading()
+
+                // Handle response
+                if (response.success){
+                    val userProfile = response.data
+                    mMainActivity.prefs?.userProfile = userProfile
                     gotoHome()
                 }else{
                     response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
@@ -116,6 +150,8 @@ class LoginFragment : BaseFragment() {
             }
         }
     }
+
+
     private fun gotoHome(){
         view?.let { Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_productsFragment) }
     }

@@ -1,5 +1,6 @@
 package com.haze420.android.webservice
 
+import com.haze420.android.model.apimodel.GetProfileResponse
 import com.haze420.android.model.apimodel.ProductListResponse
 import com.haze420.android.model.apimodel.ReviewListResponse
 import kotlinx.coroutines.Deferred
@@ -13,4 +14,7 @@ interface HomeService {
 
     @GET("review")
     fun getReviewList(@QueryMap params: Map<String, String>): Deferred<ReviewListResponse>
+
+    @GET("user")
+    fun getProfile(): Deferred<GetProfileResponse>
 }
