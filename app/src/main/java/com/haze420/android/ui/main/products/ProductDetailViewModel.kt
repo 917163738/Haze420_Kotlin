@@ -53,5 +53,9 @@ class ProductDetailViewModel internal constructor(
         return reviewCnt.toString() + " reviews"
     }
 
+    fun getRating(): Float{
+        return _product.average_rating.toFloat()
+    }
+
 
 }
