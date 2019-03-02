@@ -7,7 +7,7 @@ import com.haze420.android.model.repositories.CountriesRepository
 
 class CountriesViewModel : ViewModel() {
 
-    private val _selected = MutableLiveData<Int>()
+    private val _selected = MutableLiveData<String>()
     private  val _repository = CountriesRepository()
 
 
@@ -19,7 +19,7 @@ class CountriesViewModel : ViewModel() {
     fun getCountryList() : MutableLiveData<List<String>>{
         return _repository.getCountryList()
     }
-    fun getSelected(): MutableLiveData<Int>{
+    fun getSelected(): MutableLiveData<String>{
         return _selected
     }
 
@@ -30,7 +30,7 @@ class CountriesViewModel : ViewModel() {
 
     // Data binding
     fun onItemClick(position: Int){
-        _selected.value = position
+        _selected.value = getCountryAt(position)
     }
 
     //Getter

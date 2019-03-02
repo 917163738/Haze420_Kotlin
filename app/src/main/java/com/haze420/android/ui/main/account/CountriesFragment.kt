@@ -9,16 +9,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.haze420.android.R
 
 import com.haze420.android.adapter.CountriesAdapter
 import com.haze420.android.databinding.FragmentCountriesBinding
 import com.haze420.android.model.enums.ActionBarItemType
+import com.haze420.android.ui.BaseFragment
 import com.haze420.android.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class CountriesFragment : Fragment() {
+class CountriesFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = CountriesFragment()
@@ -86,14 +88,10 @@ class CountriesFragment : Fragment() {
 //    }
 
     private fun setupListClick() {
-        viewModel.getSelected().observe(this, Observer{position  ->
-            Toast.makeText(context, "Selected"+ position.toString(), Toast.LENGTH_SHORT).show()
-//            sharedViewModel.filterCategoryAndSort(position)
+        viewModel.getSelected().observe(this, Observer{country  ->
+            mMainActivity.sharedViewModel.setSelectedCountry(country)
             view?.let {
-
-                if (!Navigation.findNavController(it).popBackStack(R.id.deliveryAddressFragment, false)){
-                    Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_forgotFragment)
-                }
+                findNavController().popBackStack()
             }
         })
     }

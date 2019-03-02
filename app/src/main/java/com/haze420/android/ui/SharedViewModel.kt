@@ -8,6 +8,8 @@ import com.haze420.android.model.enums.ActionBarItemType
 class SharedViewModel : ViewModel() {
     private val _selectedActionBarItem = MutableLiveData<ActionBarItemType?>()
 
+    private val _selectedCountry = MutableLiveData<String?>()
+
     init {
 
     }
@@ -19,5 +21,13 @@ class SharedViewModel : ViewModel() {
 
     fun setSelectedActionbarItem(selectedItem: ActionBarItemType?){
         _selectedActionBarItem.value = selectedItem
+    }
+
+    fun getSelectedCountry(): MutableLiveData<String?>{
+        return _selectedCountry
+    }
+
+    fun setSelectedCountry(selected: String?){
+        _selectedCountry.value = selected
     }
 }

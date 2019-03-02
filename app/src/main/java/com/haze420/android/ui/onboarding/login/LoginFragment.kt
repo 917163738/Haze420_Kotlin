@@ -78,10 +78,10 @@ class LoginFragment : BaseFragment() {
         mLoginViewModel.isAllValid.observe(this, Observer {
             btnLogin.isEnabled = it
         })
-        if (BuildConfig.DEBUG){
-            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("testaccount4@gmail.com")
-            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("00000000")
-        }
+//        if (BuildConfig.DEBUG){
+//            emailForm?.findViewById<EditText>(R.id.edtEmail)?.setText("testaccount4@gmail.com")
+//            pwdForm?.findViewById<EditText>(R.id.edtPassword)?.setText("00000000")
+//        }
     }
 
     private fun login(){
@@ -102,8 +102,13 @@ class LoginFragment : BaseFragment() {
 
                 // Handle response
                 if (response.success){
-                    mMainActivity.prefs?.token = "Bearer " + response.data!!.jwt_token!!
-                    getUserProfile("Bearer " + response.data!!.jwt_token!!)
+                    val bearerToken = "Bearer " + response.data!!.jwt_token!!
+                    mMainActivity.prefs.token = bearerToken
+                    mMainActivity.prefs.email = mLoginViewModel.emailAddress.value!!
+                    mMainActivity.prefs.password = mLoginViewModel.password.value!!
+
+                    getUserProfile(bearerToken)
+
                 }else{
                     response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }
                 }
@@ -136,7 +141,7 @@ class LoginFragment : BaseFragment() {
                 // Handle response
                 if (response.success){
                     val userProfile = response.data
-                    mMainActivity.prefs?.userProfile = userProfile
+                    mMainActivity.prefs.userProfile = userProfile
                     gotoHome()
                 }else{
                     response.error?.let { it.message?.let { it1 -> mMainActivity.showError(it1) } }

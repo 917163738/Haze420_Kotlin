@@ -9,6 +9,8 @@ import com.squareup.moshi.Types
 class Prefs(context: Context) {
     private val PREF_NAME = "Haze420_APP_PREFERENCES"
     private val KEY_TOKEN = "accessToken"
+    private val KEY_EMAIL = "key_email"
+    private val KEY_PASSWORD = "key_passwrod"
     private val KEY_USERPROFILE = "userProfile"
     val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, 0)
 
@@ -16,6 +18,16 @@ class Prefs(context: Context) {
     var token: String
         get() = prefs.getString(KEY_TOKEN, "")
         set(value) = prefs.edit().putString(KEY_TOKEN, value).apply()
+
+    // Save and read email
+    var email: String
+        get() = prefs.getString(KEY_EMAIL, "")
+        set(value) = prefs.edit().putString(KEY_EMAIL, value).apply()
+
+    // Save and read password
+    var password: String
+        get() = prefs.getString(KEY_PASSWORD, "")
+        set(value) = prefs.edit().putString(KEY_PASSWORD, value).apply()
 
     // Save and read user profile
     var userProfile: UserProfile?
@@ -32,6 +44,6 @@ class Prefs(context: Context) {
         prefs.edit().putString(KEY_USERPROFILE, stringValue).apply()
     }
 
-    
+
 
 }

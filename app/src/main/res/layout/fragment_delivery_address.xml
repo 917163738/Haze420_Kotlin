@@ -64,7 +64,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCountry"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
     />
@@ -78,7 +78,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtPostcode"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
     />
@@ -93,7 +93,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtStreet"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
     />
@@ -108,7 +108,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtCity"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
     />
@@ -123,7 +123,7 @@
             android:paddingLeft="@dimen/_12sdp"
             app:layout_constraintTop_toBottomOf="@+id/edtCounty"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_18sdp"
     />
     <EditText
             android:id="@+id/edtComments"
@@ -131,7 +131,9 @@
             android:layout_height="0dp"
             android:hint="@string/str_comments"
             style="@style/AddressInputEditTextStyle"
-            android:inputType="textNoSuggestions"
+            android:minLines="3"
+            android:maxLines="6"
+            android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
             android:gravity="top|left"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
