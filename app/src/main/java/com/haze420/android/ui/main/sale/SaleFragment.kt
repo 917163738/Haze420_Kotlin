@@ -43,7 +43,7 @@ class SaleFragment : BaseMenuLevelFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as MainActivity).actionBarView.config_SALEFragment()
+        mMainActivity.actionBarView.config_SALEFragment()
         viewModel = ViewModelProviders.of(this).get(SaleViewModel::class.java)
         val adapter = SaleAdapter(viewModel)
         recyclerView.adapter = adapter
@@ -84,7 +84,11 @@ class SaleFragment : BaseMenuLevelFragment(){
             }
 
         })
-        loadProducts()
+        if (viewModel.productListAll.size == 0){
+            loadProducts()
+        }else{
+            loadProducts(silently = true)
+        }
     }
 
     private fun onClickFilter(){
@@ -99,11 +103,13 @@ class SaleFragment : BaseMenuLevelFragment(){
         }
     }
 
-    private fun loadProducts(){
+    private fun loadProducts(silently: Boolean = false){
         if (!mMainActivity.checkConnection()!!){
             return
         }
-        mMainActivity.showLoading()
+        if (!silently){
+            mMainActivity.showLoading()
+        }
         val token = mMainActivity.prefs.token
         if (token == ""){
             mMainActivity.showUnauthError()

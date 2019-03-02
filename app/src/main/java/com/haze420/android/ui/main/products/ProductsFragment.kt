@@ -50,9 +50,9 @@ class ProductsFragment : BaseMenuLevelFragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val mainActivity = activity as MainActivity
-        mainActivity.showActionBarView()
-        mainActivity.actionBarView.config_ProductsFragment()
+
+        mMainActivity.showActionBarView()
+        mMainActivity.actionBarView.config_ProductsFragment()
 
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
 
@@ -96,14 +96,20 @@ class ProductsFragment : BaseMenuLevelFragment(){
             }
 
         })
-        loadProducts()
+        if (viewModel.productListAll.size == 0){
+            loadProducts()
+        }else{
+            loadProducts(true)
+        }
     }
 
-    private fun loadProducts(){
+    private fun loadProducts(silently: Boolean = false){
         if (!mMainActivity.checkConnection()!!){
             return
         }
-        mMainActivity.showLoading()
+        if (!silently){
+            mMainActivity.showLoading()
+        }
         val token = mMainActivity.prefs.token
         if (token == ""){
             mMainActivity.showUnauthError()

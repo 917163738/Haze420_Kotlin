@@ -199,11 +199,13 @@ class MainActivity : BaseMainActivity(){
     }
 
     fun hideLoading(){
-        loadingDlg.dismiss()
+        if (loadingDlg.isShowing){
+            loadingDlg.dismiss()
+        }
     }
 
     fun showUnauthError(){
-
+        //TODO Need to show unauth error with log out button
     }
 
     fun showError(error: String, title: String = "Error", callback: (() -> Unit)? = null){

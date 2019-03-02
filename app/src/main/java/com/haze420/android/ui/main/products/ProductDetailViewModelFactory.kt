@@ -19,13 +19,14 @@ package com.google.samples.apps.sunflower.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.haze420.android.model.Product
+import com.haze420.android.model.ProductModel
 import com.haze420.android.ui.main.products.ProductDetailViewModel
 
 /**
  * Factory for creating a [PlantListViewModel] with a constructor that takes a [PlantRepository].
  */
 class PlantListViewModelFactory(
-    private val product: Product
+    private val product: ProductModel
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

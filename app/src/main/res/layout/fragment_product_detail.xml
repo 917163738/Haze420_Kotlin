@@ -80,11 +80,12 @@
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_170sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@+id/txtProductName"/>
                 <me.relex.circleindicator.CircleIndicator
                     android:id="@+id/indicator"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="@dimen/_20sdp"
                     app:ci_width="8dp"
                     app:ci_height="3dp"
                     app:ci_drawable="@drawable/red_line"
@@ -195,57 +196,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                 >
-                    <TextView
-                        android:id="@+id/txtWeight1G"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="1G"
-                        android:textColor="@color/weight_color"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="@font/avenir_book"
-                        />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="3G"
-                        android:textColor="@color/red"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="@font/avenir_book"
-                    />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="7G"
-                        android:textColor="@color/weight_color"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="@font/avenir_book"
-                    />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="14G"
-                        android:textColor="@color/weight_color"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="@font/avenir_book"
-                    />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="28G"
-                        android:textColor="@color/weight_color"
-                        android:textSize="@dimen/_15ssp"
-                        android:fontFamily="@font/avenir_book"
-                    />
+
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
                 <View android:layout_width="match_parent" android:layout_height="1dp"
@@ -305,14 +256,14 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_12sdp"
                     android:gravity="center_vertical"
-                    android:text="$12"
+                    android:text="@{viewModel.getGrayPrice()}"
                     android:fontFamily="@font/avenir_book"
                     android:textColor="@color/sales_price"
                     android:layout_marginStart="@dimen/_12sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/viewAddTo"
                     app:layout_constraintBottom_toBottomOf="@+id/viewAddTo"
-                    android:visibility="visible"
+                    android:visibility="@{viewModel.shouldVisible}"
                 />
 
                 <View
@@ -323,6 +274,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/txtOldPrice"
                     app:layout_constraintTop_toTopOf="@+id/txtOldPrice"
                     app:layout_constraintBottom_toBottomOf="@+id/txtOldPrice"
+                    android:visibility="@{viewModel.shouldVisible}"
                 />
 
                 <TextView
@@ -331,7 +283,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/_17sdp"
                     android:gravity="center_vertical"
-                    android:text="$12.34"
+                    android:text="@{viewModel.getRealPrice()}"
                     android:fontFamily="@font/avenir_book"
                     android:textColor="@color/red"
                     android:layout_marginStart="@dimen/_12sdp"
@@ -411,7 +363,7 @@
                     android:id="@+id/txtProductDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_desc"
+                    android:text="@{viewModel.getProductDescription()}"
                     android:textColor="@color/white"
                     android:fontFamily="@font/avenir_book"
                     android:textSize="@dimen/_10ssp"

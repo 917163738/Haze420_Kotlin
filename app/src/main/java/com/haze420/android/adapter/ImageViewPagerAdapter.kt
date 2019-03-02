@@ -13,9 +13,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.haze420.android.R
 import com.haze420.android.model.ImageModel
+import com.haze420.android.model.Images
 import java.util.ArrayList
 
-class ImageViewPagerAdapter(private val context: Context, private val imageModelArrayList: ArrayList<ImageModel>) : PagerAdapter() {
+class ImageViewPagerAdapter(private val context: Context, private val imageModelArrayList: List<Images>) : PagerAdapter() {
     private val inflater: LayoutInflater
 
 
@@ -39,7 +40,7 @@ class ImageViewPagerAdapter(private val context: Context, private val imageModel
 
 
 //        imageView.setImageResource(imageModelArrayList[position].getImage_drawables())
-        setImageFromUrl(imageView, imageModelArrayList.get(position).fullImageURL, imageModelArrayList.get(position).thumbImageURL)
+        setImageFromUrl(imageView, imageModelArrayList.get(position).thumbnail, imageModelArrayList.get(position).gallery_thumbnail)
         view.addView(imageLayout, 0)
 
         return imageLayout
