@@ -10,11 +10,7 @@ import androidx.lifecycle.Observer
 
 import com.haze420.android.adapter.ReviewsAdapter
 import com.haze420.android.databinding.FragmentReviewsBinding
-import com.haze420.android.model.ProductModel
-import com.haze420.android.model.Review
-import com.haze420.android.model.ReviewModel
 import com.haze420.android.ui.BaseFragment
-import com.haze420.android.ui.MainActivity
 import com.haze420.android.webservice.core.RetrofitFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_reviews.*

@@ -66,3 +66,53 @@ data class Images(val thumbnail: String?,
 data class Attributs(val weight: List<String>,
                   val thc_level: List<String>
 ): Parcelable{}
+
+/*
+        {
+            "id": 1388,
+            "categories": [
+                {
+                    "id": 35,
+                    "name": "Sativa",
+                    "slug": "sativa"
+                }
+            ],
+            "name": "Sour Diesel",
+            "slug": "sour-diesel",
+            "permalink": "https://www.haze420.co.uk/product/sour-diesel/",
+            "description": "<p>Sour Diesel, sometimes called Sour D, is an invigorating sativa-dominant strain named after its pungent, diesel-like aroma. This fast-acting strain delivers energising, dreamy cerebral effects that have pushed Sour Diesel to its legendary status. Stress, pain, and depression fade away in long-lasting relief that makes Sour Diesel a top choice among medical patients. This strain took root in the early 90's, and it is believed to have descended from Chemdawg 91 and Super Skunk.</p>\n",
+            "thumbnail_image": "https://www.haze420.co.uk/wp-content/uploads/2018/12/sour-diesel__primary_9bc6-100x100.jpg",
+            "images": [
+                {
+                    "thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/sour-diesel__primary_9bc6-500x500.jpg",
+                    "gallery_thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/sour-diesel__primary_9bc6-100x100.jpg"
+                },
+                {
+                    "thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/sour-diesel__primary_fb56-500x500.jpg",
+                    "gallery_thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/sour-diesel__primary_fb56-100x100.jpg"
+                },
+                {
+                    "thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/Sour-Diesel-500x500.png",
+                    "gallery_thumbnail": "https://www.haze420.co.uk/wp-content/uploads/2018/12/Sour-Diesel-100x100.png"
+                }
+            ],
+            "weight": "",
+            "price": "11.25",
+            "regular_price": "",
+            "sale_price": "",
+            "average_rating": "4.69",
+            "rating_count": 13,
+            "attributes": {
+                "weight": [
+                    "1G",
+                    "3G",
+                    "7G",
+                    "14G",
+                    "28G"
+                ],
+                "thc_level": [
+                    "Level2"
+                ]
+            }
+        }
+ */

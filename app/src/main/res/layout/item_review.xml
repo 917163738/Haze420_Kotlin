@@ -17,11 +17,11 @@
         android:layout_height="wrap_content"
         android:background="@color/global_bg"
         android:minHeight="@dimen/_30sdp">
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/imgAvatar"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
-            app:avatarFromUrl="@{viewModel.getAvatarURLAt(position)}"
+
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/_12sdp"
