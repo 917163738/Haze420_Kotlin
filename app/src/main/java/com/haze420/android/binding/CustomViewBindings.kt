@@ -59,7 +59,21 @@ fun bindImageFromUrl(view: ImageView, imageUrl: String?) { /// Try thumnail link
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(view)
 
+
+
     }
+}
+
+@BindingAdapter("avatarFromUrl") // unused
+fun bindAvatarFromUrl(view: ImageView, imageUrl: String?) {
+    val requestOption = RequestOptions()
+        .placeholder(R.drawable.avatar).fitCenter()
+        .centerCrop()
+    Glide.with(view.context)
+        .load(imageUrl)
+        .apply(requestOption)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(view)
 }
 @BindingAdapter("fullImageFromUrl") // unused
 fun bindFullImageFromUrl(view: ImageView, fullImageUrl: String?) {

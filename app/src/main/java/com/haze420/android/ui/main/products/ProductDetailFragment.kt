@@ -71,8 +71,8 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
 
         // --------------- Rating bar menu setup
         ratingLayout.setOnClickListener {
-//            val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(product.name, product.id, false)
-//            findNavController().navigate(direction)
+            val direction = ProductDetailFragmentDirections.actionProductDetailToReviews(product.name, product.id.toString(), false)
+            findNavController().navigate(direction)
         }
         // View Pager Set up
         configImageSlider()
@@ -83,7 +83,6 @@ class ProductDetailFragment : Fragment(), ViewPager.OnPageChangeListener {
     }
 
     private fun configWeightsView(){
-        var textViewList = ArrayList<TextView>()
         val sizeByDimen = context!!.resources.getDimension(R.dimen._15ssp)
         val bookFont  = ResourcesCompat.getFont(context!!, R.font.avenir_book)
         for (index in 0 .. product.attributes!!.weight.size - 1){

@@ -15,7 +15,6 @@ import com.haze420.android.R
 import com.haze420.android.adapter.SaleAdapter
 import com.haze420.android.model.ProductModel
 import com.haze420.android.model.enums.SlideMenuType
-import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import com.haze420.android.webservice.core.RetrofitFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -125,7 +124,7 @@ class SaleFragment : BaseMenuLevelFragment(){
             params.set("orderby", "popularity")
             params.set("on_sale", "true")
 
-            val request = service.loadProducts(params)
+            val request = service.getProductList(params)
             try {
                 // Wait for response
                 val response = request.await()

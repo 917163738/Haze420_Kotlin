@@ -18,9 +18,10 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import com.haze420.android.databinding.ItemReviewBinding
 import com.haze420.android.model.Review
+import com.haze420.android.model.ReviewModel
 import com.haze420.android.ui.main.orders.ReviewsViewModel
 
-class ReviewsAdapter(viewModel_: ReviewsViewModel) : ListAdapter<Review, ReviewsAdapter.ViewHolder>(ReviewDiffCallback()){
+class ReviewsAdapter(viewModel_: ReviewsViewModel) : ListAdapter<ReviewModel, ReviewsAdapter.ViewHolder>(ReviewDiffCallback()){
 
     private var viewModel: ReviewsViewModel? = viewModel_
 
@@ -63,12 +64,12 @@ class ReviewsAdapter(viewModel_: ReviewsViewModel) : ListAdapter<Review, Reviews
     }
 }
 
-private class ReviewDiffCallback : DiffUtil.ItemCallback<Review>() {
-    override fun areItemsTheSame(oldItem: Review, newItem: Review): Boolean {
+private class ReviewDiffCallback : DiffUtil.ItemCallback<ReviewModel>() {
+    override fun areItemsTheSame(oldItem: ReviewModel, newItem: ReviewModel): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {
-        return oldItem.id == newItem.id
+    override fun areContentsTheSame(oldItem: ReviewModel, newItem: ReviewModel): Boolean {
+        return oldItem.review == newItem.review
     }
 }

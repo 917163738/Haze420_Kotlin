@@ -2,13 +2,10 @@ package com.haze420.android.ui.main.products
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -18,13 +15,11 @@ import com.haze420.android.adapter.ProductsAdapter
 import com.haze420.android.model.ProductModel
 import com.haze420.android.model.enums.FilterType
 import com.haze420.android.model.enums.SlideMenuType
-import com.haze420.android.ui.MainActivity
 import com.haze420.android.ui.main.BaseMenuLevelFragment
 import com.haze420.android.webservice.core.RetrofitFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_products.*
 
-import kotlinx.android.synthetic.main.form_filter.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -124,7 +119,7 @@ class ProductsFragment : BaseMenuLevelFragment(){
             params.set("order", "desc")
             params.set("orderby", "popularity")
 
-            val request = service.loadProducts(params)
+            val request = service.getProductList(params)
             try {
                 // Wait for response
                 val response = request.await()
