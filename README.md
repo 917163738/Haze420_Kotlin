@@ -32,7 +32,7 @@ __Update node_modules/react-native/react.gradle
 
 - add follwing script to react.gradle file after end of `doFirst`
 
-                ```
+               
                 doLast {
                 def moveFunc = { resSuffix ->
                     File originalDir = file("${resourcesDir}/drawable-${resSuffix}");
@@ -48,7 +48,7 @@ __Update node_modules/react-native/react.gradle
                 moveFunc.curry("xxhdpi").call()
                 moveFunc.curry("xxxhdpi").call()
             }
-            ```
+         
 
 __Build app__
 
